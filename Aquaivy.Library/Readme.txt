@@ -1,0 +1,2 @@
+﻿1.WebAppender未完成
+2.ComponentManager的ReleaseComponent<T>有问题
