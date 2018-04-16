@@ -14,10 +14,11 @@ namespace UnitTest
         {
             Logs.AddConsoleAppender();
 
-            Common.Instance.ObjectPoolTest();
+            //Common.Instance.ObjectPoolTest();
             //new Component().Run();
             //Serialize.Instance.ReadValues();
             //Serialize.Instance.WriteValues();
+            new Util().Run();
 
             Console.ReadKey();
         }
