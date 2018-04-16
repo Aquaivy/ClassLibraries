@@ -42,12 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\ConcurrentQueue.cs" />
-    <Compile Include="Common\ObjectPool.cs" />
-    <Compile Include="Common\ObjectPoolStateInfo.cs" />
+    <Compile Include="Common\ObjectPool\ConcurrentQueue.cs" />
+    <Compile Include="Common\ObjectPool\IPoolInfo.cs" />
+    <Compile Include="Common\ObjectPool\ObjectPool.cs" />
+    <Compile Include="Common\ObjectPool\ObjectPoolStateInfo.cs" />
+    <Compile Include="Common\ObjectPool\PoolInfo.cs" />
+    <Compile Include="Common\ObjectPool\StaticInstanceObjectPool.cs" />
     <Compile Include="Util\SimpleJson\SimpleJson.cs" />
     <Compile Include="Common\Singleton.cs" />
-    <Compile Include="Common\StaticObjectPool.cs" />
+    <Compile Include="Common\ObjectPool\StaticObjectPool.cs" />
     <Compile Include="Common\TInstance.cs" />
     <Compile Include="Component\ComponentManager.cs" />
     <Compile Include="Component\IComponentManager.cs" />

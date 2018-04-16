@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DogSE.Library.Log;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,10 +12,12 @@ namespace UnitTest
     {
         static void Main(string[] args)
         {
-            //Common.Instance.Run();
+            Logs.AddConsoleAppender();
+
+            Common.Instance.ObjectPoolTest();
             //new Component().Run();
             //Serialize.Instance.ReadValues();
-            Serialize.Instance.WriteValues();
+            //Serialize.Instance.WriteValues();
 
             Console.ReadKey();
         }

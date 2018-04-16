@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityClass.cs" />
     <Compile Include="Library\Common.cs" />
     <Compile Include="Library\Component.cs" />
     <Compile Include="Library\Serialize.cs" />

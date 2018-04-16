@@ -74,6 +74,17 @@ namespace DogSE.Library.Common
         /// <summary>
         /// 初始化内存池
         /// </summary>
+        /// <param name="name">对象池的名字</param>
+        /// <param name="iInitialCapacity">初始化内存池对象的数量</param>
+        public ObjectPool(string name, long iInitialCapacity = 1024)
+            : this(iInitialCapacity)
+        {
+            m_Name = name;
+        }
+
+        /// <summary>
+        /// 初始化内存池
+        /// </summary>
         /// <param name="iInitialCapacity">初始化内存池对象的数量</param>
         /// <param name="maxCapacity">最大容量</param>
         public ObjectPool(long iInitialCapacity = 64, int maxCapacity = int.MaxValue)
@@ -103,9 +114,9 @@ namespace DogSE.Library.Common
         /// 
         /// </summary>
         ~ObjectPool()
-        {            
-            //Logs.Info(ToString());
-            Console.WriteLine(ToString());
+        {
+            Logs.Info(ToString());
+            //Console.WriteLine(ToString());
         }
 
         /// <summary>
@@ -114,7 +125,6 @@ namespace DogSE.Library.Common
         /// <returns></returns>
         public override string ToString()
         {
-
             StringBuilder ret = new StringBuilder(512);
             ret.AppendFormat("{0}\r\n", Name);
             ret.AppendFormat("FreeCount:{0}\r\n", m_FreePool.Count);
@@ -124,17 +134,6 @@ namespace DogSE.Library.Common
             ret.AppendFormat("ReleaseCount:{0}\r\n", releaseCount);
 
             return ret.ToString();
-        }
-
-        /// <summary>
-        /// 初始化内存池
-        /// </summary>
-        /// <param name="name">对象池的名字</param>
-        /// <param name="iInitialCapacity">初始化内存池对象的数量</param>
-        public ObjectPool(string name, long iInitialCapacity = 1024)
-            :this(iInitialCapacity)
-        {
-            m_Name = name;
         }
 
         #endregion
@@ -180,7 +179,7 @@ namespace DogSE.Library.Common
             }
         }
 
-        
+
         /// <summary>
         /// 内存池释放数据
         /// </summary>
@@ -191,7 +190,7 @@ namespace DogSE.Library.Common
             {
                 if (content == null)
                     throw new ArgumentNullException("content",
-                        "MemoryPool.ReleasePoolContent(...) - contentT == null error!");
+                        "ObjectPool.ReleaseContent(...) - contentT == null error!");
                 //releaseCount++;
                 Interlocked.Increment(ref releaseCount);
 
@@ -229,15 +228,15 @@ namespace DogSE.Library.Common
         {
             // 不需要锁定的，因为只是给出没有修改数据
             return new PoolInfo
-                       {
-                           Name = Name,
-                           FreeCount = m_FreePool.Count,
-                           InitialCapacity = m_InitialCapacity,
-                           CurrentCapacity = m_InitialCapacity + newCount,
-                           AcquireCount = acquireCount,
-                           ReleaseCount = releaseCount,
-                           Misses = m_Misses
-                       };
+            {
+                Name = Name,
+                FreeCount = m_FreePool.Count,
+                InitialCapacity = m_InitialCapacity,
+                CurrentCapacity = m_InitialCapacity + newCount,
+                AcquireCount = acquireCount,
+                ReleaseCount = releaseCount,
+                Misses = m_Misses
+            };
         }
 
         #endregion
@@ -255,7 +254,7 @@ namespace DogSE.Library.Common
             {
                 if (m_Name == null)
                 {
-                    var type = typeof (T);
+                    var type = typeof(T);
                     if (type.IsGenericType)
                     {
                         m_Name = type.Name + type.GetGenericArguments()[0].Name;
@@ -272,19 +271,4 @@ namespace DogSE.Library.Common
         #endregion
     }
 
-    /// <summary>
-    /// 带单例模式的对象池
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class StaticInstanceObjectPool<T> where T : new()
-    {
-        private readonly ObjectPool<T> instance = new ObjectPool<T>(8);
-
-        /// <summary>
-        /// 单例模式
-        /// </summary>
-        public ObjectPool<T> Instatnce {
-            get { return instance; }
-        }
-    }
 }

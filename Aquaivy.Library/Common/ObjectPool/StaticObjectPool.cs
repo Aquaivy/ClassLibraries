@@ -6,7 +6,7 @@ using System.Text;
 namespace DogSE.Library.Common
 {
     /// <summary>
-    /// 泛型的，静态唯一的对象池【线程安全，放心使用】
+    /// 线程安全的静态对象池
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public static class StaticObjectPool<T> where T : new()
