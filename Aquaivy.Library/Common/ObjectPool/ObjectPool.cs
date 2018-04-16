@@ -20,10 +20,7 @@
 
 
 using System;
-#if NET40
 using System.Collections.Concurrent;
-#endif
-
 using System.Text;
 using System.Threading;
 using DogSE.Library.Log;
@@ -58,7 +55,7 @@ namespace DogSE.Library.Common
         protected ConcurrentQueue<T> m_FreePool = new ConcurrentQueue<T>();
 
 
-#if NET40 && DEBUG
+#if DEBUG
         private ConcurrentBag<T> checkPool = new ConcurrentBag<T>();
 #endif
 
@@ -172,7 +169,7 @@ namespace DogSE.Library.Common
                 Interlocked.Increment(ref acquireCount);
 
 
-#if NET40 && DEBUG
+#if DEBUG
                 checkPool.Add(returnT);
 #endif
                 return returnT;
@@ -197,7 +194,7 @@ namespace DogSE.Library.Common
                 if (m_FreePool.Count < MaxCapacity)
                     m_FreePool.Enqueue(content);
 
-#if NET40 && DEBUG
+#if DEBUG
 
                 if (!checkPool.TryTake(out content))
                 {
