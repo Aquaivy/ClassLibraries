@@ -54,7 +54,7 @@ namespace DogSE.Library.Util
         /// <returns></returns>
         public static bool RandomBool()
         {
-            return ( s_Random.Next( 2 ) == 0 );
+            return (s_Random.Next(2) == 0);
         }
 
         /// <summary>
@@ -62,9 +62,9 @@ namespace DogSE.Library.Util
         /// </summary>
         /// <param name="iMaxValue"></param>
         /// <returns></returns>
-        public static int Random( int iMaxValue )
+        public static int Random(int iMaxValue)
         {
-            return s_Random.Next( iMaxValue );
+            return s_Random.Next(iMaxValue);
         }
 
         /// <summary>
@@ -72,12 +72,12 @@ namespace DogSE.Library.Util
         /// </summary>
         /// <param name="arrayT"></param>
         /// <returns></returns>
-        public static T RandomArray<T>( T[] arrayT )
+        public static T RandomArray<T>(T[] arrayT)
         {
-            if ( arrayT.Length > 0 )
-                return arrayT[s_Random.Next( arrayT.Length )];
+            if (arrayT.Length > 0)
+                return arrayT[s_Random.Next(arrayT.Length)];
             else
-                return default( T );
+                return default(T);
         }
 
         /// <summary>
@@ -85,12 +85,12 @@ namespace DogSE.Library.Util
         /// </summary>
         /// <param name="listT"></param>
         /// <returns></returns>
-        public static T RandomList<T>( List<T> listT )
+        public static T RandomList<T>(List<T> listT)
         {
-            if ( listT.Count > 0 )
-                return listT[s_Random.Next( listT.Count )];
+            if (listT.Count > 0)
+                return listT[s_Random.Next(listT.Count)];
             else
-                return default( T );
+                return default(T);
         }
 
         /// <summary>
@@ -98,29 +98,29 @@ namespace DogSE.Library.Util
         /// </summary>
         /// <param name="bufferRandom"></param>
         /// <returns></returns>
-        public static void RandomInBytes( ref byte[] bufferRandom )
+        public static void RandomInBytes(ref byte[] bufferRandom)
         {
-            s_Random.NextBytes( bufferRandom );
+            s_Random.NextBytes(bufferRandom);
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="iMinValue"></param>
         /// <param name="iMaxValue"></param>
         /// <returns></returns>
-        public static int RandomMinMax( int iMinValue, int iMaxValue )
+        public static int RandomMinMax(int iMinValue, int iMaxValue)
         {
-            if ( iMinValue > iMaxValue )
+            if (iMinValue > iMaxValue)
             {
                 int iCopy = iMinValue;
                 iMinValue = iMaxValue;
                 iMaxValue = iCopy;
             }
-            else if ( iMinValue == iMaxValue )
+            else if (iMinValue == iMaxValue)
                 return iMinValue;
 
-            return s_Random.Next( iMinValue, iMaxValue );
+            return s_Random.Next(iMinValue, iMaxValue);
         }
 
 
@@ -130,38 +130,38 @@ namespace DogSE.Library.Util
         /// <param name="iBaseValue"></param>
         /// <param name="iAppendMaxValue"></param>
         /// <returns></returns>
-        public static int Random( int iBaseValue, int iAppendMaxValue )
+        public static int Random(int iBaseValue, int iAppendMaxValue)
         {
-            if ( iAppendMaxValue == 0 )
+            if (iAppendMaxValue == 0)
                 return iBaseValue;
-            else if ( iAppendMaxValue > 0 )
-                return iBaseValue + s_Random.Next( iAppendMaxValue );
+            else if (iAppendMaxValue > 0)
+                return iBaseValue + s_Random.Next(iAppendMaxValue);
             else
-                return iBaseValue - s_Random.Next( -iAppendMaxValue );
+                return iBaseValue - s_Random.Next(-iAppendMaxValue);
         }
 
         /// <summary>
         /// 千分比的触发几率
         /// </summary>
         /// <returns></returns>
-        public static bool IsTriggerProbability1000( int iPermille )
+        public static bool IsTriggerProbability1000(int iPermille)
         {
-            if ( iPermille >= 1000 )
+            if (iPermille >= 1000)
                 return true;
-            else if ( iPermille <= 0 )
+            else if (iPermille <= 0)
                 return false;
 
             int iDigit100 = iPermille / 100;
-            int iDigit10 = ( iPermille / 10 ) % 10;
+            int iDigit10 = (iPermille / 10) % 10;
             int iDigit = iPermille % 10;
 
-            if ( s_Random.Next( 10 ) < iDigit100 )
+            if (s_Random.Next(10) < iDigit100)
                 return true;
 
-            if ( s_Random.Next( 10 ) < iDigit10 )
+            if (s_Random.Next(10) < iDigit10)
                 return true;
 
-            if ( s_Random.Next( 10 ) < iDigit )
+            if (s_Random.Next(10) < iDigit)
                 return true;
 
             return false;
@@ -171,20 +171,20 @@ namespace DogSE.Library.Util
         /// 百分比的触发几率
         /// </summary>
         /// <returns></returns>
-        public static bool IsTriggerProbability100( int iPercent )
+        public static bool IsTriggerProbability100(int iPercent)
         {
-            if ( iPercent >= 100 )
+            if (iPercent >= 100)
                 return true;
-            else if ( iPercent <= 0 )
+            else if (iPercent <= 0)
                 return false;
 
             int iDigit10 = iPercent / 10;
             int iDigit = iPercent % 10;
 
-            if ( s_Random.Next( 10 ) < iDigit10 )
+            if (s_Random.Next(10) < iDigit10)
                 return true;
 
-            if ( s_Random.Next( 10 ) < iDigit )
+            if (s_Random.Next(10) < iDigit)
                 return true;
 
             return false;
@@ -194,14 +194,14 @@ namespace DogSE.Library.Util
         /// 十分比的触发几率
         /// </summary>
         /// <returns></returns>
-        public static bool IsTriggerProbability10( int iProbability )
+        public static bool IsTriggerProbability10(int iProbability)
         {
-            if ( iProbability >= 10 )
+            if (iProbability >= 10)
                 return true;
-            else if ( iProbability <= 0 )
+            else if (iProbability <= 0)
                 return false;
 
-            if ( s_Random.Next( 10 ) < iProbability )
+            if (s_Random.Next(10) < iProbability)
                 return true;
 
             return false;
@@ -211,25 +211,25 @@ namespace DogSE.Library.Util
         /// 随机数
         /// </summary>
         /// <returns></returns>
-        public static uint RandomBitInUint( byte iBitNumber, byte iRandomCount )
+        public static uint RandomBitInUint(byte iBitNumber, byte iRandomCount)
         {
-            if ( iBitNumber > 32 )
-                throw new Exception( "RandomEx.RandomBitInUint(...) - iBitNumber > 32 error!" );
+            if (iBitNumber > 32)
+                throw new Exception("RandomEx.RandomBitInUint(...) - iBitNumber > 32 error!");
 
-            if ( iRandomCount > iBitNumber )
-                throw new Exception( "RandomEx.RandomBitInUint(...) - iRandomCount > iBitNumber error!" );
+            if (iRandomCount > iBitNumber)
+                throw new Exception("RandomEx.RandomBitInUint(...) - iRandomCount > iBitNumber error!");
 
             uint randomUint = 0;
 
-            for ( int i = 0; i < iRandomCount; i++ )
+            for (int i = 0; i < iRandomCount; i++)
             {
                 do
                 {
-                    int randomBit = Random( iBitNumber );
+                    int randomBit = Random(iBitNumber);
 
                     uint bitValue = (uint)1 << randomBit;
 
-                    if ( ( randomUint & bitValue ) == bitValue )
+                    if ((randomUint & bitValue) == bitValue)
                         continue;
                     else
                     {
@@ -237,7 +237,7 @@ namespace DogSE.Library.Util
                         break;
                     }
 
-                } while ( true );
+                } while (true);
             }
 
             return randomUint;
@@ -247,25 +247,25 @@ namespace DogSE.Library.Util
         /// 随机数
         /// </summary>
         /// <returns></returns>
-        public static ushort RandomBitInUshort( byte iBitNumber, byte iRandomCount )
+        public static ushort RandomBitInUshort(byte iBitNumber, byte iRandomCount)
         {
-            if ( iBitNumber > 16 )
-                throw new Exception( "RandomEx.RandomBitInUint(...) - iBitNumber > 16 error!" );
+            if (iBitNumber > 16)
+                throw new Exception("RandomEx.RandomBitInUint(...) - iBitNumber > 16 error!");
 
-            if ( iRandomCount > iBitNumber )
-                throw new Exception( "RandomEx.RandomBitInUint(...) - iRandomCount > iBitNumber error!" );
+            if (iRandomCount > iBitNumber)
+                throw new Exception("RandomEx.RandomBitInUint(...) - iRandomCount > iBitNumber error!");
 
             ushort randomUshort = 0;
 
-            for ( int i = 0; i < iRandomCount; i++ )
+            for (int i = 0; i < iRandomCount; i++)
             {
                 do
                 {
-                    int randomBit = Random( iBitNumber );
+                    int randomBit = Random(iBitNumber);
 
-                    ushort bitValue = (ushort)( 1 << randomBit );
+                    ushort bitValue = (ushort)(1 << randomBit);
 
-                    if ( ( randomUshort & bitValue ) == bitValue )
+                    if ((randomUshort & bitValue) == bitValue)
                         continue;
                     else
                     {
@@ -273,7 +273,7 @@ namespace DogSE.Library.Util
                         break;
                     }
 
-                } while ( true );
+                } while (true);
             }
 
             return randomUshort;
@@ -283,25 +283,25 @@ namespace DogSE.Library.Util
         /// 随机数
         /// </summary>
         /// <returns></returns>
-        public static byte RandomBitInByte( byte iBitNumber, byte iRandomCount )
+        public static byte RandomBitInByte(byte iBitNumber, byte iRandomCount)
         {
-            if ( iBitNumber > 8 )
-                throw new Exception( "RandomEx.RandomBitInUint(...) - iBitNumber > 8 error!" );
+            if (iBitNumber > 8)
+                throw new Exception("RandomEx.RandomBitInUint(...) - iBitNumber > 8 error!");
 
-            if ( iRandomCount > iBitNumber )
-                throw new Exception( "RandomEx.RandomBitInUint(...) - iRandomCount > iBitNumber error!" );
+            if (iRandomCount > iBitNumber)
+                throw new Exception("RandomEx.RandomBitInUint(...) - iRandomCount > iBitNumber error!");
 
             byte randomByte = 0;
 
-            for ( int i = 0; i < iRandomCount; i++ )
+            for (int i = 0; i < iRandomCount; i++)
             {
                 do
                 {
-                    int randomBit = Random( iBitNumber );
+                    int randomBit = Random(iBitNumber);
 
-                    byte bitValue = (byte)( 1 << randomBit );
+                    byte bitValue = (byte)(1 << randomBit);
 
-                    if ( ( randomByte & bitValue ) == bitValue )
+                    if ((randomByte & bitValue) == bitValue)
                         continue;
                     else
                     {
@@ -309,7 +309,7 @@ namespace DogSE.Library.Util
                         break;
                     }
 
-                } while ( true );
+                } while (true);
             }
 
             return randomByte;
@@ -318,7 +318,7 @@ namespace DogSE.Library.Util
         #endregion
 
         /// <summary>
-        /// 注意，这个是小数的随机数哦
+        /// 注意，这个是小数的随机数，
         /// 允许传0.001之类的值
         /// </summary>
         /// <param name="percent"></param>
@@ -328,40 +328,7 @@ namespace DogSE.Library.Util
             if (percent >= 100)
                 return true;
 
-            return s_Random.Next()%(int)(10000/percent) < 100;
-        }
-
-        static private void test()
-        {
-
-            test2(0.001);
-            test2(0.01);
-            test2(0.1);
-            test2(0.5);
-            test2(1);
-            test2(10);
-            test2(50);
-            test2(70);
-            test2(80);
-            test2(99.99);
-            test2(100);
-
-
-        }
-
-        static void test2(double p)
-        {
-            double count = 1000000;
-            int s = 0;
-            for (int i = 0; i < count; i++)
-            {
-                if (IsTriggerProbability100(p))
-                    s++;
-            }
-
-            var p2 = s/count*100;
-
-            Console.WriteLine("输入：{0}   实际：{1}",p,p2);
+            return s_Random.Next() % (int)(10000 / percent) < 100;
         }
     }
 }

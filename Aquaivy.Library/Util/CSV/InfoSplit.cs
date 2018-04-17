@@ -4,10 +4,12 @@ using System.Collections.Generic;
 namespace DogSE.Library.Util
 {
     /// <summary>
-    /// 信息切割工具类
+    /// CSV信息切割工具类
     /// </summary>
     public class InfoSplit
     {
+        private readonly Dictionary<string, string> map = new Dictionary<string, string>();
+
         /// <summary>
         /// 信息切割类，用来切割
         /// xx:u1;yy:u2
@@ -25,8 +27,6 @@ namespace DogSE.Library.Util
                     map[d2[0]] = d2[1];
             }
         }
-
-        private readonly Dictionary<string, string> map = new Dictionary<string, string>();
 
         /// <summary>
         /// 获得某个字符串

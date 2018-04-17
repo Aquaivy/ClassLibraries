@@ -48,6 +48,7 @@
     <Compile Include="Common\ObjectPool\ObjectPoolStateInfo.cs" />
     <Compile Include="Common\ObjectPool\PoolInfo.cs" />
     <Compile Include="Common\ObjectPool\StaticInstanceObjectPool.cs" />
+    <Compile Include="Util\CharacterChecker.cs" />
     <Compile Include="Util\SimpleJson\SimpleJson.cs" />
     <Compile Include="Common\Singleton.cs" />
     <Compile Include="Common\ObjectPool\StaticObjectPool.cs" />
@@ -153,8 +154,8 @@
     <Compile Include="Serialize\XmlSerializeUtil.cs" />
     <Compile Include="Thread\ThreadQueue.cs" />
     <Compile Include="Thread\ThreadQueueEntity.cs" />
-    <Compile Include="Util\ConvertString.cs" />
-    <Compile Include="Util\InfoSplit.cs" />
+    <Compile Include="Util\CSV\ConvertCSV.cs" />
+    <Compile Include="Util\CSV\InfoSplit.cs" />
     <Compile Include="Util\Insensitive.cs" />
     <Compile Include="Util\Lang.cs" />
     <Compile Include="Util\MathHelper.cs" />
