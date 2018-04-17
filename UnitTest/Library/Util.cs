@@ -13,11 +13,13 @@ namespace UnitTest.Library
         internal void Run()
         {
             Test_Lang();
+            
         }
 
         private void Test_Lang()
         {
-            Lang.Init("D://AndroidManifest.xml");
+            //Lang.Init("D://AndroidManifest.xml");
+            Lang.Init("D://lang.json");
 
             Logs.Info(Lang.Trans("k1"));
         }
