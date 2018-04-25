@@ -33,7 +33,9 @@ namespace UnitTest.Library
             //Logs.Info(Path.GetFileName(PathEx.GetDirectoryName(@"\file.txt")));
             //Logs.Info(Path.GetFileName(PathEx.GetDirectoryName(@"file.txt")));
 
-            Logs.Info(PathEx.GetNewFileName(@"D:\Parent\file.txt", "222"));
+            //Logs.Info(PathEx.GetNewFileName(@"D:\Parent\file.txt", "222"));
+
+            Logs.Info(PathEx.ChangeSeparatorToPositive(@"D:\\Parent\\file.txt"));
         }
 
         private void Test_FileSize()

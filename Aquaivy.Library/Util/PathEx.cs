@@ -57,18 +57,25 @@ namespace Aquaivy.Library.Util
         /// 修改目录中的分隔符为【正分隔符】，形如 "/"
         /// </summary>
         /// <param name="path"></param>
-        public static void ChangeSeparatorToPositive(string path)
+        public static string ChangeSeparatorToPositive(string path)
         {
-
+            return path.Replace('\\', '/');
         }
 
         /// <summary>
         /// 修改目录中的分隔符为【反分隔符】，形如 "\"
         /// </summary>
         /// <param name="path"></param>
-        public static void ChangeSeparatorToPassive(string path)
+        public static string ChangeSeparatorToPassive(string path)
         {
-
+            return path.Replace('/', '\\');
         }
+
+        /// <summary>
+        /// 重置为Windows系统默认分隔符
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string ResetToWindowsSeparator(string path) => ChangeSeparatorToPassive(path);
     }
 }
