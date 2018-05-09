@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aquaivy.Library", "Aquaivy.Library\Aquaivy.Library.csproj", "{D18FC391-9203-4B3A-9896-A1316C30B12B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aquaivy.Core", "Aquaivy.Core\Aquaivy.Core.csproj", "{D18FC391-9203-4B3A-9896-A1316C30B12B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aquaivy.Uncore", "Aquaivy.Uncore\Aquaivy.Uncore.csproj", "{9B0EA808-8F06-473B-B818-88C112EEA006}"
 EndProject
