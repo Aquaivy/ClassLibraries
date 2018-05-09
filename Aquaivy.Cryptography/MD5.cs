@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aquaivy.Library.Cryptography
+namespace Aquaivy.Cryptography
 {
     public class MD5
     {

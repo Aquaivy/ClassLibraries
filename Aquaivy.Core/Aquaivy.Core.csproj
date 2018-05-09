@@ -49,10 +49,6 @@
     <Compile Include="Common\ObjectPool\ObjectPoolStateInfo.cs" />
     <Compile Include="Common\ObjectPool\PoolInfo.cs" />
     <Compile Include="Common\ObjectPool\StaticInstanceObjectPool.cs" />
-    <Compile Include="Cryptography\CRC32.cs" />
-    <Compile Include="Cryptography\Crypto.cs" />
-    <Compile Include="Cryptography\MD5.cs" />
-    <Compile Include="Cryptography\SHA1.cs" />
     <Compile Include="Util\CharacterChecker.cs" />
     <Compile Include="Util\ByteSize.cs" />
     <Compile Include="Util\IOUtil.cs" />

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aquaivy.Unity.Editor", "Aqu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{EA704A05-D016-487F-8F93-F7416EAD3359}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aquaivy.Cryptography", "Aquaivy.Cryptography\Aquaivy.Cryptography.csproj", "{B9D8E3B3-6E09-4720-B647-1386818D181D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EA704A05-D016-487F-8F93-F7416EAD3359}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA704A05-D016-487F-8F93-F7416EAD3359}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA704A05-D016-487F-8F93-F7416EAD3359}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9D8E3B3-6E09-4720-B647-1386818D181D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D8E3B3-6E09-4720-B647-1386818D181D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D8E3B3-6E09-4720-B647-1386818D181D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D8E3B3-6E09-4720-B647-1386818D181D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

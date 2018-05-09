@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aquaivy.Library.Cryptography
+namespace Aquaivy.Cryptography
 {
-    class SHA1
+    class CRC32
     {
     }
 }
