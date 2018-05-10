@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Aquaivy.Unity</RootNamespace>
     <AssemblyName>Aquaivy.Unity</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,8 +48,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audios\Audio.cs" />
+    <Compile Include="Audios\AudioManager.cs" />
+    <Compile Include="GameManager\GameManager.cs" />
     <Compile Include="Log\UnityAppender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tasks\DelayTask.cs" />
+    <Compile Include="Tasks\DownloadTask.cs" />
+    <Compile Include="Tasks\TaskLite.cs" />
+    <Compile Include="TweenLite\Back.cs" />
+    <Compile Include="TweenLite\Bounce.cs" />
+    <Compile Include="TweenLite\Circular.cs" />
+    <Compile Include="TweenLite\Cubic.cs" />
+    <Compile Include="TweenLite\Elastic.cs" />
+    <Compile Include="TweenLite\Empty.cs" />
+    <Compile Include="TweenLite\Exponential.cs" />
+    <Compile Include="TweenLite\Linear.cs" />
+    <Compile Include="TweenLite\Quadratic.cs" />
+    <Compile Include="TweenLite\Quartic.cs" />
+    <Compile Include="TweenLite\Quintic.cs" />
+    <Compile Include="TweenLite\Sinusoidal.cs" />
+    <Compile Include="TweenLite\TweenLite.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aquaivy.Core\Aquaivy.Core.csproj">
@@ -56,5 +76,6 @@
       <Name>Aquaivy.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
