@@ -63,20 +63,20 @@ namespace Aquaivy.Unity.Audios
 
             if (!Loop)
             {
-                TaskLite.Invoke(t =>
-                {
-                    if (released)
-                        return true;
+                //TaskLite.Invoke(t =>
+                //{
+                //    if (released)
+                //        return true;
 
-                    if (isPausing)
-                        return true;
+                //    if (isPausing)
+                //        return true;
 
-                    if (AudioSource.isPlaying)
-                        return false;
+                //    if (AudioSource.isPlaying)
+                //        return false;
 
-                    Destroy(this);
-                    return true;
-                });
+                //    Destroy(this);
+                //    return true;
+                //});
             }
         }
 
