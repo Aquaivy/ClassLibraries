@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Aquaivy.Core.Log;
+using Aquaivy.Unity.Tasks;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,25 +10,57 @@ using UnityEngine;
 
 namespace Aquaivy.Unity.Audios
 {
+    /// <summary>
+    /// 音频对象类
+    /// </summary>
+    /// <remarks>
+    /// 即使勾选了音频文件的"Force to Mono"，播放音频时
+    /// 如果stereo为true，仍然为3D立体音
+    /// </remarks>
     public class Audio
     {
         public GameObject GameObject { get; }
         public AudioSource AudioSource { get; }
-        public AudioClip AudioClip { get; }
 
-        public float Length { get { return AudioClip.length; } }
-        public bool Loop { get { return AudioSource.loop; } set { AudioSource.loop = value; } }
-        public float Volume { get { return AudioSource.volume; } set { AudioSource.volume = value; } }
+        public AudioClip AudioClip
+        {
+            get { return AudioSource.clip; }
+        }
+
+        /// <summary>
+        /// 声音时长，单位：s
+        /// </summary>
+        public float Length
+        {
+            get { return AudioClip.length; }
+        }
+
+        /// <summary>
+        /// 是否循环播放
+        /// </summary>
+        public bool Loop
+        {
+            get { return AudioSource.loop; }
+            set { AudioSource.loop = value; }
+        }
+
+        /// <summary>
+        /// 音量
+        /// </summary>
+        public float Volume
+        {
+            get { return AudioSource.volume; }
+            set { AudioSource.volume = value; }
+        }
 
         /// <summary>
         /// 是否是立体声
         /// </summary>
-        public bool IsStereo { get; set; }
-
-        public bool LoadCompleted { get; private set; }
-
-        private bool isPausing = false;
-        private bool released = false;
+        public bool IsStereo
+        {
+            get { return AudioSource.spatialBlend == 1; }
+            set { AudioSource.spatialBlend = value ? 1 : 0; }
+        }
 
         /// <summary>
         /// 
@@ -34,80 +68,49 @@ namespace Aquaivy.Unity.Audios
         /// <param name="path">需要添加.mp3 .wav等音频后缀</param>
         /// <param name="loop"></param>
         /// <param name="volume"></param>
-        public Audio(string path, bool loop, float volume)
+        private Audio(AudioClip audioClip, string path, bool loop, float volume, bool stereo)
         {
-            path = TrimExtension(path);
-
-            var audioClip = AudioManager.LoadResource(path);
-            if (audioClip == null)
-            {
-                LoadCompleted = false;
-                return;
-            }
-
-            AudioClip = audioClip;
             GameObject = new GameObject("Audio_" + Path.GetFileName(path));
             AudioSource = GameObject.AddComponent<AudioSource>();
-
-            AudioSource.clip = AudioClip;
+            AudioSource.clip = audioClip;
             AudioSource.loop = loop;
             AudioSource.volume = volume;
-
-            LoadCompleted = true;
+            AudioSource.spatialBlend = stereo ? 1 : 0;
         }
 
         public void Play()
         {
             AudioSource.Play();
-            isPausing = false;
 
             if (!Loop)
             {
-                //TaskLite.Invoke(t =>
-                //{
-                //    if (released)
-                //        return true;
-
-                //    if (isPausing)
-                //        return true;
-
-                //    if (AudioSource.isPlaying)
-                //        return false;
-
-                //    Destroy(this);
-                //    return true;
-                //});
+                DelayTask.Invoke(() =>
+                {
+                    Stop();
+                }, (int)(AudioClip.length * 1000));
             }
         }
 
         public void Pause()
         {
             AudioSource.Pause();
-            isPausing = true;
         }
 
         public void Stop()
         {
             AudioSource.Stop();
-            Destroy(this);
+            Dispose();
         }
 
-        private static string TrimExtension(string path)
+        private void Dispose()
         {
-            var ext = Path.GetExtension(path).ToLower();
-            if (ext == ".mp3" || ext == ".wav")
-            {
-                path = path.Substring(0, path.Length - 4);
-            }
-
-            return path;
+            AudioManager.Remove(this);
+            GameObject.Destroy(GameObject);
         }
 
-        private static List<Audio> audios = new List<Audio>(8);
-        private static GameObject audiosParent;
 
         /// <summary>
-        /// 
+        /// 从StreamingAssets播放一个音频，需要添加.mp3 .wav .ogg等后缀
         /// </summary>
         /// <param name="path">需要添加.mp3 .wav等音频后缀</param>
         /// <param name="loop"></param>
@@ -116,32 +119,43 @@ namespace Aquaivy.Unity.Audios
         /// <returns></returns>
         public static Audio Play(string path, bool loop = false, float volume = 1f, bool stereo = false)
         {
-            if (audiosParent == null)
-                audiosParent = new GameObject("Audios");
-
-            var audio = new Audio(path, loop, volume);
-            if (!audio.LoadCompleted)
+            var clip = AudioManager.Load(path);
+            if (clip == null)
+            {
+                Logs.Warn($"Load audio fail. path={path}");
                 return null;
+            }
 
-            audio.GameObject.transform.SetParent(audiosParent.transform);
-            audio.IsStereo = stereo;
-
-            audios.Add(audio);
-
+            var audio = new Audio(clip, path, loop, volume, stereo);
+            AudioManager.Add(audio);
             audio.Play();
-
             return audio;
         }
 
-        private static void Destroy(Audio audio)
+        /// <summary>
+        /// 从Resource播放一个音频，需要添加.mp3 .wav .ogg等后缀
+        /// </summary>
+        /// <param name="path">需要添加.mp3 .wav等音频后缀（虽然麻烦，但是辨识度更高）</param>
+        /// <param name="loop"></param>
+        /// <param name="volume"></param>
+        /// <param name="stereo"></param>
+        /// <returns></returns>
+        public static Audio PlayResource(string path, bool loop = false, float volume = 1f, bool stereo = false)
         {
-            if (audio == null)
-                return;
+            var clip = AudioManager.LoadResource(path);
+            if (clip == null)
+            {
+                Logs.Warn($"Load audio fail. path={path}");
+                return null;
+            }
 
-            audios.Remove(audio);
-            GameObject.Destroy(audio.GameObject);
-            audio.released = true;
+            var audio = new Audio(clip, path, loop, volume, stereo);
+
+            AudioManager.Add(audio);
+            audio.Play();
+            return audio;
         }
+
     }
 
 }

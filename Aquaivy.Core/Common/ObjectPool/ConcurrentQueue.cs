@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DogSE.Library.Common
+namespace Aquaivy.Core.Common
 {
     /// <summary>
     /// 并发队列，线程安全

@@ -1,12 +1,6 @@
-﻿using Aquaivy.Library.Util;
-using DogSE.Library.Log;
+﻿using Aquaivy.Core.Log;
+using Aquaivy.Library.Util;
 using DogSE.Library.Util;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UnitTest.Library
 {
@@ -26,16 +20,38 @@ namespace UnitTest.Library
             //Logs.Info(PathEx.GetDirectoryName(@"Parent\file.txt"));
             //Logs.Info(PathEx.GetDirectoryName(@"\file.txt"));
             //Logs.Info(PathEx.GetDirectoryName(@"file.txt"));
+            //Logs.Info(PathEx.GetDirectoryName(@"D:\Parent\file\"));
+            //Logs.Info(PathEx.GetDirectoryName(@"D:\Parent\file"));
+            //Logs.Info(PathEx.GetDirectoryName(@"\Parent\file"));
+            //Logs.Info(PathEx.GetDirectoryName(@"\file"));
+            //Logs.Info(PathEx.GetDirectoryName(@"\"));
 
-            //Logs.Info(Path.GetFileName(PathEx.GetDirectoryName(@"D:\Parent\file.txt")));
-            //Logs.Info(Path.GetFileName(PathEx.GetDirectoryName(@"\Parent\file.txt")));
-            //Logs.Info(Path.GetFileName(PathEx.GetDirectoryName(@"Parent\file.txt")));
-            //Logs.Info(Path.GetFileName(PathEx.GetDirectoryName(@"\file.txt")));
-            //Logs.Info(Path.GetFileName(PathEx.GetDirectoryName(@"file.txt")));
+            //Logs.Info(PathEx.GetParentDirectoryName(@"D:\Parent\file.txt"));
+            //Logs.Info(PathEx.GetParentDirectoryName(@"\Parent\file.txt"));
+            //Logs.Info(PathEx.GetParentDirectoryName(@"Parent\file.txt"));
+            //Logs.Info(PathEx.GetParentDirectoryName(@"\file.txt"));
+            //Logs.Info(PathEx.GetParentDirectoryName(@"file.txt"));
+            //Logs.Info(PathEx.GetParentDirectoryName(@"D:\Parent\file\"));
+            //Logs.Info(PathEx.GetParentDirectoryName(@"D:\Parent\file"));
+            //Logs.Info(PathEx.GetParentDirectoryName(@"\Parent\file"));
+            //Logs.Info(PathEx.GetParentDirectoryName(@"\file"));
+            //Logs.Info(PathEx.GetParentDirectoryName(@"\"));
+
+            Logs.Info(PathEx.GetPathWithoutExtension(@"D:\Parent\file.txt"));
+            Logs.Info(PathEx.GetPathWithoutExtension(@"\Parent\file.txt"));
+            Logs.Info(PathEx.GetPathWithoutExtension(@"Parent\file.txt"));
+            Logs.Info(PathEx.GetPathWithoutExtension(@"\file.txt"));
+            Logs.Info(PathEx.GetPathWithoutExtension(@"file.txt"));
+            Logs.Info(PathEx.GetPathWithoutExtension(@"D:\Parent\file\"));
+            Logs.Info(PathEx.GetPathWithoutExtension(@"D:\Parent\file"));
+            Logs.Info(PathEx.GetPathWithoutExtension(@"\Parent\file"));
+            Logs.Info(PathEx.GetPathWithoutExtension(@"\file"));
+            Logs.Info(PathEx.GetPathWithoutExtension(@"\"));
+
 
             //Logs.Info(PathEx.GetNewFileName(@"D:\Parent\file.txt", "222"));
 
-            Logs.Info(PathEx.ChangeSeparatorToPositive(@"D:\\Parent\\file.txt"));
+            //Logs.Info(PathEx.ChangeSeparatorToPositive(@"D:\\Parent\\file.txt"));
         }
 
         private void Test_FileSize()

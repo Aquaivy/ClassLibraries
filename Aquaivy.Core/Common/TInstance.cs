@@ -1,4 +1,4 @@
-﻿namespace DogSE.Library.Common
+﻿namespace Aquaivy.Core.Common
 {
     /// <summary>
     /// 单例模板

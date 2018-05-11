@@ -25,7 +25,7 @@ using System.Text;
 using System.Threading;
 using Aquaivy.Core.Log;
 
-namespace DogSE.Library.Common
+namespace Aquaivy.Core.Common
 {
     /// <summary>
     /// 对象池

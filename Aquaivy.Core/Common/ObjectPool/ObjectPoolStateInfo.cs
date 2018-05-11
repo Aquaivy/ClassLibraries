@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace DogSE.Library.Common
+namespace Aquaivy.Core.Common
 {
     /// <summary>
     /// 对象池信息

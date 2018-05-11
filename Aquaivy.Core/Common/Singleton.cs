@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aquaivy.Library.Common
+namespace Aquaivy.Core.Common
 {
     /// <summary>
     /// Base class for Singleton pattern.

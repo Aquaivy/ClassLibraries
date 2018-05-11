@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DogSE.Library.Common
+namespace Aquaivy.Core.Common
 {
     /// <summary>
     /// 对象池信息

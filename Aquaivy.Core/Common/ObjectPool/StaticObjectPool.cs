@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DogSE.Library.Common
+namespace Aquaivy.Core.Common
 {
     /// <summary>
     /// 线程安全的静态对象池

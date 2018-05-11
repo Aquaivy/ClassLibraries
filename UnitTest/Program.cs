@@ -1,9 +1,5 @@
-﻿using DogSE.Library.Log;
+﻿using Aquaivy.Core.Log;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnitTest.Library;
 
 namespace UnitTest

@@ -17,12 +17,18 @@ namespace Aquaivy.Library.Util
         ///     Parent\file.txt         Parent
         ///     \file.txt               \
         ///     file.txt                空字符串
+        ///     D:\Parent\file\         D:\Parent\file
+        ///     D:\Parent\file          D:\Parent
+        ///     \Parent\file            \Parent
+        ///     \file                   \
+        ///     \                       空字符串
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
         public static string GetDirectoryName(string path)
         {
-            return Path.GetDirectoryName(path);
+            string dir = Path.GetDirectoryName(path);
+            return dir ?? string.Empty;
         }
 
         /// <summary>
@@ -33,11 +39,39 @@ namespace Aquaivy.Library.Util
         ///     Parent\file.txt         Parent
         ///     \file.txt               空字符串
         ///     file.txt                空字符串
+        ///     D:\Parent\file\         file
+        ///     D:\Parent\file          Parent
+        ///     \Parent\file            Parent
+        ///     \file                   空字符串
+        ///     \                       空字符串
         /// </summary>
         /// <param name="path"></param>
         public static string GetParentDirectoryName(string path)
         {
             return Path.GetFileName(GetDirectoryName(path));
+        }
+
+        /// <summary>
+        /// 返回去掉扩展名后的路径
+        /// 举例：
+        ///     D:\Parent\file.txt      D:\Parent\file
+        ///     \Parent\file.txt        \Parent\file
+        ///     Parent\file.txt         Parent\file
+        ///     \file.txt               \file
+        ///     file.txt                file
+        ///     D:\Parent\file\         D:\Parent\file
+        ///     D:\Parent\file          D:\Parent\file
+        ///     \Parent\file            \Parent\file
+        ///     \file                   \file
+        ///     \                       空字符串
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string GetPathWithoutExtension(string path)
+        {
+            var dir = GetDirectoryName(path);
+            var name = Path.GetFileNameWithoutExtension(path);
+            return Path.Combine(dir, name);
         }
 
         /// <summary>
