@@ -50,9 +50,21 @@
   <ItemGroup>
     <Compile Include="Audios\Audio.cs" />
     <Compile Include="Audios\AudioManager.cs" />
+    <Compile Include="Common\Extensions\ActionExtensions.cs" />
+    <Compile Include="Common\Extensions\BoundsExtensions.cs" />
+    <Compile Include="Common\Extensions\CameraExtensions.cs" />
+    <Compile Include="Common\Extensions\Color32Extensions.cs" />
+    <Compile Include="Common\Extensions\ComponentExtensions.cs" />
+    <Compile Include="Common\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Common\Extensions\Extensions.cs" />
     <Compile Include="Common\Extensions\GameObjectExtensions.cs" />
+    <Compile Include="Common\Extensions\InteractionSourceExtensions.cs" />
+    <Compile Include="Common\Extensions\LayerExtensions.cs" />
+    <Compile Include="Common\Extensions\MathfExtensions.cs" />
     <Compile Include="Common\Extensions\TransformExtensions.cs" />
+    <Compile Include="Common\Extensions\VectorExtensions.cs" />
+    <Compile Include="Common\Int3.cs" />
+    <Compile Include="Common\MathUtils.cs" />
     <Compile Include="Common\UnitySingleton.cs" />
     <Compile Include="GameManager\GameManager.cs" />
     <Compile Include="Log\UnityAppender.cs" />
@@ -73,6 +85,7 @@
     <Compile Include="TweenLite\Quintic.cs" />
     <Compile Include="TweenLite\Sinusoidal.cs" />
     <Compile Include="TweenLite\TweenLite.cs" />
+    <Compile Include="Utilities\GameObjectHelper.cs" />
     <Compile Include="Utilities\Persistence.cs" />
     <Compile Include="Utilities\ProfilerHelper.cs" />
     <Compile Include="Utilities\RuntimeProfiler.cs" />

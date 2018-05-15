@@ -10,7 +10,7 @@ namespace Aquaivy.Unity.Editor
 {
     public class FindMissingScripts : EditorWindow
     {
-        [MenuItem("Tools/FindMissingScripts")]
+        //[MenuItem("Tools/FindMissingScripts")]
         public static void ShowWindow()
         {
             EditorWindow.GetWindow(typeof(FindMissingScripts));

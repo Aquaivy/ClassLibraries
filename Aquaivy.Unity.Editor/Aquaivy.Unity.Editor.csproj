@@ -50,8 +50,8 @@
     <Compile Include="Console\ConsoleLog.cs" />
     <Compile Include="EditorTools.cs" />
     <Compile Include="FindMissingScripts\FindMissingScripts.cs" />
-    <Compile Include="FindScripts\FindScript.cs" />
-    <Compile Include="FindScripts\FindScriptWindow.cs" />
+    <Compile Include="SearchScripts\SearchScript.cs" />
+    <Compile Include="SearchScripts\SearchScriptWindow.cs" />
     <Compile Include="Importer\AudioImporter.cs" />
     <Compile Include="Importer\TextureImporter.cs" />
     <Compile Include="ProjectFile\ReduceWarningLevel.cs" />
@@ -59,6 +59,18 @@
     <Compile Include="ProjectFile\RepairDependence.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Template\OptimizeTemplateFile.cs" />
+    <Compile Include="Utilities\SceneHelper.cs" />
+    <Compile Include="Utilities\SceneWrap.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aquaivy.Core\Aquaivy.Core.csproj">
+      <Project>{d18fc391-9203-4b3a-9896-a1316c30b12b}</Project>
+      <Name>Aquaivy.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aquaivy.Unity\Aquaivy.Unity.csproj">
+      <Project>{389f64a1-65db-44ba-bf73-3cfa56aa1010}</Project>
+      <Name>Aquaivy.Unity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

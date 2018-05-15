@@ -24,7 +24,10 @@ namespace Aquaivy.Unity.Editor
         [MenuItem("Tools/Reduce Warning Level", false, 53)]
         public static void WarningLevel() => ReduceWarningLevel.Reduce();
 
-        [MenuItem("Tools/Search script", false, 101)]
-        public static void Searchscript() => EditorWindow.GetWindow(typeof(FindScriptWindow));
+        [MenuItem("Tools/Search Script Window", false, 101)]
+        public static void Searchscript() => SearchScriptWindow.OpenWindow();
+
+        [MenuItem("Tools/Test", false, 1001)]
+        public static void TestNewScript() => SearchScript.Search(typeof(Camera));
     }
 }

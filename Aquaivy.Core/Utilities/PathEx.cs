@@ -106,7 +106,7 @@ namespace Aquaivy.Library.Util
         }
 
         /// <summary>
-        /// 重置为Windows系统默认分隔符
+        /// 重置为Windows系统默认【反分隔符】，形如 "\"
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
