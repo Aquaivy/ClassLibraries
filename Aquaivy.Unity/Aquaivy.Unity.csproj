@@ -85,4 +85,8 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy Aquaivy.Unity.dll ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\ /s /y /q
+xcopy Aquaivy.Unity.pdb ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\ /s /y /q</PostBuildEvent>
+  </PropertyGroup>
 </Project>

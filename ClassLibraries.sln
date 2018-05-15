@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aquaivy.Core", "Aquaivy.Core\Aquaivy.Core.csproj", "{D18FC391-9203-4B3A-9896-A1316C30B12B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aquaivy.Uncore", "Aquaivy.Uncore\Aquaivy.Uncore.csproj", "{9B0EA808-8F06-473B-B818-88C112EEA006}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aquaivy.Unity", "Aquaivy.Unity\Aquaivy.Unity.csproj", "{389F64A1-65DB-44BA-BF73-3CFA56AA1010}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aquaivy.Unity.Editor", "Aquaivy.Unity.Editor\Aquaivy.Unity.Editor.csproj", "{849D0AE3-8617-414B-AB1A-E373F9DD7F81}"
@@ -16,6 +14,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aquaivy.Cryptography", "Aquaivy.Cryptography\Aquaivy.Cryptography.csproj", "{B9D8E3B3-6E09-4720-B647-1386818D181D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aquaivy.Unity.UI", "Aquaivy.Unity.UI\Aquaivy.Unity.UI.csproj", "{C2644014-E59C-45D1-B673-BB6A1BF7ACD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityForLib", "..\..\Projects\UnityForLib\UnityForLib.csproj", "{A5D8AF02-8C6C-A8C2-11E4-16B5139CFCC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityForLib.Editor", "..\..\Projects\UnityForLib\UnityForLib.Editor.csproj", "{D051862B-F29D-7B18-BFDD-9F15E55792E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +29,6 @@ Global
 		{D18FC391-9203-4B3A-9896-A1316C30B12B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D18FC391-9203-4B3A-9896-A1316C30B12B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D18FC391-9203-4B3A-9896-A1316C30B12B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B0EA808-8F06-473B-B818-88C112EEA006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B0EA808-8F06-473B-B818-88C112EEA006}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B0EA808-8F06-473B-B818-88C112EEA006}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B0EA808-8F06-473B-B818-88C112EEA006}.Release|Any CPU.Build.0 = Release|Any CPU
 		{389F64A1-65DB-44BA-BF73-3CFA56AA1010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{389F64A1-65DB-44BA-BF73-3CFA56AA1010}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{389F64A1-65DB-44BA-BF73-3CFA56AA1010}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +49,14 @@ Global
 		{C2644014-E59C-45D1-B673-BB6A1BF7ACD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2644014-E59C-45D1-B673-BB6A1BF7ACD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2644014-E59C-45D1-B673-BB6A1BF7ACD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5D8AF02-8C6C-A8C2-11E4-16B5139CFCC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5D8AF02-8C6C-A8C2-11E4-16B5139CFCC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5D8AF02-8C6C-A8C2-11E4-16B5139CFCC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5D8AF02-8C6C-A8C2-11E4-16B5139CFCC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D051862B-F29D-7B18-BFDD-9F15E55792E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D051862B-F29D-7B18-BFDD-9F15E55792E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D051862B-F29D-7B18-BFDD-9F15E55792E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D051862B-F29D-7B18-BFDD-9F15E55792E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

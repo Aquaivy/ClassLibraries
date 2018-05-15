@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Editor.Importer
+namespace Aquaivy.Unity.Editor
 {
     class TextureImporter
     {

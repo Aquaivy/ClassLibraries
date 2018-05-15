@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Editor
+namespace Aquaivy.Unity.Editor
 {
     class ConsoleLog
     {

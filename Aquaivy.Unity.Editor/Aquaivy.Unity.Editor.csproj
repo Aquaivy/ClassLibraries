@@ -41,10 +41,17 @@
     <Reference Include="UnityEditor">
       <HintPath>..\Libs\Unity 2017.2.0\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Unity 2017.2.0\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Console\ConsoleLog.cs" />
     <Compile Include="EditorTools.cs" />
+    <Compile Include="FindMissingScripts\FindMissingScripts.cs" />
+    <Compile Include="FindScripts\FindScript.cs" />
+    <Compile Include="FindScripts\FindScriptWindow.cs" />
     <Compile Include="Importer\AudioImporter.cs" />
     <Compile Include="Importer\TextureImporter.cs" />
     <Compile Include="ProjectFile\ReduceWarningLevel.cs" />
@@ -54,4 +61,8 @@
     <Compile Include="Template\OptimizeTemplateFile.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy Aquaivy.Unity.Editor.dll ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\ /s /y /q
+xcopy Aquaivy.Unity.Editor.pdb ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\ /s /y /q</PostBuildEvent>
+  </PropertyGroup>
 </Project>

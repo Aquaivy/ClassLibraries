@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.Profiling;
 
-namespace Assets.Utilities
+namespace Aquaivy.Unity.Utilities
 {
     public class ProfilerHelper
     {

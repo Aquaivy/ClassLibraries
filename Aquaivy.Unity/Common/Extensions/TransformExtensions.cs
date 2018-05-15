@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace Assets.Common.Extensions
+namespace Aquaivy.Unity.Common
 {
     public static class TransformExtensions
     {

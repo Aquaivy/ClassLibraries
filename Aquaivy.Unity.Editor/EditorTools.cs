@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Editor
+namespace Aquaivy.Unity.Editor
 {
     //[ExecuteInEditMode]
     public class EditorTools
@@ -15,5 +15,16 @@ namespace Assets.Editor
         public static void CorrectCsprojFile() => ConsoleLog.Clear();
 
 
+        [MenuItem("Tools/Refresh Project", false, 51)]
+        public static void RefreshProject() => RefreshProjectFile.Refresh();
+
+        [MenuItem("Tools/Repair Dependence", false, 52)]
+        public static void RepairDependences() => RepairDependence.Repair();
+
+        [MenuItem("Tools/Reduce Warning Level", false, 53)]
+        public static void WarningLevel() => ReduceWarningLevel.Reduce();
+
+        [MenuItem("Tools/Search script", false, 101)]
+        public static void Searchscript() => EditorWindow.GetWindow(typeof(FindScriptWindow));
     }
 }

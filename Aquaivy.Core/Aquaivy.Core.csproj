@@ -44,17 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\DicList.cs" />
     <Compile Include="Common\ObjectPool\ConcurrentQueue.cs" />
     <Compile Include="Common\ObjectPool\IPoolInfo.cs" />
     <Compile Include="Common\ObjectPool\ObjectPool.cs" />
     <Compile Include="Common\ObjectPool\ObjectPoolStateInfo.cs" />
     <Compile Include="Common\ObjectPool\PoolInfo.cs" />
     <Compile Include="Common\ObjectPool\StaticInstanceObjectPool.cs" />
-    <Compile Include="Util\CharacterChecker.cs" />
-    <Compile Include="Util\ByteSize.cs" />
-    <Compile Include="Util\IOUtil.cs" />
-    <Compile Include="Util\PathEx.cs" />
-    <Compile Include="Util\SimpleJson\SimpleJson.cs" />
+    <Compile Include="Utilities\CharacterChecker.cs" />
+    <Compile Include="Utilities\ByteSize.cs" />
+    <Compile Include="Utilities\IOUtil.cs" />
+    <Compile Include="Utilities\PathEx.cs" />
+    <Compile Include="Utilities\SimpleJson\SimpleJson.cs" />
     <Compile Include="Common\Singleton.cs" />
     <Compile Include="Common\ObjectPool\StaticObjectPool.cs" />
     <Compile Include="Common\TInstance.cs" />
@@ -158,15 +159,15 @@
     <Compile Include="Serialize\XmlSerializeUtil.cs" />
     <Compile Include="Thread\ThreadQueue.cs" />
     <Compile Include="Thread\ThreadQueueEntity.cs" />
-    <Compile Include="Util\CSV\ConvertCSV.cs" />
-    <Compile Include="Util\CSV\InfoSplit.cs" />
-    <Compile Include="Util\Insensitive.cs" />
-    <Compile Include="Util\Lang.cs" />
-    <Compile Include="Util\MathHelper.cs" />
-    <Compile Include="Util\RandomEx.cs" />
+    <Compile Include="Utilities\CSV\ConvertCSV.cs" />
+    <Compile Include="Utilities\CSV\InfoSplit.cs" />
+    <Compile Include="Utilities\Insensitive.cs" />
+    <Compile Include="Utilities\Lang.cs" />
+    <Compile Include="Utilities\MathHelper.cs" />
+    <Compile Include="Utilities\RandomEx.cs" />
     <Compile Include="Encryption\StringCrypto.cs" />
-    <Compile Include="Util\StringEx.cs" />
-    <Compile Include="Util\Utility.cs" />
+    <Compile Include="Utilities\StringEx.cs" />
+    <Compile Include="Utilities\Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Readme.txt" />
@@ -175,4 +176,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy Aquaivy.Core.dll ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\ /s /y /q
+xcopy Aquaivy.Core.pdb ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\ /s /y /q</PostBuildEvent>
+  </PropertyGroup>
 </Project>
