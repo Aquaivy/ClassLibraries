@@ -1,0 +1,20 @@
+{
+    "k1":"no internet connection",
+    "Network.DestinationHostError":"destination host error, try later",
+    "Server.InternalError":"server error, try later",
+    "Call.P2PCallOnlyOne":"P2P connection type can only call one",
+    "Call.Calling":"It's calling someone...",
+    "Call.RecordTips":"this video call will be recorded",
+    "Call.NoOnePickUpTips":"No one picks up the call, call later",
+    "Call.Over":"{0} hung up the call. Call ends",
+    "Call.ExpertOffline":"{0} is offline. Call ends",
+    "Call.Reject":"{0} rejected the conversation",
+    "Call.MakeCallError":"Call {0} error, because of {1}",
+    "Call.Left":"{0} left the conversation",
+    "Call.TimeOut":"Time Out",
+    "Call.CallDisconnected":"Call disconnected, please call again",
+    "Connection.Error":"The current connection has been disconnected",
+    "Connection.ForcedOffline":"Forced to offline",
+
+    "--End--":""
+}

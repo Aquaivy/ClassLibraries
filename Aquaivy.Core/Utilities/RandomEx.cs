@@ -24,7 +24,7 @@ using System;
 using System.Collections.Generic;
 #endregion
 
-namespace DogSE.Library.Util
+namespace Aquaivy.Core.Utilities
 {
     /// <summary>
     /// 

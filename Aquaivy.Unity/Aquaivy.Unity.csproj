@@ -89,6 +89,7 @@
     <Compile Include="Utilities\Persistence.cs" />
     <Compile Include="Utilities\ProfilerHelper.cs" />
     <Compile Include="Utilities\RuntimeProfiler.cs" />
+    <Compile Include="Utilities\TextureSize.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aquaivy.Core\Aquaivy.Core.csproj">

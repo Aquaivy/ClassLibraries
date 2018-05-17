@@ -1,4 +1,4 @@
-﻿using Aquaivy.Library.Util;
+﻿using Aquaivy.Library.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;

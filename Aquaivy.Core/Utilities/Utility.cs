@@ -25,7 +25,7 @@ using System.Text;
 using System;
 #endregion
 
-namespace DogSE.Library.Util
+namespace Aquaivy.Core.Utilities
 {
     /// <summary>
     /// 

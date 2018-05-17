@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aquaivy.Library.Util
+namespace Aquaivy.Core.Utilities
 {
     /// <summary>
     /// 用于存储文件大小信息的类。
     /// 8Bit = 1Byte、KB、MB、GB、TB、PB、EB、ZB、YB、DB、NB
     /// 1KB=1024Byte字节
     /// </summary>
-    public struct ByteSize
+    public struct MemoryCapacity
     {
         private ulong bytes;
 
@@ -28,14 +28,14 @@ namespace Aquaivy.Library.Util
         public float TotalGBs { get { return bytes * 1f / GB; } }
         public float TotalTBs { get { return bytes * 1f / TB; } }
 
-        public ByteSize(ulong bytes)
+        public MemoryCapacity(ulong bytes)
         {
             this.bytes = bytes;
         }
 
         public string ToString(string format)
         {
-            return "";
+            return string.Empty;
         }
 
         public override string ToString()
@@ -53,13 +53,13 @@ namespace Aquaivy.Library.Util
             return base.GetHashCode();
         }
 
-        public static ByteSize operator +(ByteSize f1, ByteSize f2) => new ByteSize(f1.bytes + f2.bytes);
-        public static ByteSize operator -(ByteSize f1, ByteSize f2) => new ByteSize(f1.bytes - f2.bytes);
-        public static bool operator ==(ByteSize f1, ByteSize f2) => f1.bytes == f2.bytes;
-        public static bool operator !=(ByteSize f1, ByteSize f2) => f1.bytes != f2.bytes;
-        public static bool operator <(ByteSize f1, ByteSize f2) => f1.bytes < f2.bytes;
-        public static bool operator >(ByteSize f1, ByteSize f2) => f1.bytes > f2.bytes;
-        public static bool operator <=(ByteSize f1, ByteSize f2) => f1.bytes <= f2.bytes;
-        public static bool operator >=(ByteSize f1, ByteSize f2) => f1.bytes >= f2.bytes;
+        public static MemoryCapacity operator +(MemoryCapacity f1, MemoryCapacity f2) => new MemoryCapacity(f1.bytes + f2.bytes);
+        public static MemoryCapacity operator -(MemoryCapacity f1, MemoryCapacity f2) => new MemoryCapacity(f1.bytes - f2.bytes);
+        public static bool operator ==(MemoryCapacity f1, MemoryCapacity f2) => f1.bytes == f2.bytes;
+        public static bool operator !=(MemoryCapacity f1, MemoryCapacity f2) => f1.bytes != f2.bytes;
+        public static bool operator <(MemoryCapacity f1, MemoryCapacity f2) => f1.bytes < f2.bytes;
+        public static bool operator >(MemoryCapacity f1, MemoryCapacity f2) => f1.bytes > f2.bytes;
+        public static bool operator <=(MemoryCapacity f1, MemoryCapacity f2) => f1.bytes <= f2.bytes;
+        public static bool operator >=(MemoryCapacity f1, MemoryCapacity f2) => f1.bytes >= f2.bytes;
     }
 }

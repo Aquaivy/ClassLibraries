@@ -50,6 +50,7 @@
     <Compile Include="Console\ConsoleLog.cs" />
     <Compile Include="EditorTools.cs" />
     <Compile Include="FindMissingScripts\FindMissingScripts.cs" />
+    <Compile Include="Importer\ModelImporter.cs" />
     <Compile Include="SearchScripts\SearchScript.cs" />
     <Compile Include="SearchScripts\SearchScriptWindow.cs" />
     <Compile Include="Importer\AudioImporter.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="ProjectFile\RefreshProjectFile.cs" />
     <Compile Include="ProjectFile\RepairDependence.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShortcutKey\PlayerSettingShortcutKey.cs" />
     <Compile Include="Template\OptimizeTemplateFile.cs" />
     <Compile Include="Utilities\SceneHelper.cs" />
     <Compile Include="Utilities\SceneWrap.cs" />
@@ -74,7 +76,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy Aquaivy.Unity.Editor.dll ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\ /s /y /q
-xcopy Aquaivy.Unity.Editor.pdb ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\ /s /y /q</PostBuildEvent>
+    <PostBuildEvent>xcopy Aquaivy.Unity.Editor.dll ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\Editor\ /s /y /q
+xcopy Aquaivy.Unity.Editor.pdb ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\Editor\ /s /y /q</PostBuildEvent>
   </PropertyGroup>
 </Project>

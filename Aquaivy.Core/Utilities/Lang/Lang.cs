@@ -1,63 +1,51 @@
-﻿using System;
+﻿using Aquaivy.Core.Log;
+using Aquaivy.Core.Utilities.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Aquaivy.Core.Log;
 using System.Xml;
-using Aquaivy.Library.Util.Json;
 
-namespace DogSE.Library.Util
+namespace Aquaivy.Core.Utilities
 {
     /// <summary>
-    /// 语言翻译模块
+    /// 语言翻译模块（适用于单个语言包文件，支持*.xml或*.json类型）,
+    /// （其中json类型暂不支持key重复检查）
     /// </summary>
     public static class Lang
     {
-        //private enum Type
-        //{
-        //    Xml,
-        //    Json
-        //}
-
         private static string LangFileName = string.Empty;
-        //private static Type LangType = Type.Xml;
 
         private static Dictionary<string, string> s_dict = new Dictionary<string, string>();
 
         /// <summary>
         /// 初始化指定的翻译文件，只能是*.xml或者*.json后缀名。
-        /// Xml类型，内容必须形如  <M k="k1">value1</M>  格式，
+        /// Xml类型，内容必须形如  &lt;M k="k1"&gt;value1&lt;/M&gt;  格式，
         /// Json类型，内容必须形如  "k1":"value1"  格式。
         /// </summary>
-        /// <param name="langFile"></param>
-        /// <param name="type"></param>
         /// 
         /// <remarks>
-        ///     <?xml version="1.0" encoding="utf-8"?>
-        ///     <lang>
-        ///         <M k="k1">1</M>
-        ///         <M k="k2">2</M>
-        ///     </lang>
+        ///     &lt;?xml version="1.0" encoding="utf-8"?&gt;
+        ///     &lt;lang&gt;
+        ///         &lt;M k="k1"&gt;1&lt;/M&gt;
+        ///         &lt;M k="k2"&gt;2&lt;/M&gt;
+        ///     &lt;/lang&gt;
         /// </remarks>
+        /// <param name="langFile"></param>
         public static void Init(string langFile)
         {
             if (!File.Exists(langFile))
-            {
-                Logs.Error("not find xml file. {0}", langFile);
-                return;
-            }
+                throw new FileNotFoundException("Not found lang.xml/lang.json file.", langFile);
 
             LangFileName = langFile;
 
             var ext = Path.GetExtension(langFile).ToLower();
             if (ext == ".xml")
             {
-                //LangType = Type.Xml;
                 InitXmlFile(langFile);
             }
             else if (ext == ".json")
             {
-                //LangType = Type.Json;
                 InitJsonFile(langFile);
             }
             else

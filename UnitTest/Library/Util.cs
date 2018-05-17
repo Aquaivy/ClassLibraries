@@ -1,6 +1,5 @@
 ﻿using Aquaivy.Core.Log;
-using Aquaivy.Library.Util;
-using DogSE.Library.Util;
+using Aquaivy.Core.Utilities;
 
 namespace UnitTest.Library
 {
@@ -11,6 +10,26 @@ namespace UnitTest.Library
             //Test_Lang();
             //Test_FileSize();
             Test_PathEx();
+            //Test_File();
+            //Test_LineEndings();
+        }
+
+        private void Test_LineEndings()
+        {
+            FileUtilitiy.GetFileLineEndings(@"D:\HttpUtils.cs");
+        }
+
+        private void Test_File()
+        {
+            //var files = File.GetFiles(@"D:\----------------替换图片");
+            //var files = FileUtilitiy.GetDirectories(@"D:\");
+            var files = FileUtilitiy.GetFilesSize(@"D:\----------------替换图片", "*.*", System.IO.SearchOption.AllDirectories);
+            //foreach (var item in files)
+            //{
+            //    Logs.Info(item);
+            //}
+            Logs.Info("" + files.TotalKBs);
+            Logs.Info("" + files.TotalMBs);
         }
 
         private void Test_PathEx()
@@ -37,29 +56,32 @@ namespace UnitTest.Library
             //Logs.Info(PathEx.GetParentDirectoryName(@"\file"));
             //Logs.Info(PathEx.GetParentDirectoryName(@"\"));
 
-            Logs.Info(PathEx.GetPathWithoutExtension(@"D:\Parent\file.txt"));
-            Logs.Info(PathEx.GetPathWithoutExtension(@"\Parent\file.txt"));
-            Logs.Info(PathEx.GetPathWithoutExtension(@"Parent\file.txt"));
-            Logs.Info(PathEx.GetPathWithoutExtension(@"\file.txt"));
-            Logs.Info(PathEx.GetPathWithoutExtension(@"file.txt"));
-            Logs.Info(PathEx.GetPathWithoutExtension(@"D:\Parent\file\"));
-            Logs.Info(PathEx.GetPathWithoutExtension(@"D:\Parent\file"));
-            Logs.Info(PathEx.GetPathWithoutExtension(@"\Parent\file"));
-            Logs.Info(PathEx.GetPathWithoutExtension(@"\file"));
-            Logs.Info(PathEx.GetPathWithoutExtension(@"\"));
+            //Logs.Info(PathEx.GetPathWithoutExtension(@"D:\Parent\file.txt"));
+            //Logs.Info(PathEx.GetPathWithoutExtension(@"\Parent\file.txt"));
+            //Logs.Info(PathEx.GetPathWithoutExtension(@"Parent\file.txt"));
+            //Logs.Info(PathEx.GetPathWithoutExtension(@"\file.txt"));
+            //Logs.Info(PathEx.GetPathWithoutExtension(@"file.txt"));
+            //Logs.Info(PathEx.GetPathWithoutExtension(@"D:\Parent\file\"));
+            //Logs.Info(PathEx.GetPathWithoutExtension(@"D:\Parent\file"));
+            //Logs.Info(PathEx.GetPathWithoutExtension(@"\Parent\file"));
+            //Logs.Info(PathEx.GetPathWithoutExtension(@"\file"));
+            //Logs.Info(PathEx.GetPathWithoutExtension(@"\"));
 
 
             //Logs.Info(PathEx.GetNewFileName(@"D:\Parent\file.txt", "222"));
 
             //Logs.Info(PathEx.ChangeSeparatorToPositive(@"D:\\Parent\\file.txt"));
+
+            Logs.Info(@"D:\\Parent\\file.txt");
+            Logs.Info(PathEx.ChangeEscapeToPath("D:\\\"Parent\\file.txt"));
         }
 
         private void Test_FileSize()
         {
-            Logs.Info("" + ByteSize.KB);
-            Logs.Info("" + ByteSize.MB);
-            Logs.Info("" + ByteSize.GB);
-            Logs.Info("" + ByteSize.TB);
+            Logs.Info("" + MemoryCapacity.KB);
+            Logs.Info("" + MemoryCapacity.MB);
+            Logs.Info("" + MemoryCapacity.GB);
+            Logs.Info("" + MemoryCapacity.TB);
 
             ulong a = ulong.MaxValue;
             for (int i = 0; i < 5; i++)
@@ -69,15 +91,16 @@ namespace UnitTest.Library
 
             Logs.Info("\n{0}\n", a);
 
-            Logs.Info("" + new ByteSize(10241).TotalKBs);
+            Logs.Info("" + new MemoryCapacity(10241).TotalKBs);
         }
 
         private void Test_Lang()
         {
-            //Lang.Init("D://AndroidManifest.xml");
-            Lang.Init("D://lang.json");
+            //Lang.Init(@"D:\Unity\VSProjects\ClassLibraries\UnitTest\lang.xml");
+            Lang.Init(@"D:\Unity\VSProjects\ClassLibraries\UnitTest\lang.json");
 
             Logs.Info(Lang.Trans("k1"));
         }
     }
 }
+

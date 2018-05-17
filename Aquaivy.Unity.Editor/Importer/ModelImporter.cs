@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aquaivy.Core.Utilities
+namespace Aquaivy.Unity.Editor.Importer
 {
-    /// <summary>
-    /// 修改转义字符（&lt;这种）
-    /// </summary>
-    class StringEx
+    class ModelImporter
     {
     }
 }

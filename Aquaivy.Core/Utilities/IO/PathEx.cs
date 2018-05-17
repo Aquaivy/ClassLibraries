@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aquaivy.Library.Util
+namespace Aquaivy.Core.Utilities
 {
     public class PathEx
     {
         /// <summary>
-        /// 返回路径的目录名。
+        /// 返回路径的目录名，
         /// 举例：
         ///     D:\Parent\file.txt      D:\Parent
         ///     \Parent\file.txt        \Parent
@@ -32,7 +32,7 @@ namespace Aquaivy.Library.Util
         }
 
         /// <summary>
-        /// 返回路径的前一层目录名
+        /// 返回路径的前一层目录名，
         /// 举例：
         ///     D:\Parent\file.txt      Parent
         ///     \Parent\file.txt        Parent
@@ -52,7 +52,7 @@ namespace Aquaivy.Library.Util
         }
 
         /// <summary>
-        /// 返回去掉扩展名后的路径
+        /// 返回去掉扩展名后的路径(给Unity使用)，
         /// 举例：
         ///     D:\Parent\file.txt      D:\Parent\file
         ///     \Parent\file.txt        \Parent\file
@@ -111,5 +111,49 @@ namespace Aquaivy.Library.Util
         /// <param name="path"></param>
         /// <returns></returns>
         public static string ResetToWindowsSeparator(string path) => ChangeSeparatorToPassive(path);
+
+        /// <summary>
+        /// 将目录中的分隔符由"双斜杠"改为"单斜杠"
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string ChangeSeparatorToSingle(string path)
+        {
+            return path.Replace(@"//", @"/").Replace(@"\\", @"\");
+        }
+
+        /// <summary>
+        /// 将目录中的分隔符由"单斜杠"改为"双斜杠"
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string ChangeSeparatorToDouble(string path)
+        {
+            return ChangeSeparatorToSingle(path).Replace(@"/", @"//").Replace(@"\", @"\\");
+        }
+
+        /// <summary>
+        /// 将目录中的【反分隔符\和"】转为【转义字符\\和\"】
+        /// （暂有问题）
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string ChangePathToEscape(string path)
+        {
+            //path = ResetToWindowsSeparator(path);
+            //path = ChangeSeparatorToSingle(path);
+            return path.Replace(@"\", @"\\").Replace("\"", "\\\"");
+        }
+
+        /// <summary>
+        /// 将目录中的【转义字符\\和\"】转为【反分隔符\和"】
+        /// （暂有问题）
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string ChangeEscapeToPath(string path)
+        {
+            return path.Replace(@"\\", @"\").Replace("\\\"", "\"");
+        }
     }
 }

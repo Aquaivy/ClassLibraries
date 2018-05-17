@@ -23,7 +23,7 @@
 using System.Collections;
 #endregion
 
-namespace DogSE.Library.Util
+namespace Aquaivy.Core.Utilities
 {
     /// <summary>
     /// 不敏感的字符串大小写比较的类

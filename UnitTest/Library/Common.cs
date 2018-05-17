@@ -1,5 +1,5 @@
-﻿using Aquaivy.Core.Log;
-using DogSE.Library.Common;
+﻿using Aquaivy.Core.Common;
+using Aquaivy.Core.Log;
 
 namespace UnitTest.Library
 {

@@ -52,9 +52,10 @@
     <Compile Include="Common\ObjectPool\PoolInfo.cs" />
     <Compile Include="Common\ObjectPool\StaticInstanceObjectPool.cs" />
     <Compile Include="Utilities\CharacterChecker.cs" />
-    <Compile Include="Utilities\ByteSize.cs" />
-    <Compile Include="Utilities\IOUtil.cs" />
-    <Compile Include="Utilities\PathEx.cs" />
+    <Compile Include="Utilities\Lang\LangEx.cs" />
+    <Compile Include="Utilities\MemoryCapacity.cs" />
+    <Compile Include="Utilities\IO\FileUtilitiy.cs" />
+    <Compile Include="Utilities\IO\PathEx.cs" />
     <Compile Include="Utilities\SimpleJson\SimpleJson.cs" />
     <Compile Include="Common\Singleton.cs" />
     <Compile Include="Common\ObjectPool\StaticObjectPool.cs" />
@@ -162,7 +163,7 @@
     <Compile Include="Utilities\CSV\ConvertCSV.cs" />
     <Compile Include="Utilities\CSV\InfoSplit.cs" />
     <Compile Include="Utilities\Insensitive.cs" />
-    <Compile Include="Utilities\Lang.cs" />
+    <Compile Include="Utilities\Lang\Lang.cs" />
     <Compile Include="Utilities\MathHelper.cs" />
     <Compile Include="Utilities\RandomEx.cs" />
     <Compile Include="Encryption\StringCrypto.cs" />

@@ -66,12 +66,12 @@ using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
-using Aquaivy.Library.Util.Json.Reflection;
+using Aquaivy.Core.Utilities.Json.Reflection;
 
 // ReSharper disable LoopCanBeConvertedToQuery
 // ReSharper disable RedundantExplicitArrayCreation
 // ReSharper disable SuggestUseVarKeywordEvident
-namespace Aquaivy.Library.Util.Json
+namespace Aquaivy.Core.Utilities.Json
 {
     /// <summary>
     /// Represents the json array.
@@ -484,7 +484,7 @@ namespace Aquaivy.Library.Util.Json
     }
 }
 
-namespace Aquaivy.Library.Util.Json
+namespace Aquaivy.Core.Utilities.Json
 {
     /// <summary>
     /// This class encodes and decodes JSON strings.

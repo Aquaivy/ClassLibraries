@@ -1,6 +1,6 @@
 using System;
 
-namespace DogSE.Common
+namespace Aquaivy.Core.Utilities
 {
 
     /// <summary>

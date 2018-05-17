@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aquaivy.Library.Util
+namespace Aquaivy.Core.Utilities
 {
     /// <summary>
     /// 字符检查/转换的工具类
     /// </summary>
-    class CharacterChecker
+    public class CharacterHelper
     {
         /// <summary>
         /// 字符串里是否包含4字节的字符
