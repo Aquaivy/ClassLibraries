@@ -1,4 +1,5 @@
-﻿using Aquaivy.Core.Log;
+﻿using System;
+using Aquaivy.Core.Log;
 using Aquaivy.Core.Utilities;
 
 namespace UnitTest.Library
@@ -9,9 +10,17 @@ namespace UnitTest.Library
         {
             //Test_Lang();
             //Test_FileSize();
-            Test_PathEx();
+            //Test_PathEx();
             //Test_File();
             //Test_LineEndings();
+            Test_RandomName();
+
+        }
+
+        private void Test_RandomName()
+        {
+            //Logs.Info(Chinese2Spell.Convert("替换图片"));
+            Logs.Info(Chinese2SpellSimple.GetPYString("替换图片"));
         }
 
         private void Test_LineEndings()

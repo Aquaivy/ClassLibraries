@@ -9,7 +9,7 @@ namespace Aquaivy.Core.Utilities
     /// <summary>
     /// 字符检查/转换的工具类
     /// </summary>
-    public class CharacterHelper
+    public class CharOperation
     {
         /// <summary>
         /// 字符串里是否包含4字节的字符
@@ -89,6 +89,31 @@ namespace Aquaivy.Core.Utilities
             }
 
             return Encoding.UTF8.GetString(retBytes, 0, rIndex);
+        }
+
+        public static string GetPinYin(char c)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static string GetPinYin(string str)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static string GetUnicode(char c)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static string GetUnicode(string str)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static string HasSpecialChar(string str, SpecialChar specialChar)
+        {
+            throw new NotImplementedException();
         }
     }
 }

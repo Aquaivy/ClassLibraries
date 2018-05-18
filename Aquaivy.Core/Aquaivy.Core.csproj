@@ -51,7 +51,13 @@
     <Compile Include="Common\ObjectPool\ObjectPoolStateInfo.cs" />
     <Compile Include="Common\ObjectPool\PoolInfo.cs" />
     <Compile Include="Common\ObjectPool\StaticInstanceObjectPool.cs" />
-    <Compile Include="Utilities\CharacterChecker.cs" />
+    <Compile Include="Utilities\Character\Character.cs" />
+    <Compile Include="Utilities\Character\CharOperation.cs" />
+    <Compile Include="Utilities\Character\Chinese2Spell.cs" />
+    <Compile Include="Utilities\Character\Chinese2SpellSimple.cs" />
+    <Compile Include="Utilities\Character\NameSetting.cs" />
+    <Compile Include="Utilities\Character\NameSimulation.cs" />
+    <Compile Include="Utilities\Character\SpecialChar.cs" />
     <Compile Include="Utilities\Lang\LangEx.cs" />
     <Compile Include="Utilities\MemoryCapacity.cs" />
     <Compile Include="Utilities\IO\FileUtilitiy.cs" />
