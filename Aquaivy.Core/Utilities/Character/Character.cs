@@ -9,7 +9,7 @@ namespace Aquaivy.Core.Utilities
     /// <summary>
     /// 与字符相关的操作类，字符检测，名字模拟等功能
     /// </summary>
-    class Character
+    public class Character
     {
         private static CharOperation m_char;
         private static NameSimulation m_name;

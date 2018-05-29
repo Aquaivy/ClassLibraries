@@ -55,6 +55,8 @@
     <Compile Include="Utilities\Character\CharOperation.cs" />
     <Compile Include="Utilities\Character\Chinese2Spell.cs" />
     <Compile Include="Utilities\Character\Chinese2SpellSimple.cs" />
+    <Compile Include="Utilities\Character\ChineseNameLibrary.cs" />
+    <Compile Include="Utilities\Character\EnglishNameLibrary.cs" />
     <Compile Include="Utilities\Character\NameSetting.cs" />
     <Compile Include="Utilities\Character\NameSimulation.cs" />
     <Compile Include="Utilities\Character\SpecialChar.cs" />

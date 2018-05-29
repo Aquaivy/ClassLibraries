@@ -20,7 +20,24 @@ namespace UnitTest.Library
         private void Test_RandomName()
         {
             //Logs.Info(Chinese2Spell.Convert("替换图片"));
-            Logs.Info(Chinese2SpellSimple.GetPYString("替换图片"));
+            //Logs.Info(Chinese2SpellSimple.GetPYString("替换图片"));
+
+            //var lst = NameSimulation.GetRandomChineseNames(ChineseNameSetting.Default, 20);
+            //for (int i = 0; i < lst.Count; i++)
+            //{
+            //    Logs.Info(lst[i]);
+            //}
+
+            var lst = NameSimulation.GetRandomEnglishNames(EnglishNameSetting.Default, 20);
+            for (int i = 0; i < lst.Count; i++)
+            {
+                Logs.Info(lst[i]);
+            }
+
+            //Logs.Info(ChineseWordLibrary.Common.Length.ToString());
+            //Logs.Info(ChineseWordLibrary.Family.Length.ToString());
+            //Logs.Info(ChineseWordLibrary.CompoundFamily.Length.ToString());
+            //Logs.Info(EnglishNameLibrary.FirstName.Length.ToString());
         }
 
         private void Test_LineEndings()
