@@ -1,5 +1,5 @@
 ﻿using Aquaivy.Core.Common;
-using Aquaivy.Core.Log;
+using Aquaivy.Core.Logs;
 
 namespace UnitTest.Library
 {
@@ -10,7 +10,7 @@ namespace UnitTest.Library
             ObjectPool<EntityClass> pool = new ObjectPool<EntityClass>("EntityClass", 64);
             pool.ReleaseContent(new EntityClass { Name = "first" });
             var entity = pool.AcquireContent();
-            Logs.Info(pool.GetPoolInfo().ToString());
+            Log.Info(pool.GetPoolInfo().ToString());
             
         }
     }

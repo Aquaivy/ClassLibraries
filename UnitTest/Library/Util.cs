@@ -1,5 +1,5 @@
 ﻿using System;
-using Aquaivy.Core.Log;
+using Aquaivy.Core.Logs;
 using Aquaivy.Core.Utilities;
 
 namespace UnitTest.Library
@@ -31,7 +31,7 @@ namespace UnitTest.Library
             var lst = NameSimulation.GetRandomEnglishNames(EnglishNameSetting.Default, 20);
             for (int i = 0; i < lst.Count; i++)
             {
-                Logs.Info(lst[i]);
+                Log.Info(lst[i]);
             }
 
             //Logs.Info(ChineseWordLibrary.Common.Length.ToString());
@@ -54,8 +54,8 @@ namespace UnitTest.Library
             //{
             //    Logs.Info(item);
             //}
-            Logs.Info("" + files.TotalKBs);
-            Logs.Info("" + files.TotalMBs);
+            Log.Info("" + files.TotalKBs);
+            Log.Info("" + files.TotalMBs);
         }
 
         private void Test_PathEx()
@@ -98,16 +98,16 @@ namespace UnitTest.Library
 
             //Logs.Info(PathEx.ChangeSeparatorToPositive(@"D:\\Parent\\file.txt"));
 
-            Logs.Info(@"D:\\Parent\\file.txt");
-            Logs.Info(PathEx.ChangeEscapeToPath("D:\\\"Parent\\file.txt"));
+            Log.Info(@"D:\\Parent\\file.txt");
+            Log.Info(PathEx.ChangeEscapeToPath("D:\\\"Parent\\file.txt"));
         }
 
         private void Test_FileSize()
         {
-            Logs.Info("" + MemoryCapacity.KB);
-            Logs.Info("" + MemoryCapacity.MB);
-            Logs.Info("" + MemoryCapacity.GB);
-            Logs.Info("" + MemoryCapacity.TB);
+            Log.Info("" + MemoryCapacity.KB);
+            Log.Info("" + MemoryCapacity.MB);
+            Log.Info("" + MemoryCapacity.GB);
+            Log.Info("" + MemoryCapacity.TB);
 
             ulong a = ulong.MaxValue;
             for (int i = 0; i < 5; i++)
@@ -115,9 +115,9 @@ namespace UnitTest.Library
                 a /= 1024;
             }
 
-            Logs.Info("\n{0}\n", a);
+            Log.Info("\n{0}\n", a);
 
-            Logs.Info("" + new MemoryCapacity(10241).TotalKBs);
+            Log.Info("" + new MemoryCapacity(10241).TotalKBs);
         }
 
         private void Test_Lang()
@@ -125,7 +125,7 @@ namespace UnitTest.Library
             //Lang.Init(@"D:\Unity\VSProjects\ClassLibraries\UnitTest\lang.xml");
             Lang.Init(@"D:\Unity\VSProjects\ClassLibraries\UnitTest\lang.json");
 
-            Logs.Info(Lang.Trans("k1"));
+            Log.Info(Lang.Trans("k1"));
         }
     }
 }

@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Aquaivy.Core.Log;
+using Aquaivy.Core.Logs;
 
 namespace DogSE.Library.Serialize
 {
@@ -53,7 +53,7 @@ namespace DogSE.Library.Serialize
                 var p = type.GetPropertyByName(head[i]);
                 if (p == null)
                 {
-                    Logs.Debug("Read csv {0} not find columns {1}", type.Name, head[i]);
+                    Log.Debug("Read csv {0} not find columns {1}", type.Name, head[i]);
                 }
                 else
                 {
@@ -112,7 +112,7 @@ namespace DogSE.Library.Serialize
                     if (i >= data.Count)
                     {
                         //  数据长度不够，就忽略后面的数据
-                        Logs.Error(string.Format("Read csv {0} row {1} col {2} is empty", type.Name, row, i));
+                        Log.Error(string.Format("Read csv {0} row {1} col {2} is empty", type.Name, row, i));
                         break;
                     }
 
@@ -341,7 +341,7 @@ namespace DogSE.Library.Serialize
             catch (Exception ex)
             {
                 var msg = string.Format("param {0} value fail. value {1}", paramName, value);
-                Logs.Error(msg);
+                Log.Error(msg);
                 throw new Exception(msg, ex);
             }
         }
@@ -421,7 +421,7 @@ namespace DogSE.Library.Serialize
                 return Convert.ToInt32(value);
             }
 
-            Logs.Error("csv unknow read type {0}", type.Name);
+            Log.Error("csv unknow read type {0}", type.Name);
 
             return 0;
         }

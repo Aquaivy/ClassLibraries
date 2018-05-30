@@ -12,15 +12,15 @@ namespace Aquaivy.Core.Utilities
     public class Character
     {
         private static CharOperation m_char;
-        private static NameSimulation m_name;
+        //private static NameSimulation m_name;
 
         static Character()
         {
             m_char = new CharOperation();
-            m_name = new NameSimulation();
+            //m_name = new NameSimulation();
         }
 
         public static CharOperation Char { get { return m_char; } }
-        public static NameSimulation Name { get { return m_name; } }
+        //public static NameSimulation Name { get { return m_name; } }
     }
 }

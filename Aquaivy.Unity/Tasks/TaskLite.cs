@@ -1,4 +1,4 @@
-﻿using Aquaivy.Core.Log;
+﻿using Aquaivy.Core.Logs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -109,7 +109,7 @@ namespace Aquaivy.Unity.Tasks
                     }
                     catch (Exception ex)
                     {
-                        Logs.Warn("run tasklite.invoke fail. {0}", ex.Message);
+                        Core.Logs.Log.Warn("run tasklite.invoke fail. {0}", ex.Message);
 
                         Release(task);
                     }

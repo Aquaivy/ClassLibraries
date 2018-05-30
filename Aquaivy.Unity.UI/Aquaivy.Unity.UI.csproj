@@ -43,6 +43,16 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aquaivy.Core\Aquaivy.Core.csproj">
+      <Project>{d18fc391-9203-4b3a-9896-a1316c30b12b}</Project>
+      <Name>Aquaivy.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aquaivy.Unity\Aquaivy.Unity.csproj">
+      <Project>{389f64a1-65db-44ba-bf73-3cfa56aa1010}</Project>
+      <Name>Aquaivy.Unity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy Aquaivy.Unity.UI.dll ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\ /s /y /q

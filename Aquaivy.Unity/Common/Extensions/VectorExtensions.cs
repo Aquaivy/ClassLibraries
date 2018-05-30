@@ -164,5 +164,15 @@ namespace Aquaivy.Unity.Common
 
             return vectors.OrderBy(v => v.sqrMagnitude).ElementAt(count / 2);
         }
+
+        public static string ToStringEx(this Vector2 v)
+        {
+            return string.Format("({0:F6},{1:F6})", v.x, v.y);
+        }
+
+        public static string ToStringEx(this Vector3 v)
+        {
+            return string.Format("({0:F6},{1:F6},{2:F6})", v.x, v.y, v.z);
+        }
     }
 }

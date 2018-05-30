@@ -1,4 +1,4 @@
-﻿using Aquaivy.Core.Log;
+﻿using Aquaivy.Core.Logs;
 using Aquaivy.Core.Utilities.Json;
 using System;
 using System.Collections.Generic;
@@ -104,7 +104,7 @@ namespace Aquaivy.Core.Utilities
             Dictionary<string, string> dict = SimpleJson.DeserializeObject<Dictionary<string, string>>(json);
             var config = new Config() { Map = dict };
 
-            Logs.Info("Init lang success. count={0}", dict.Count);
+            Logs.Log.Info("Init lang success. count={0}", dict.Count);
 
             return config;
         }

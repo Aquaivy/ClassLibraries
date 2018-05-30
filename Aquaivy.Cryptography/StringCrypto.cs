@@ -1,30 +1,8 @@
-#region zh-CHS 2006 - 2010 DemoSoft 团队 | en 2006-2010 DemoSoft Team
-
-//     NOTES
-// ---------------
-//
-// This file is a part of the MMOSE(Massively Multiplayer Online Server Engine) for .NET.
-//
-//                              2006-2010 DemoSoft Team
-//
-//
-// First Version : by H.Q.Cai - mailto:caihuanqing@hotmail.com
-
-/***************************************************************************
- *
- *   This program is free software; you can redistribute it and/or modify
- *   it under the terms of the GNU Lesser General Public License as published
- *   by the Free Software Foundation; either version 2.1 of the License, or
- *   (at your option) any later version.
- *
- ***************************************************************************/
-
-#region zh-CHS 包含名字空间 | en Include namespace
 using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-#endregion
+
 
 namespace DogSE.Library.Util
 {
@@ -33,7 +11,6 @@ namespace DogSE.Library.Util
     /// </summary>
     public class StringCrypto
     {
-        #region zh-CHS 私有成员变量 | en Private Member Variables
         /// <summary>
         /// DES对称加密算法
         /// </summary>
@@ -46,9 +23,7 @@ namespace DogSE.Library.Util
         /// 初始化向量
         /// </summary>
         private byte[] m_Base64KEY = new byte[0];
-        #endregion
 
-        #region zh-CHS 构造和初始化和清理 | en Constructors and Initializers and Dispose
         /// <summary>
         /// 初始化
         /// </summary>
@@ -59,9 +34,7 @@ namespace DogSE.Library.Util
             m_Base64KEY = Convert.FromBase64String(strBase64KEY);
             m_Base64IV = Convert.FromBase64String(strBase64IV);
         }
-        #endregion
 
-        #region zh-CHS 共有方法 | en Public Methods
         /// <summary>
         /// 加密字符串
         /// </summary>
@@ -105,9 +78,7 @@ namespace DogSE.Library.Util
                 return Encoding.UTF8.GetString(memoryStream.ToArray());
             }
         }
-        #endregion
 
-        #region zh-CHS 共有静态方法 | en Public Static Methods
         /// <summary>
         /// 加密字符串
         /// </summary>
@@ -159,7 +130,5 @@ namespace DogSE.Library.Util
                 }
             }
         }
-        #endregion
     }
 }
-#endregion

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
-using Aquaivy.Core.Log;
+using Aquaivy.Core.Logs;
 using System.Linq;
 
 namespace DogSE.Library.Thread
@@ -38,7 +38,7 @@ namespace DogSE.Library.Thread
                         {
                             //  队列里有内容，但是队列并不在执行，可能存在执行遗漏
                             //  这里就压入一个空方法让队列跑完整
-                            Logs.Info("{0} queue append empty action.", queue._queueName);
+                            Log.Info("{0} queue append empty action.", queue._queueName);
                             queue.Append(() => { });
                         }
                         result = false;
@@ -118,7 +118,7 @@ namespace DogSE.Library.Thread
                         }
                         catch (Exception ex)
                         {
-                            Logs.Error("Run thread queue({0}) method error.", _queueName, ex);
+                            Log.Error("Run thread queue({0}) method error.", _queueName, ex);
                         }
 
                     }

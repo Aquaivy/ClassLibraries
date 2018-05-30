@@ -1,4 +1,4 @@
-﻿using Aquaivy.Core.Log;
+﻿using Aquaivy.Core.Logs;
 using Aquaivy.Core.Utilities.Json;
 using System;
 using System.Collections.Generic;
@@ -50,7 +50,7 @@ namespace Aquaivy.Core.Utilities
             }
             else
             {
-                Logs.Error("langFile's ext must be *.xml or *.json");
+                Logs.Log.Error("langFile's ext must be *.xml or *.json");
             }
         }
 
@@ -67,7 +67,7 @@ namespace Aquaivy.Core.Utilities
 
                     if (xml.DocumentElement == null)
                     {
-                        Logs.Error("Lang message xml fail load is null.");
+                        Logs.Log.Error("Lang message xml fail load is null.");
                         return;
                     }
 
@@ -86,7 +86,7 @@ namespace Aquaivy.Core.Utilities
 
                                     if (dict.ContainsKey(key))
                                     {
-                                        Logs.Warn("Conflict lang of key: {0}", key);
+                                        Logs.Log.Warn("Conflict lang of key: {0}", key);
                                     }
 
                                     dict[key] = value;
@@ -96,12 +96,12 @@ namespace Aquaivy.Core.Utilities
                     }
 
                     s_dict = dict;
-                    Logs.Info("Init lang success. count={0}", dict.Count);
+                    Logs.Log.Info("Init lang success. count={0}", dict.Count);
                 }
             }
             catch (Exception ex)
             {
-                Logs.Error("init lang xml fail.", ex);
+                Logs.Log.Error("init lang xml fail.", ex);
             }
         }
 
@@ -114,7 +114,7 @@ namespace Aquaivy.Core.Utilities
                 Dictionary<string, string> dict = SimpleJson.DeserializeObject<Dictionary<string, string>>(json);
 
                 s_dict = dict;
-                Logs.Info("Init lang success. count={0}", dict.Count);
+                Logs.Log.Info("Init lang success. count={0}", dict.Count);
 
                 // 方案二：使用LitJson手动反序列化，检查冲突
                 //string json = File.ReadAllText(langFile, Encoding.UTF8);
@@ -153,7 +153,7 @@ namespace Aquaivy.Core.Utilities
             }
             catch (Exception ex)
             {
-                Logs.Error("init lang json fail.", ex);
+                Logs.Log.Error("init lang json fail.", ex);
             }
         }
 
@@ -186,7 +186,7 @@ namespace Aquaivy.Core.Utilities
         {
             if (LangFileName == string.Empty)
             {
-                Logs.Error("Lang file path is empty");
+                Logs.Log.Error("Lang file path is empty");
                 return;
             }
 

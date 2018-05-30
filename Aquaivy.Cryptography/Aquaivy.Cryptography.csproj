@@ -45,6 +45,7 @@
     <Compile Include="MD5.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SHA1.cs" />
+    <Compile Include="StringCrypto.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Readme.txt" />

@@ -1,4 +1,4 @@
-﻿using Aquaivy.Core.Log;
+﻿using Aquaivy.Core.Logs;
 using System;
 using UnitTest.Library;
 
@@ -8,7 +8,7 @@ namespace UnitTest
     {
         static void Main(string[] args)
         {
-            Logs.AddConsoleAppender();
+            Log.AddConsoleAppender();
 
             //Common.Instance.ObjectPoolTest();
             //new Component().Run();

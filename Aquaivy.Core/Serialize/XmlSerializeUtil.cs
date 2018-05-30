@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Xml.Serialization;
-using Aquaivy.Core.Log;
+using Aquaivy.Core.Logs;
 
 namespace DogSE.Library.Serialize
 {
@@ -54,7 +54,7 @@ namespace DogSE.Library.Serialize
             }
             catch (Exception ex)
             {
-                Logs.Error(string.Format("Deserialize {0} fail.xml={1} ex={2}", type.Name, xmlStr, ex.ToString()));
+                Log.Error(string.Format("Deserialize {0} fail.xml={1} ex={2}", type.Name, xmlStr, ex.ToString()));
 
                 throw;
             }

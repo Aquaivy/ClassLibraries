@@ -1,4 +1,4 @@
-﻿using Aquaivy.Core.Log;
+﻿using Aquaivy.Core.Logs;
 using Aquaivy.Unity.Tasks;
 using System;
 using System.Collections.Generic;
@@ -122,7 +122,7 @@ namespace Aquaivy.Unity.Audios
             var clip = AudioManager.Load(path);
             if (clip == null)
             {
-                Logs.Warn($"Load audio fail. path={path}");
+                Core.Logs.Log.Warn($"Load audio fail. path={path}");
                 return null;
             }
 
@@ -145,7 +145,7 @@ namespace Aquaivy.Unity.Audios
             var clip = AudioManager.LoadResource(path);
             if (clip == null)
             {
-                Logs.Warn($"Load audio fail. path={path}");
+                Core.Logs.Log.Warn($"Load audio fail. path={path}");
                 return null;
             }
 

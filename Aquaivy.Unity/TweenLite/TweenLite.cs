@@ -27,7 +27,7 @@ namespace Aquaivy.Unity.Tweens
 
         private static List<TweenLite> m_tweeners = new List<TweenLite>();
 
-        internal static void Update(int elapsedTime)
+        public static void Update(int elapsedTime)
         {
             if (m_tweeners.Count > 0)
             {

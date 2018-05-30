@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityForLib", "..\..\Projec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityForLib.Editor", "..\..\Projects\UnityForLib\UnityForLib.Editor.csproj", "{D051862B-F29D-7B18-BFDD-9F15E55792E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestSharp", "RestSharp\RestSharp.csproj", "{D512B7F9-4D8C-41C2-B811-C0C26A6600F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{D051862B-F29D-7B18-BFDD-9F15E55792E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D051862B-F29D-7B18-BFDD-9F15E55792E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D051862B-F29D-7B18-BFDD-9F15E55792E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D512B7F9-4D8C-41C2-B811-C0C26A6600F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D512B7F9-4D8C-41C2-B811-C0C26A6600F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D512B7F9-4D8C-41C2-B811-C0C26A6600F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D512B7F9-4D8C-41C2-B811-C0C26A6600F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

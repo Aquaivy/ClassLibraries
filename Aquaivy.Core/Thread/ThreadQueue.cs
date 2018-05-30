@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Aquaivy.Core.Log;
+using Aquaivy.Core.Logs;
 
 namespace DogSE.Library.Thread
 {
@@ -70,7 +70,7 @@ namespace DogSE.Library.Thread
                 ioCache.Clear();
                 if (mehtods.Length > 0)
                 {
-                    Logs.Debug("flush db entity {0}", mehtods.Length);
+                    Log.Debug("flush db entity {0}", mehtods.Length);
                     foreach (var m in mehtods)
                         ioThreadQueue.Append(m);
                 }

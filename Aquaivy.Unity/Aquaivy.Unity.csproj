@@ -67,7 +67,7 @@
     <Compile Include="Common\MathUtils.cs" />
     <Compile Include="Common\UnitySingleton.cs" />
     <Compile Include="GameManager\GameManager.cs" />
-    <Compile Include="Log\UnityAppender.cs" />
+    <Compile Include="Logs\UnityAppender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tasks\DelayTask.cs" />
     <Compile Include="Tasks\DownloadTask.cs" />
@@ -97,7 +97,6 @@
       <Name>Aquaivy.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy Aquaivy.Unity.dll ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\ /s /y /q

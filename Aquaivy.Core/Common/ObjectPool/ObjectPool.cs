@@ -23,7 +23,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Text;
 using System.Threading;
-using Aquaivy.Core.Log;
+using Aquaivy.Core.Logs;
 
 namespace Aquaivy.Core.Common
 {
@@ -112,7 +112,7 @@ namespace Aquaivy.Core.Common
         /// </summary>
         ~ObjectPool()
         {
-            Logs.Info(ToString());
+            Logs.Log.Info(ToString());
             //Console.WriteLine(ToString());
         }
 
@@ -198,10 +198,10 @@ namespace Aquaivy.Core.Common
 
                 if (!checkPool.TryTake(out content))
                 {
-                    Logs.Error("重复释放");
+                    Logs.Log.Error("重复释放");
 
                     var stack = new System.Diagnostics.StackTrace(0);
-                    Logs.Error("dog buffer is used. strace = {0}", stack.ToString());
+                    Logs.Log.Error("dog buffer is used. strace = {0}", stack.ToString());
                 }
 
 #endif
