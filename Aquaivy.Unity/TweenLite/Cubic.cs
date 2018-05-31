@@ -1,4 +1,4 @@
-namespace Aquaivy.Unity.Tweens
+namespace Aquaivy.Unity
 {
     public static class Cubic 
     {

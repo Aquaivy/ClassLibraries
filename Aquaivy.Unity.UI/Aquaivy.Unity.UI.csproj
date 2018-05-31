@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;UNITY_EDITOR</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -38,10 +38,45 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\Libs\Unity 2017.2.0\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\Libs\Unity 2017.2.0\UnityEngine.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Components\BaseElement.cs" />
+    <Compile Include="View\Components\Enum.cs" />
+    <Compile Include="View\Components\Graphic.cs" />
+    <Compile Include="View\Components\Interface.cs" />
+    <Compile Include="View\Components\Selectable.cs" />
+    <Compile Include="View\Components\UIAnimation.cs" />
+    <Compile Include="View\Components\UIButton.cs" />
+    <Compile Include="View\Components\UICanvas.cs" />
+    <Compile Include="View\Components\UIElement.cs" />
+    <Compile Include="View\Components\UIHitArea.cs" />
+    <Compile Include="View\Components\UIImage.cs" />
+    <Compile Include="View\Components\UIInputField.cs" />
+    <Compile Include="View\Components\UIMask.cs" />
+    <Compile Include="View\Components\UINode.cs" />
+    <Compile Include="View\Components\UIPrefab.cs" />
+    <Compile Include="View\Components\UIProgressBar.cs" />
+    <Compile Include="View\Components\UIScrollRect.cs" />
+    <Compile Include="View\Components\UIText.cs" />
+    <Compile Include="View\Extensions\Extension.cs" />
+    <Compile Include="View\Forms\FrmBase.cs" />
+    <Compile Include="View\Forms\FrmLayer.cs" />
+    <Compile Include="View\Forms\FrmType.cs" />
+    <Compile Include="View\Input\InputHandlers\BaseHoldHandler.cs" />
+    <Compile Include="View\Input\InputHandlers\BaseInputHandler.cs" />
+    <Compile Include="View\Input\InputHandlers\StandaloneInputHandler.cs" />
+    <Compile Include="View\Input\InputManager.cs" />
+    <Compile Include="View\Input\PointerGazeEventDelegate.cs" />
+    <Compile Include="View\UIConfig.cs" />
+    <Compile Include="View\UIRootManager.cs" />
+    <Compile Include="View\Utility\UIUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aquaivy.Core\Aquaivy.Core.csproj">
@@ -52,6 +87,13 @@
       <Project>{389f64a1-65db-44ba-bf73-3cfa56aa1010}</Project>
       <Name>Aquaivy.Unity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="View\Components\README.txt" />
+    <Content Include="View\Components\Version.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="View\Components\UIClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

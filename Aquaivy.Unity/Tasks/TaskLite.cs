@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aquaivy.Unity.Tasks
+namespace Aquaivy.Unity
 {
     /// <summary>
     /// 主线程回调任务

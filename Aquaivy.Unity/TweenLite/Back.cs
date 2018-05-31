@@ -1,4 +1,4 @@
-namespace Aquaivy.Unity.Tweens
+namespace Aquaivy.Unity
 {
     /// <summary>
     /// 加速移动特效

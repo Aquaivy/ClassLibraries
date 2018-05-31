@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Aquaivy.Unity.UI.BaseElement" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAEIAAABCAggIAwgIIYAEQAAAAEChgIACBghQEABCA=</HashCode>
+      <FileName>Assets\Script\View\Components\BaseElement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Aquaivy.Unity.UI.UIElement" Collapsed="true">
+    <Position X="5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAADBAAACAAEIDAAAAAQAABAAIAAAAAAAIAAAEAAAA=</HashCode>
+      <FileName>Assets\Script\View\Components\UIElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aquaivy.Unity.UI.Selectable" Collapsed="true">
+    <Position X="7.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAGAAAQQAAAAIAAAIAAAAA=</HashCode>
+      <FileName>Assets\Script\View\Components\Selectable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Aquaivy.Unity.UI.Graphic" Collapsed="true">
+    <Position X="2.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAABAAAAA=</HashCode>
+      <FileName>Assets\Script\View\Components\Graphic.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Aquaivy.Unity.UI.UINode" Collapsed="true">
+    <Position X="5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\View\Components\UINode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aquaivy.Unity.UI.UIImage" Collapsed="true">
+    <Position X="1.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAEAEAAAABAAAAAAABAAAAA=</HashCode>
+      <FileName>Assets\Script\View\Components\UIImage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Aquaivy.Unity.UI.UIText" Collapsed="true">
+    <Position X="3.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAFAAAAAAAAAAACAAIgAAAAAAABAICAAACBACAAA=</HashCode>
+      <FileName>Assets\Script\View\Components\UIText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aquaivy.Unity.UI.UIButton" Collapsed="true">
+    <Position X="6.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAKAEEkAAAQBAIAAAAEBAAAAA=</HashCode>
+      <FileName>Assets\Script\View\Components\UIButton.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Aquaivy.Unity.UI.UIScrollRect" Collapsed="true">
+    <Position X="9.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAEABABAAAAAAAAAAAAoAIAAAASAAAAAA=</HashCode>
+      <FileName>Assets\Script\View\Components\UIScrollRect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aquaivy.Unity.UI.UIMask" Collapsed="true">
+    <Position X="12" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAKAEAEAAAABAAAAAAABAAgAA=</HashCode>
+      <FileName>Assets\Script\View\Components\UIMask.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Aquaivy.Unity.UI.UIHitArea" Collapsed="true">
+    <Position X="8.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAQAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Script\View\Components\UIHitArea.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Aquaivy.Unity.UI.UICanvas" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAIAAAAAAAAIAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Assets\Script\View\Components\UICanvas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aquaivy.Unity.UI.UIInputField" Collapsed="true">
+    <Position X="10.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAAAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Script\View\Components\UIInputField.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

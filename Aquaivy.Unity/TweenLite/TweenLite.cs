@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Aquaivy.Unity.Tweens
+namespace Aquaivy.Unity
 {
 
     /// <summary>

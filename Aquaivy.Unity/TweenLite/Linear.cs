@@ -1,6 +1,6 @@
 using System;
 
-namespace Aquaivy.Unity.Tweens
+namespace Aquaivy.Unity
 {
     /// <summary>
     /// Япад

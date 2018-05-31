@@ -48,8 +48,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Audios\Audio.cs" />
-    <Compile Include="Audios\AudioManager.cs" />
+    <Compile Include="Contents\Audios\Audio.cs" />
+    <Compile Include="Contents\Audios\AudioManager.cs" />
     <Compile Include="Common\Extensions\ActionExtensions.cs" />
     <Compile Include="Common\Extensions\BoundsExtensions.cs" />
     <Compile Include="Common\Extensions\CameraExtensions.cs" />
@@ -66,7 +66,11 @@
     <Compile Include="Common\Int3.cs" />
     <Compile Include="Common\MathUtils.cs" />
     <Compile Include="Common\UnitySingleton.cs" />
+    <Compile Include="Contents\Fonts\FontManager.cs" />
+    <Compile Include="Contents\Resources\ResourcesManager.cs" />
+    <Compile Include="Contents\Textures\TextureManager.cs" />
     <Compile Include="GameManager\GameManager.cs" />
+    <Compile Include="GameManager\UpdateDelegate.cs" />
     <Compile Include="Logs\UnityAppender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tasks\DelayTask.cs" />

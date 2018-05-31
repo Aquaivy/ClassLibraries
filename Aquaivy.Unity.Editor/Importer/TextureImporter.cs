@@ -32,6 +32,12 @@ namespace Aquaivy.Unity.Editor
             Action<UnityEditor.TextureImporter> customAction)
         {
             Texture[] selections = Selection.GetFiltered<Texture>(SelectionMode.Assets);
+            if (selections == null || selections.Length == 0)
+            {
+                Debug.Log("Please select some assets first");
+                return;
+            }
+
             foreach (var asset in selections)
             {
                 string path = AssetDatabase.GetAssetPath(asset);

@@ -1,5 +1,5 @@
 ﻿using Aquaivy.Core.Logs;
-using Aquaivy.Unity.Tasks;
+using Aquaivy.Unity;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Aquaivy.Unity.Audios
+namespace Aquaivy.Unity
 {
     /// <summary>
     /// 音频对象类

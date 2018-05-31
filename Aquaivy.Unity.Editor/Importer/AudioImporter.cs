@@ -18,6 +18,12 @@ namespace Aquaivy.Unity.Editor
         private static void ChangeAudios(bool mono)
         {
             AudioClip[] selections = Selection.GetFiltered<AudioClip>(SelectionMode.Assets);
+            if (selections == null || selections.Length == 0)
+            {
+                Debug.Log("Please select some assets first");
+                return;
+            }
+
             foreach (var asset in selections)
             {
 

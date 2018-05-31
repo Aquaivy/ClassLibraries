@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace Aquaivy.Unity.Logs
+namespace Aquaivy.Unity
 {
     /// <summary>
     /// Unity输出适配器

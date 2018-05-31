@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aquaivy.Unity.Tasks
+namespace Aquaivy.Unity
 {
+    /// <summary>
+    /// 延迟类型
+    /// </summary>
     public enum DelayType
     {
         /// <summary>

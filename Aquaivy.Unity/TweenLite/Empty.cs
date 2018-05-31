@@ -1,5 +1,5 @@
 ﻿
-namespace Aquaivy.Unity.Tweens
+namespace Aquaivy.Unity
 {
     /// <summary>
     /// 空特效

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Aquaivy.Unity.Audios
+namespace Aquaivy.Unity
 {
     /// <summary>
     /// 音频资源管理器。
@@ -34,6 +34,9 @@ namespace Aquaivy.Unity.Audios
             m_audios.Remove(audio);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static void StopAll()
         {
             for (int i = 0; i < m_audios.Count; i++)
@@ -43,6 +46,10 @@ namespace Aquaivy.Unity.Audios
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="volume"></param>
         public static void SetVolume(float volume)
         {
             for (int i = 0; i < m_audios.Count; i++)
@@ -95,6 +102,10 @@ namespace Aquaivy.Unity.Audios
             return null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
         public static void UnloadResource(string path)
         {
             AudioClip clip;
