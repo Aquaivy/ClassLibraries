@@ -44,14 +44,17 @@ namespace Aquaivy.Unity.UI
             this.textComponent = gameObject.AddComponent<Text>();
             this.textComponent.raycastTarget = false;
 
+            if (FontManager.DefaultFont == null)
+                Debug.LogWarning("DefaultFont is null, please call \"FontManager.SetDefaultFont()\" first");
+
             this.Font = FontManager.DefaultFont;
-            this.Text = text;
             this.FontSize = fontsize;
             this.Colour = color;
             this.Alignment = alignment;
             this.HorizontalOverflow = horizontalOverflow;
             this.VerticalOverflow = verticalOverflow;
             this.SupportRichText = false;
+            this.Text = text;   //这行代码必须放在HorizontalOverflow VerticalOverflow赋值之后
 
             SetAnchor(alignment);
 
@@ -66,13 +69,15 @@ namespace Aquaivy.Unity.UI
                 textComponent.text = value;
                 strText = value;
 
-                //这里很无奈，UGUI中文字只有渲染过后才能拿到
-                //正确的preferredWidth，所以这里延迟1帧再进行赋值
+                //这里很无奈，UGUI中文字只有渲染过后才能拿到正确的preferredWidth
+                //所以这里延迟1帧再进行赋值
+                //Debug.Log($"{HorizontalOverflow}   {VerticalOverflow}");
+                //Debug.Log($"before  {textComponent.preferredWidth}   {textComponent.preferredHeight}");
                 if (this.HorizontalOverflow == HorizontalWrapMode.Overflow && this.VerticalOverflow == VerticalWrapMode.Overflow)
                 {
                     TaskLite.Invoke(t =>
                     {
-                        //Debug.Log("" + text.preferredWidth + "  " + text.preferredHeight);
+                        Debug.Log($"after one frame  {textComponent.preferredWidth}   {textComponent.preferredHeight}");
                         Size = new Vector2(textComponent.preferredWidth, textComponent.preferredHeight);
                         return true;
                     });
