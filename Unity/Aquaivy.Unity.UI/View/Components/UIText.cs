@@ -71,13 +71,11 @@ namespace Aquaivy.Unity.UI
 
                 //这里很无奈，UGUI中文字只有渲染过后才能拿到正确的preferredWidth
                 //所以这里延迟1帧再进行赋值
-                //Debug.Log($"{HorizontalOverflow}   {VerticalOverflow}");
-                //Debug.Log($"before  {textComponent.preferredWidth}   {textComponent.preferredHeight}");
                 if (this.HorizontalOverflow == HorizontalWrapMode.Overflow && this.VerticalOverflow == VerticalWrapMode.Overflow)
                 {
                     TaskLite.Invoke(t =>
                     {
-                        Debug.Log($"after one frame  {textComponent.preferredWidth}   {textComponent.preferredHeight}");
+                        //Debug.Log($"after one frame  {textComponent.preferredWidth}   {textComponent.preferredHeight}");
                         Size = new Vector2(textComponent.preferredWidth, textComponent.preferredHeight);
                         return true;
                     });

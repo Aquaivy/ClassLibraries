@@ -96,14 +96,17 @@
     <Compile Include="Utilities\TextureSize.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Aquaivy.Core\Aquaivy.Core.csproj">
+    <ProjectReference Include="..\..\Core\Aquaivy.Core\Aquaivy.Core.csproj">
       <Project>{d18fc391-9203-4b3a-9896-a1316c30b12b}</Project>
       <Name>Aquaivy.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy Aquaivy.Unity.dll ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\ /s /y /q
-xcopy Aquaivy.Unity.pdb ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\ /s /y /q</PostBuildEvent>
+    <PostBuildEvent>:: 当前目录是从 bin/Debug/开始的
+set CopyToDir="..\..\..\..\..\..\Projects\UnityForLib\Assets\Libs\"
+xcopy $(TargetDir)$(TargetName).dll %25CopyToDir%25 /s /y /q
+xcopy $(TargetDir)$(TargetName).pdb %25CopyToDir%25 /s /y /q
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

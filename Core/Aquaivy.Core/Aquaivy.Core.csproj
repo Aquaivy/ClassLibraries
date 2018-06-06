@@ -103,7 +103,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy Aquaivy.Core.dll ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\ /s /y /q
-xcopy Aquaivy.Core.pdb ..\..\..\..\..\Projects\UnityForLib\Assets\Libs\ /s /y /q</PostBuildEvent>
+    <PostBuildEvent>:: 当前目录是从 bin/Debug/开始的
+set CopyToDir="..\..\..\..\..\..\Projects\UnityForLib\Assets\Libs\"
+xcopy $(TargetDir)$(TargetName).dll %25CopyToDir%25 /s /y /q
+xcopy $(TargetDir)$(TargetName).pdb %25CopyToDir%25 /s /y /q
+</PostBuildEvent>
   </PropertyGroup>
 </Project>
