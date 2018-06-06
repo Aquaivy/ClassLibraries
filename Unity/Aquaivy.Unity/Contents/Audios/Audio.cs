@@ -19,9 +19,19 @@ namespace Aquaivy.Unity
     /// </remarks>
     public class Audio
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public GameObject GameObject { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public AudioSource AudioSource { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public AudioClip AudioClip
         {
             get { return AudioSource.clip; }
@@ -78,6 +88,9 @@ namespace Aquaivy.Unity
             AudioSource.spatialBlend = stereo ? 1 : 0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Play()
         {
             AudioSource.Play();
@@ -91,11 +104,17 @@ namespace Aquaivy.Unity
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Pause()
         {
             AudioSource.Pause();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Stop()
         {
             AudioSource.Stop();

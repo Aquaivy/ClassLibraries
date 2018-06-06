@@ -72,6 +72,8 @@ namespace Aquaivy.Unity
         /// 如果返回false，则下一帧还会继续执行
         /// </summary>
         /// <param name="action"></param>
+        /// <param name="delayFrame"></param>
+        /// <param name="tag"></param>
         /// <returns></returns>
         public static TaskLite Invoke(Func<int, bool> action, int delayFrame = 0, object tag = null)
         {
@@ -85,6 +87,10 @@ namespace Aquaivy.Unity
             return r;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="elapseTime"></param>
         public static void Update(int elapseTime)
         {
             if (m_tasks.Count <= 0)

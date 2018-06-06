@@ -46,7 +46,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\Interface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SequenceFrames\ISequenceFrame.cs" />
+    <Compile Include="SequenceFrames\SequenceFrame.cs" />
     <Compile Include="View\Components\BaseElement.cs" />
     <Compile Include="View\Components\Enum.cs" />
     <Compile Include="View\Components\Graphic.cs" />
