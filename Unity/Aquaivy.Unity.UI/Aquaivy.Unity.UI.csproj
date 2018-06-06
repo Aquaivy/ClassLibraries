@@ -103,4 +103,10 @@ xcopy $(TargetDir)$(TargetName).dll %25CopyToDir%25 /s /y /q
 xcopy $(TargetDir)$(TargetName).pdb %25CopyToDir%25 /s /y /q
 </PostBuildEvent>
   </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>set VersionToolsPath="..\..\..\..\Tools\VersionTools.exe"
+set AssemblyInfoPath="$(ProjectDir)Properties\AssemblyInfo.cs"
+
+%25VersionToolsPath%25 %25AssemblyInfoPath%25 1</PreBuildEvent>
+  </PropertyGroup>
 </Project>

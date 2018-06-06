@@ -42,12 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyInfoIncreaser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VersionIncrense.cs" />
+    <Compile Include="RegexIncrenser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>:: 当前目录是从 bin/Debug/开始的
+set CopyToDir="..\..\..\"
+xcopy $(TargetPath) %25CopyToDir%25 /s /y /q</PostBuildEvent>
+  </PropertyGroup>
 </Project>
