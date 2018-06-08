@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Aquaivy.Unity.Common
+namespace Aquaivy.Unity
 {
     /// <summary>
     /// Math Utilities class.

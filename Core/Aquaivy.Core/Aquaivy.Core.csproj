@@ -61,7 +61,7 @@
     <Compile Include="Utilities\Simulation\NameSimulation\NameSimulation.cs" />
     <Compile Include="Utilities\Character\SpecialChar.cs" />
     <Compile Include="Utilities\Lang\LangEx.cs" />
-    <Compile Include="Utilities\MemoryCapacity.cs" />
+    <Compile Include="Utilities\MemorySize.cs" />
     <Compile Include="Utilities\IO\FileUtilitiy.cs" />
     <Compile Include="Utilities\IO\PathEx.cs" />
     <Compile Include="Utilities\SimpleJson\SimpleJson.cs" />

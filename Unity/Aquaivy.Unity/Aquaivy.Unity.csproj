@@ -48,6 +48,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\UnitySingleton.cs" />
     <Compile Include="Contents\Audios\Audio.cs" />
     <Compile Include="Contents\Audios\AudioManager.cs" />
     <Compile Include="Common\Extensions\ActionExtensions.cs" />
@@ -65,7 +66,7 @@
     <Compile Include="Common\Extensions\VectorExtensions.cs" />
     <Compile Include="Common\Int3.cs" />
     <Compile Include="Common\MathUtils.cs" />
-    <Compile Include="Common\UnitySingleton.cs" />
+    <Compile Include="Common\UnityHololensSingleton.cs" />
     <Compile Include="Contents\Fonts\FontManager.cs" />
     <Compile Include="Contents\Resources\ResourcesManager.cs" />
     <Compile Include="Contents\Textures\TextureManager.cs" />

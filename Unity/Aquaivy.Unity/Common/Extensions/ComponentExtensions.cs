@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Aquaivy.Unity.Common
+namespace Aquaivy.Unity
 {
     /// <summary>
     /// Extensions methods for the Unity Component class.

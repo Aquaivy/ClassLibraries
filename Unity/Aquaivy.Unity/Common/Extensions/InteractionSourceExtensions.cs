@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 #endif
 #endif
 
-namespace Aquaivy.Unity.Common
+namespace Aquaivy.Unity
 {
     /// <summary>
     /// Extensions for the InteractionSource class to add haptics and expose the renderable model.

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aquaivy.Unity.Common
+namespace Aquaivy.Unity
 {
     /// <summary>
     /// Extensions for the action class.

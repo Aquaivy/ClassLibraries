@@ -3,7 +3,7 @@
 
 using UnityEngine;
 
-namespace Aquaivy.Unity.Common
+namespace Aquaivy.Unity
 {
     public static class CameraExtensions
     {

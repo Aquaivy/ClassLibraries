@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Aquaivy.Unity.Common
+namespace Aquaivy.Unity
 {
     /// <summary>
     /// A class with general purpose extensions methods.

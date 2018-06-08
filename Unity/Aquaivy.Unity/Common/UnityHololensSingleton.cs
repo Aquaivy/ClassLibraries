@@ -4,35 +4,46 @@ using UnityEngine;
 namespace Aquaivy.Unity
 {
     /// <summary>
-    /// Unity的单例模式，可直接使用类名访问，而不管场景中有没有这个对象，
-    /// 也可事先在场景中放置这个对象
+    /// Singleton behaviour class, used for components that should only have one instance.
+    /// <remarks>Singleton classes live on through scene transitions and will mark their 
+    /// parent root GameObject with <see cref="Object.DontDestroyOnLoad"/></remarks>
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class UnitySingleton<T> : MonoBehaviour where T : UnitySingleton<T>
+    /// <typeparam name="T">The Singleton Type</typeparam>
+    public class UnityHololensSingleton<T> : MonoBehaviour where T : UnityHololensSingleton<T>
     {
         private static T instance;
 
         /// <summary>
-        /// 
+        /// Returns the Singleton instance of the classes type.
+        /// If no instance is found, then we search for an instance
+        /// in the scene.
+        /// If more than one instance is found, we throw an error and
+        /// no instance is returned.
         /// </summary>
         public static T Instance
         {
             get
             {
-                if (!IsInitialized)
+                if (!IsInitialized && searchForInstance)
                 {
-                    var go = new GameObject(typeof(T).Name);
-                    go.GetParentRoot().DontDestroyOnLoad();
-                    instance = go.AddComponent<T>();
+                    searchForInstance = false;
+                    T[] objects = FindObjectsOfType<T>();
+                    if (objects.Length == 1)
+                    {
+                        instance = objects[0];
+                        instance.gameObject.GetParentRoot().DontDestroyOnLoad();
+                    }
+                    else if (objects.Length > 1)
+                    {
+                        Debug.LogErrorFormat("Expected exactly 1 {0} but found {1}.", typeof(T).Name, objects.Length);
+                    }
                 }
                 return instance;
             }
         }
 
+        private static bool searchForInstance = true;
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void AssertIsInitialized()
         {
             Debug.Assert(IsInitialized, string.Format("The {0} singleton has not been initialized.", typeof(T).Name));
@@ -49,7 +60,12 @@ namespace Aquaivy.Unity
             }
         }
 
-
+        /// <summary>
+        /// Base Awake method that sets the Singleton's unique instance.
+        /// Called by Unity when initializing a MonoBehaviour.
+        /// Scripts that extend Singleton should be sure to call base.Awake() to ensure the
+        /// static Instance reference is properly created.
+        /// </summary>
         protected virtual void Awake()
         {
             if (IsInitialized && instance != this)
@@ -68,6 +84,7 @@ namespace Aquaivy.Unity
             else if (!IsInitialized)
             {
                 instance = (T)this;
+                searchForInstance = false;
                 gameObject.GetParentRoot().DontDestroyOnLoad();
             }
         }
@@ -83,6 +100,7 @@ namespace Aquaivy.Unity
             if (instance == this)
             {
                 instance = null;
+                searchForInstance = true;
             }
         }
     }

@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-namespace Aquaivy.Unity.Common
+namespace Aquaivy.Unity
 {
     /// <summary>
     /// 3D integer class - operates similarly to Unity's Vector3D

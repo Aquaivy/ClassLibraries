@@ -3,7 +3,7 @@
 
 using UnityEngine;
 
-namespace Aquaivy.Unity.Common
+namespace Aquaivy.Unity
 {
     /// <summary>
     /// Extension methods for Unity's Color32 class

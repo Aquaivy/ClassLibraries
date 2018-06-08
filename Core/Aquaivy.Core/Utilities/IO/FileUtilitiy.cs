@@ -63,18 +63,18 @@ namespace Aquaivy.Core.Utilities
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        public static MemoryCapacity GetFileSize(string filePath)
+        public static MemorySize GetFileSize(string filePath)
         {
             if (!File.Exists(filePath))
                 throw new FileNotFoundException("FileNotFoundException", filePath);
 
-            ulong len;
+            long len;
             using (var stream = File.OpenRead(filePath))
             {
-                len = (ulong)stream.Length;
+                len = stream.Length;
             }
 
-            return new MemoryCapacity(len);
+            return new MemorySize(len);
         }
 
         /// <summary>
@@ -84,10 +84,10 @@ namespace Aquaivy.Core.Utilities
         /// <param name="searchPattern"></param>
         /// <param name="searchOption"></param>
         /// <returns></returns>
-        public static MemoryCapacity GetFilesSize(string dir, string searchPattern, SearchOption searchOption)
+        public static MemorySize GetFilesSize(string dir, string searchPattern, SearchOption searchOption)
         {
             var files = GetFiles(dir, searchPattern, searchOption);
-            MemoryCapacity sum = new MemoryCapacity(0);
+            MemorySize sum = new MemorySize(0);
             foreach (var file in files)
             {
                 sum += GetFileSize(file);

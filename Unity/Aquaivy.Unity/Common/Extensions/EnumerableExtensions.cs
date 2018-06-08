@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Aquaivy.Unity.Common
+namespace Aquaivy.Unity
 {
     public static class EnumerableExtensions
     {

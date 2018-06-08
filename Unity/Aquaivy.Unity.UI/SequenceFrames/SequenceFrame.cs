@@ -12,8 +12,34 @@ namespace Aquaivy.Unity.UI
     public class SequenceFrame : Graphic, IImageable, ISequenceFrame
     {
         private List<string> frames = new List<string>();
+        private bool isPlaying;
+        private int rate;
+        private int index;
+        private int interval;
+        private DateTime lastFrameTime;
+        private TaskLite animationTask;
+
+        public object Tag;
+        public event Action<object> OnPlayedOver;
 
         public Image image { get; set; }
+
+        public bool AutoSize { get; set; } = true;
+
+        public bool Loop { get; set; } = true;
+
+        public int Index
+        {
+            get { return index; }
+            set { if (value < 0 || value >= frames.Count) return; index = value; }
+        }
+
+        public int Rate
+        {
+            get { return rate; }
+            set { rate = value; interval = 1000 / rate; }
+        }
+
 
         /// <summary>
         /// 
@@ -29,6 +55,10 @@ namespace Aquaivy.Unity.UI
 #if UNITY_EDITOR
             Name = "SequenceFrame";
 #endif
+
+            Rate = rate;
+            Loop = loop;
+            AutoSize = autoSize;
 
             image = gameObject.AddComponent<Image>();
             image.raycastTarget = false;
@@ -89,6 +119,9 @@ namespace Aquaivy.Unity.UI
             {
                 image.sprite = TextureManager.CreateSprite(imgPath);
             }
+
+            if (AutoSize)
+                image.SetNativeSize();
         }
 
         public void SetNativeSize()
@@ -101,29 +134,109 @@ namespace Aquaivy.Unity.UI
 
         public void Play()
         {
+            if (isPlaying)
+                return;
 
+            if (gameObject == null || image == null)
+            {
+                Debug.LogError("SequenceFrame.gameObject is null, or SequenceFrame.image is null");
+                return;
+            }
+
+            if (frames.Count == 0)
+            {
+                Debug.LogError("There is no frames, please call \"SetFramesPath()\" first");
+                return;
+            }
+
+            isPlaying = true;
+            lastFrameTime = DateTime.Now;
+            SetImage(frames[index]);
+
+            animationTask = TaskLite.Invoke(t =>
+            {
+                if (gameObject == null || image == null)
+                {
+                    Debug.LogError("SequenceFrame.gameObject is null, or SequenceFrame.image is null");
+                    return true;
+                }
+
+                if ((DateTime.Now - lastFrameTime).TotalMilliseconds < interval)
+                    return false;
+
+                lastFrameTime = DateTime.Now;
+                index++;
+
+                if (index >= frames.Count)
+                {
+                    index = 0;
+                    if (!Loop)
+                    {
+                        OnPlayedOver?.Invoke(Tag);
+                        return true;
+                    }
+                }
+
+                SetImage(frames[index]);
+
+                return false;
+
+                //if (index < frames.Count)
+                //{
+                //    SetImage(frames[index]);
+
+                //    //最后一个
+                //    if (index == frames.Count - 1)
+                //    {
+
+                //    }
+
+
+                //    return false;
+                //}
+                //else
+                //{
+                //    index = 0;
+                //    if (Loop)
+                //    {
+                //        return false;
+                //    }
+                //    else
+                //    {
+                //        OnPlayedOver?.Invoke(Tag);
+                //        return true;
+                //    }
+                //}
+            });
         }
 
         public void Pause()
         {
-
+            animationTask?.Release();
+            animationTask = null;
+            isPlaying = false;
         }
 
         public void Stop()
         {
-
+            animationTask?.Release();
+            animationTask = null;
+            isPlaying = false;
+            index = 0;
         }
 
         public void SkipToFirstFrame()
         {
             Stop();
             SetImage(frames[0]);
+            index = 0;
         }
 
         public void SkipToLastFrame()
         {
             Stop();
             SetImage(frames[frames.Count - 1]);
+            index = frames.Count - 1;
         }
 
         public override Color Colour
@@ -141,8 +254,6 @@ namespace Aquaivy.Unity.UI
             set { image.color = new Color(image.color.r, image.color.g, image.color.b, value); }
         }
 
-        public int Index { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Rate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool Loop { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
     }
 }
