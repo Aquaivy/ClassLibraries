@@ -9,65 +9,77 @@ using UnityEngine.Profiling;
 
 namespace Aquaivy.Unity.Profiling
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [Flags]
-    public enum ProfilerType : int
-    {
-        Fps = 0,
-        TotalMem = (1 << 0),
-        MonoMem = (1 << 1)
-    }
 
     /// <summary>
     /// 以最原始的OnGUI进行显示的性能检测工具
     /// </summary>
-    public class RuntimeProfiler : MonoBehaviour
+    public class RuntimeProfiler : UnitySingleton<RuntimeProfiler>
     {
-        private static RuntimeProfiler instance;
+        /// <summary>
+        /// 
+        /// </summary>
+        [Flags]
+        public enum Type : int
+        {
+            Fps = 0,
+            TotalMem = (1 << 0),
+            MonoMem = (1 << 1)
+        }
 
-        private static int fps = 0;
-        private static int fpsCount = 0;
-        private static StringBuilder sb = new StringBuilder();              //存储Gui显示内容
-        private static float lastFpsTime = 0;
-        private static float lastRefreshGuiTime = 0;                        //上一次刷新Gui的时间
+        public class FpsData
+        {
+            internal int fps;
+            internal string name;
+            internal int fpsCount;
+            internal float lastFpsTime;
+        }
+
+
+        private bool showing = false;
+        private FpsData graphicFps = new FpsData();
+        //private int fps = 0;
+        //private int fpsCount = 0;
+        //private float lastFpsTime = 0;
+        private StringBuilder sb = new StringBuilder();              //存储Gui显示内容
+        private float lastRefreshGuiTime = 0;                        //上一次刷新Gui的时间
+        private Dictionary<string, FpsData> customFps = new Dictionary<string, FpsData>();
 
         /// <summary>
         /// 刷新Profiler信息的时间间隔，单位：s
         /// </summary>
-        public static float RefreshGuiInterval = 0.33f;                        //刷新Gui的时间间隔
+        public float RefreshGuiInterval = 0.33f;                        //刷新Gui的时间间隔
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public GUIStyle style = null;
+
+        public int Fps { get { return graphicFps.fps; } }
 
         /// <summary>
         /// 在屏幕左上角显示Profiler信息
         /// </summary>
-        public static void Show()
+        public void Show()
         {
-            if (instance != null)
-                return;
-
-            var go = new GameObject("RuntimeProfiler");
-            instance = go.AddComponent<RuntimeProfiler>();
+            showing = true;
         }
 
         /// <summary>
         /// 取消显示Profiler信息
         /// </summary>
-        public static void Hide()
+        public void Hide()
         {
-            if (instance == null)
-                return;
-
             Release();
+
+            showing = false;
         }
 
-        private static void Release()
+        private void Release()
         {
-            GameObject.Destroy(instance.gameObject);
-            instance = null;
-            fps = 0;
-            fpsCount = 0;
-            lastFpsTime = 0;
+            GameObject.Destroy(gameObject);
+            graphicFps.fps = 0;
+            graphicFps.fpsCount = 0;
+            graphicFps.lastFpsTime = 0;
             lastRefreshGuiTime = 0;
             sb.Clear();
         }
@@ -76,7 +88,7 @@ namespace Aquaivy.Unity.Profiling
         /// 设置显示的Profiler信息种类
         /// </summary>
         /// <param name="profilers"></param>
-        public static void SetProfiler(ProfilerType profilers)
+        public void SetProfiler(Type profilers)
         {
 
         }
@@ -85,44 +97,60 @@ namespace Aquaivy.Unity.Profiling
         /// 添加/更新 自定义帧率统计
         /// </summary>
         /// <param name="key"></param>
-        public static void UpdateCustomFps(string key)
+        public void UpdateCustomFps(string key)
         {
-
+            FpsData data;
+            if (!customFps.TryGetValue(key, out data))
+                data = new FpsData { name = key };
+            data.fpsCount++;
         }
 
         /// <summary>
         /// 移除自定义帧率统计
         /// </summary>
         /// <param name="key"></param>
-        public static void RemoveCustomFps(string key)
+        public void RemoveCustomFps(string key)
         {
-
+            customFps.Remove(key);
         }
 
         /// <summary>
         /// 清除所有自定义帧率统计
         /// </summary>
         /// <param name="key"></param>
-        public static void ClearCustomFps(string key)
+        public void ClearCustomFps(string key)
         {
-
+            customFps.Clear();
         }
 
         // Use this for initialization
         void Start()
         {
-
+            style = new GUIStyle
+            {
+                fontSize = 16,
+                normal = new GUIStyleState { textColor = Color.green }
+            };
         }
 
         // Update is called once per frame
         void Update()
         {
-            fpsCount++;
-            if (Time.realtimeSinceStartup - lastFpsTime >= 1)
+            graphicFps.fpsCount++;
+            if (Time.realtimeSinceStartup - graphicFps.lastFpsTime >= 1)
             {
-                lastFpsTime = Time.realtimeSinceStartup;
-                fps = fpsCount;
-                fpsCount = 0;
+                graphicFps.lastFpsTime = Time.realtimeSinceStartup;
+
+                //update grahpic fps
+                graphicFps.fps = graphicFps.fpsCount;
+                graphicFps.fpsCount = 0;
+
+                //update custom fps
+                foreach (var data in customFps.Values)
+                {
+                    data.fps = data.fpsCount;
+                    data.fpsCount = 0;
+                }
             }
         }
 
@@ -133,19 +161,27 @@ namespace Aquaivy.Unity.Profiling
                 return;
             }
 
+            if (!showing)
+                return;
+
             sb.Clear();
-            sb.AppendFormat("FPS: {0}\n", fps);
+            sb.AppendFormat("FPS: {0}\n", graphicFps.fps);
             sb.AppendFormat("Total Mem: {0:F1}MB\n", GetTotalAllocatedMemory());
             sb.AppendFormat("Mono Use: {0:F1}MB\n", GetMonoUsedSize());
 
-            GUILayout.Label(sb.ToString());
+            foreach (var data in customFps.Values)
+            {
+                sb.AppendFormat("{0} FPS: {1}\n", data.name, data.fps);
+            }
+
+            GUILayout.Label(sb.ToString(), style);
         }
 
         /// <summary>
         /// 返回Mono堆大小（已转为MB单位）
         /// </summary>
         /// <returns></returns>
-        public static float GetMonoHeapSize()
+        public float GetMonoHeapSize()
         {
             return new MemorySize(Profiler.GetMonoHeapSizeLong()).TotalMBs;
         }
@@ -154,7 +190,7 @@ namespace Aquaivy.Unity.Profiling
         /// 返回Mono使用大小（已转为MB单位）
         /// </summary>
         /// <returns></returns>
-        public static float GetMonoUsedSize()
+        public float GetMonoUsedSize()
         {
             return new MemorySize(Profiler.GetMonoUsedSizeLong()).TotalMBs;
         }
@@ -163,7 +199,7 @@ namespace Aquaivy.Unity.Profiling
         /// 返回所有的内存申请大小（已转为MB单位）
         /// </summary>
         /// <returns></returns>
-        public static float GetTotalAllocatedMemory()
+        public float GetTotalAllocatedMemory()
         {
             return new MemorySize(Profiler.GetTotalAllocatedMemoryLong()).TotalMBs;
         }
