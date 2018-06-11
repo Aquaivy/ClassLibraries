@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;UNITY_5_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -45,12 +45,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\Unity 2017.2.0\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\Libs\Unity 2017.2.0\UnityEngine.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Console\ConsoleLog.cs" />
     <Compile Include="EditorTools.cs" />
     <Compile Include="FindMissingScripts\FindMissingScripts.cs" />
     <Compile Include="Importer\ModelImporter.cs" />
+    <Compile Include="SearchScripts\MissingReferencesFinder.cs" />
     <Compile Include="SearchScripts\SearchScript.cs" />
     <Compile Include="SearchScripts\SearchScriptWindow.cs" />
     <Compile Include="Importer\AudioImporter.cs" />
@@ -61,6 +65,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShortcutKey\PlayerSettingShortcutKey.cs" />
     <Compile Include="Template\OptimizeTemplateFile.cs" />
+    <Compile Include="Utilities\ResourceChecker.cs" />
     <Compile Include="Utilities\SceneHelper.cs" />
     <Compile Include="Utilities\SceneWrap.cs" />
   </ItemGroup>
