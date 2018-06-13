@@ -1,5 +1,4 @@
-﻿using Aquaivy.Tools.Versions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +10,6 @@ namespace UnitTest.Tools
     {
         internal void Run()
         {
-            VersionTools.UpgradeRevision();
         }
     }
 }

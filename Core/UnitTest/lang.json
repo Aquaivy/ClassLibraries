@@ -1,6 +1,6 @@
 {
     "k1":"no internet connection",
-    "Network.DestinationHostError":"destination host error, try later",
+    "k2":"name {0}, height {1:F2}cm",
     "Server.InternalError":"server error, try later",
     "Call.P2PCallOnlyOne":"P2P connection type can only call one",
     "Call.Calling":"It's calling someone...",

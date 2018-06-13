@@ -3,7 +3,7 @@ using System.IO;
 using System.Xml.Serialization;
 using Aquaivy.Core.Logs;
 
-namespace DogSE.Library.Serialize
+namespace Aquaivy.Core.Serialize
 {
     /// <summary>
     /// xml序列化辅助类

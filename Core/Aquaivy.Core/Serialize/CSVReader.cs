@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace DogSE.Library.Serialize
+namespace Aquaivy.Core.Serialize
 {
     /// <summary>
     ///     Determines how empty lines are interpreted when reading CSV files.

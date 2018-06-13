@@ -8,12 +8,12 @@ namespace UnitTest.Library
     {
         internal void Run()
         {
-            //Test_Lang();
+            Test_Lang();
             //Test_FileSize();
             //Test_PathEx();
             //Test_File();
             //Test_LineEndings();
-            Test_RandomName();
+            //Test_RandomName();
 
         }
 
@@ -123,9 +123,13 @@ namespace UnitTest.Library
         private void Test_Lang()
         {
             //Lang.Init(@"D:\Unity\VSProjects\ClassLibraries\UnitTest\lang.xml");
-            Lang.Init(@"D:\Unity\VSProjects\ClassLibraries\UnitTest\lang.json");
+            //Lang3.Init(@"D:\Unity\VSProjects\ClassLibraries\UnitTest\lang.json");
 
-            Log.Info(Lang.Trans("k1"));
+            //Lang.LoadFromFile<XmlLanguage>(@"D:\Unity\VSProjects\ClassLibraries\Core\UnitTest\lang.xml");
+            //Lang.LoadFromFile<JsonLanguage>(@"D:\Unity\VSProjects\ClassLibraries\Core\UnitTest\lang.json");
+            Lang.LoadFromFile<CsvLanguage>(@"D:\Unity\VSProjects\ClassLibraries\Core\UnitTest\lang.csv");
+
+            Log.Info(Lang.Trans("k2", "+", 3.56465f));
         }
     }
 }

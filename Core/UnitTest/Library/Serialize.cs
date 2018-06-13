@@ -1,5 +1,5 @@
 ﻿using Aquaivy.Core.Common;
-using DogSE.Library.Serialize;
+using Aquaivy.Core.Serialize;
 using System.Collections.Generic;
 
 namespace UnitTest.Library

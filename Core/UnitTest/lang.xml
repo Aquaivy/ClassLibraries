@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <lang>
   <M k="k1">one</M>
-  <M k="k2">two</M>
+  <M k="k2">two {0} {1:F2}</M>
   <M k="k3">three</M>
 </lang>

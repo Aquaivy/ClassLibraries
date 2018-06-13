@@ -55,12 +55,17 @@
     <Compile Include="Utilities\Character\CharOperation.cs" />
     <Compile Include="Utilities\Character\Chinese2Spell.cs" />
     <Compile Include="Utilities\Character\Chinese2SpellSimple.cs" />
+    <Compile Include="Utilities\Lang\CsvLanguage.cs" />
+    <Compile Include="Utilities\Lang\ILanguage.cs" />
+    <Compile Include="Utilities\Lang\JsonLanguage.cs" />
+    <Compile Include="Utilities\Lang\Lang.cs" />
+    <Compile Include="Utilities\Lang\XmlLanguage.cs" />
     <Compile Include="Utilities\Simulation\NameSimulation\ChineseNameLibrary.cs" />
     <Compile Include="Utilities\Simulation\NameSimulation\EnglishNameLibrary.cs" />
     <Compile Include="Utilities\Simulation\NameSimulation\NameSetting.cs" />
     <Compile Include="Utilities\Simulation\NameSimulation\NameSimulation.cs" />
     <Compile Include="Utilities\Character\SpecialChar.cs" />
-    <Compile Include="Utilities\Lang\LangEx.cs" />
+    <Content Include="Utilities\Lang\LangEx.cs.txt" />
     <Compile Include="Utilities\MemorySize.cs" />
     <Compile Include="Utilities\IO\FileUtilitiy.cs" />
     <Compile Include="Utilities\IO\PathEx.cs" />
@@ -89,7 +94,6 @@
     <Compile Include="Utilities\CSV\ConvertCSV.cs" />
     <Compile Include="Utilities\CSV\InfoSplit.cs" />
     <Compile Include="Utilities\Insensitive.cs" />
-    <Compile Include="Utilities\Lang\Lang.cs" />
     <Compile Include="Utilities\MathHelper.cs" />
     <Compile Include="Utilities\RandomEx.cs" />
     <Compile Include="Utilities\StringEx.cs" />

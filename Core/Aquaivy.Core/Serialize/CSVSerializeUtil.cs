@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using Aquaivy.Core.Logs;
 
-namespace DogSE.Library.Serialize
+namespace Aquaivy.Core.Serialize
 {
     /// <summary>
     /// CSV 文件序列化

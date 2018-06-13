@@ -1,5 +1,5 @@
-﻿using DogSE.Library.Component;
-using DogSE.Library.Serialize;
+﻿using Aquaivy.Core.Serialize;
+using DogSE.Library.Component;
 using System;
 using System.Collections.Generic;
 using System.Linq;
