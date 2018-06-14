@@ -5,7 +5,7 @@ using System.Text;
 namespace Aquaivy.Core.Logs
 {
     /// <summary>
-    /// 控制台日志输出
+    /// Debug日志输出
     /// </summary>
     /// <remarks>
     /// 虽然这里实现的是实例的接口

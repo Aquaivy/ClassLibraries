@@ -233,15 +233,15 @@ namespace Aquaivy.Core.Logs
         /// </summary>
         /// <param name="messageFlag"></param>
         /// <param name="strFormat"></param>
-        /// <param name="arg"></param>
-        public static void WriteLine(LogMessageType messageFlag, string strFormat, params object[] arg)
+        /// <param name="args"></param>
+        public static void WriteLine(LogMessageType messageFlag, string strFormat, params object[] args)
         {
             if (appenders.Count == 0)
                 return;
             if (strFormat == null)
                 strFormat = string.Empty;
 
-            var logInfo = new LogInfo(messageFlag, strFormat, arg);
+            var logInfo = new LogInfo(messageFlag, strFormat, args);
             for (int i = 0; i < appenders.Count; i++)
             {
                 try

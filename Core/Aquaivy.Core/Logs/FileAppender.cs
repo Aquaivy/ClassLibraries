@@ -83,7 +83,7 @@ namespace Aquaivy.Core.Logs
 
         #endregion
 
-        #region 日志等级(默认等级为 Notifce)
+        #region 日志等级(默认等级为 Notice)
 
         /// <summary>
         /// 日志等级

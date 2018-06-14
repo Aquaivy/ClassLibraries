@@ -46,7 +46,7 @@ namespace Aquaivy.Core.Utilities
         public Dictionary<string, string> ParseFromContent(string content)
         {
             if (string.IsNullOrEmpty(content))
-                throw new Exception("JsonLanguage.ParseFromContent error, content is null");
+                throw new ArgumentNullException("JsonLanguage.ParseFromContent error, content is null");
 
             // 方案一：使用SimpleJson直接反序列化，不检查冲突
             var dict = SimpleJson.DeserializeObject<Dictionary<string, string>>(content);

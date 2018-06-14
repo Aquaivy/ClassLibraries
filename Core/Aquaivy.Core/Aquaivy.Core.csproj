@@ -65,6 +65,7 @@
     <Compile Include="Utilities\Simulation\NameSimulation\NameSetting.cs" />
     <Compile Include="Utilities\Simulation\NameSimulation\NameSimulation.cs" />
     <Compile Include="Utilities\Character\SpecialChar.cs" />
+    <Compile Include="Web\HttpUtils.cs" />
     <Content Include="Utilities\Lang\LangEx.cs.txt" />
     <Compile Include="Utilities\MemorySize.cs" />
     <Compile Include="Utilities\IO\FileUtilitiy.cs" />

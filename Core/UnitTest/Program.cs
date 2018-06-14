@@ -15,8 +15,9 @@ namespace UnitTest
             //new Component().Run();
             //Serialize.Instance.ReadValues();
             //Serialize.Instance.WriteValues();
-            new Util().Run();
+            //new Util().Run();
             //new VersionTest().Run();
+            new Web().Run();
 
             Console.ReadKey();
         }
