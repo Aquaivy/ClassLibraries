@@ -9,10 +9,10 @@ namespace Aquaivy.Unity.UI
         public abstract FrmLayer Layer { get; }
         public bool IsShowing { get; private set; }
 
-        protected TweenLite addtween { set { tweens.Add(value); } }
+        protected TweenLite TweenAdder { set { tweens.Add(value); } }
         protected List<TweenLite> tweens = new List<TweenLite>();
 
-        protected TaskLite addtask { set { tasks.Add(value); } }
+        protected TaskLite TaskAdder { set { tasks.Add(value); } }
         protected List<TaskLite> tasks = new List<TaskLite>();
 
         public FrmBase()
