@@ -115,7 +115,11 @@ namespace Aquaivy.Unity
                     }
                     catch (Exception ex)
                     {
-                        Core.Logs.Log.Warn("run tasklite.invoke fail. {0}", ex.Message);
+#if DEBUG || UNITY_EDITOR
+                        Log.Error("run tasklite.invoke fail. {0} \n{1}", ex.Message, ex.StackTrace);
+#else
+                        Log.Error("run tasklite.invoke fail. {0}", ex.Message);
+#endif
 
                         Release(task);
                     }

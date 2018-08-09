@@ -109,7 +109,18 @@ namespace Aquaivy.Unity.UI
         {
             if (element.Parent != null)
             {
+#if DEBUG || UNITY_EDITOR
+                try
+                {
+                    throw new InvalidOperationException();
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidOperationException($"{element.GetType().Name} 对象已被AddChild到其他节点上    \n{ex.StackTrace}");
+                }
+#else
                 throw new InvalidOperationException($"{element.Name} 对象已被AddChild到其他节点上");
+#endif
             }
 
             element.Parent = this;
