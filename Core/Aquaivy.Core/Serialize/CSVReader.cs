@@ -104,8 +104,17 @@ namespace Aquaivy.Core.Serialize
         public CsvFileReader(string path,
             EmptyLineBehavior emptyLineBehavior = EmptyLineBehavior.NoColumns)
         {
+#if !UNITY_WSA
+            //方案一：原始可行方案
             Reader = new StreamReader(path);
             EmptyLineBehavior = emptyLineBehavior;
+#else
+            //方案二：兼容UWP方案
+            var stream = new FileStream(path, FileMode.OpenOrCreate);
+            Reader = new StreamReader(stream);
+            EmptyLineBehavior = emptyLineBehavior;
+#endif
+
         }
 
         /// <summary>
@@ -279,7 +288,15 @@ namespace Aquaivy.Core.Serialize
         /// <param name="path">The name of the CSV file to write to</param>
         public CsvFileWriter(string path)
         {
+#if UNITY_WSA
+            //方案一：原始可行方案
             Writer = new StreamWriter(path);
+#else
+            //方案二：兼容UWP方案
+            var stream = new FileStream(path, FileMode.OpenOrCreate);
+            Writer = new StreamWriter(stream);
+#endif
+
         }
 
         /// <summary>
