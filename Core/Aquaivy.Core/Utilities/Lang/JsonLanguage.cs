@@ -49,7 +49,7 @@ namespace Aquaivy.Core.Utilities
                 throw new ArgumentNullException("JsonLanguage.ParseFromContent error, content is null");
 
             // 方案一：使用SimpleJson直接反序列化，不检查冲突
-            var dict = SimpleJson.DeserializeObject<Dictionary<string, string>>(content);
+            var dict = Aquaivy.Core.Utilities.Json.SimpleJson.DeserializeObject<Dictionary<string, string>>(content);
             return dict;
 
 
