@@ -61,6 +61,8 @@ namespace Aquaivy.Unity.UI
             SetPosition(x, y);
         }
 
+        private TaskLite taskDelay;
+
         public string Text
         {
             get { return strText; }
@@ -69,17 +71,25 @@ namespace Aquaivy.Unity.UI
                 textComponent.text = value;
                 strText = value;
 
-                //这里很无奈，UGUI中文字只有渲染过后才能拿到正确的preferredWidth
-                //所以这里延迟1帧再进行赋值
-                if (this.HorizontalOverflow == HorizontalWrapMode.Overflow && this.VerticalOverflow == VerticalWrapMode.Overflow)
+                CalcTextPreferredWidth();
+            }
+        }
+
+        private void CalcTextPreferredWidth()
+        {
+            //这里很无奈，UGUI中文字只有渲染过后才能拿到正确的preferredWidth
+            //所以这里延迟1帧再进行赋值
+            taskDelay?.Release();
+            if (this.HorizontalOverflow == HorizontalWrapMode.Overflow && this.VerticalOverflow == VerticalWrapMode.Overflow)
+            {
+                taskDelay = TaskLite.Invoke(t =>
                 {
-                    TaskLite.Invoke(t =>
-                    {
-                        //Debug.Log($"after one frame  {textComponent.preferredWidth}   {textComponent.preferredHeight}");
+                    //Debug.Log($"after one frame  {textComponent.preferredWidth}   {textComponent.preferredHeight}");
+                    if (this != null && textComponent != null)
                         Size = new Vector2(textComponent.preferredWidth, textComponent.preferredHeight);
-                        return true;
-                    });
-                }
+                    taskDelay = null;
+                    return true;
+                });
             }
         }
 
@@ -139,7 +149,7 @@ namespace Aquaivy.Unity.UI
         public HorizontalWrapMode HorizontalOverflow
         {
             get { return textComponent.horizontalOverflow; }
-            set { textComponent.horizontalOverflow = value; }
+            set { textComponent.horizontalOverflow = value; CalcTextPreferredWidth(); }
         }
 
         /// <summary>
@@ -148,7 +158,7 @@ namespace Aquaivy.Unity.UI
         public VerticalWrapMode VerticalOverflow
         {
             get { return textComponent.verticalOverflow; }
-            set { textComponent.verticalOverflow = value; }
+            set { textComponent.verticalOverflow = value; CalcTextPreferredWidth(); }
         }
 
         /// <summary>

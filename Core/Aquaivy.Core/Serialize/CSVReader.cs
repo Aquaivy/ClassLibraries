@@ -288,7 +288,7 @@ namespace Aquaivy.Core.Serialize
         /// <param name="path">The name of the CSV file to write to</param>
         public CsvFileWriter(string path)
         {
-#if UNITY_WSA
+#if !UNITY_WSA
             //方案一：原始可行方案
             Writer = new StreamWriter(path);
 #else

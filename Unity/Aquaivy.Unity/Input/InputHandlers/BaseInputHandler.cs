@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Aquaivy.Unity.UI.Input
+namespace Aquaivy.Unity.Input
 {
     public class BaseInputHandler : MonoBehaviour
     {
         public Action<PointerEventData> Click;
         public Action<PointerEventData> Enter;
         public Action<PointerEventData> Exit;
-        //public Action<PointerEventData> Move;
+        public Action<PointerEventData> Down;
+        public Action<PointerEventData> Up;
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.EventSystems;
 
-namespace Aquaivy.Unity.UI.Input
+namespace Aquaivy.Unity.Input
 {
     public class BaseHoldHandler
     {

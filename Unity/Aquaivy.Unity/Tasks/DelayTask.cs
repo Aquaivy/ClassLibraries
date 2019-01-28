@@ -64,35 +64,58 @@ namespace Aquaivy.Unity
         }
 
         /// <summary>
-        /// 压入一个延迟函数，可按照时间或者帧数来延迟
+        /// 压入一个延迟函数，按照时间来延迟
         /// </summary>
         /// <param name="task"></param>
-        /// <param name="delay"></param>
+        /// <param name="delayTime">延迟时间，单位：ms毫秒</param>
         /// <param name="type"></param>
         /// <param name="tag"></param>
         /// <returns></returns>
-        public static DelayTask Invoke(Action task, int delay, DelayType type = DelayType.Time, object tag = null)
+        public static DelayTask Invoke(Action task, int delayTime, object tag = null)
         {
             var delayTask = new DelayTask
             {
                 Task = task,
-                Delay = delay,
-                Type = type,
+                Delay = delayTime,
+                Type = DelayType.Time,
                 Tag = tag
             };
 
             delayTask.taskLite = TaskLite.Invoke(t =>
             {
-                if (type == DelayType.Time)
-                {
-                    if (t < delay)
-                        return false;
-                }
-                else if (type == DelayType.Frame)
-                {
-                    if (delayTask.Frame < delay)
-                        return false;
-                }
+                if (t < delayTime)
+                    return false;
+
+                task();
+
+                return true;
+            });
+
+            return delayTask;
+        }
+
+        /// <summary>
+        /// 压入一个延迟函数，按照帧数来延迟
+        /// </summary>
+        /// <param name="task"></param>
+        /// <param name="delayFrame">延迟帧数</param>
+        /// <param name="type"></param>
+        /// <param name="tag"></param>
+        /// <returns></returns>
+        public static DelayTask InvokeFrame(Action task, int delayFrame, object tag = null)
+        {
+            var delayTask = new DelayTask
+            {
+                Task = task,
+                Delay = delayFrame,
+                Type = DelayType.Frame,
+                Tag = tag
+            };
+
+            delayTask.taskLite = TaskLite.Invoke(t =>
+            {
+                if (delayTask.Frame < delayFrame)
+                    return false;
 
                 task();
 

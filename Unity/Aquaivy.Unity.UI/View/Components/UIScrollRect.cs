@@ -22,6 +22,7 @@ namespace Aquaivy.Unity.UI
 
         private bool isNeedMask = false;
 
+
         /// <summary>
         /// 默认Pivot在左上角
         /// </summary>
@@ -133,6 +134,10 @@ namespace Aquaivy.Unity.UI
                         break;
                 }
                 _contentWidth = value;
+                maxCellCount = (int)Math.Ceiling(_contentWidth / cellWidth);
+                //Log.Info($"_contentWidth:{_contentWidth}    maxCellCount:{maxCellCount}    cellWidth:{cellWidth}");
+
+                RefreshArrowState();
             }
         }
 
@@ -154,6 +159,8 @@ namespace Aquaivy.Unity.UI
                         break;
                 }
                 _contentHeight = value;
+
+                RefreshArrowState();
             }
         }
 
@@ -161,5 +168,180 @@ namespace Aquaivy.Unity.UI
         {
             return content.AddChild(element);
         }
+
+        public override void Dispose()
+        {
+            tl?.Release();
+            tl = null;
+
+            base.Dispose();
+        }
+
+        private int maxCellCount;
+        private int currentCellIndex;
+        private float cellWidth = 100;
+        private float cellHeight = 100;
+        private TweenLite tl;
+
+
+        public int CurrentCellIndex { get { return currentCellIndex; } }
+
+        /// <summary>
+        /// 同时显示出来的cell数量
+        /// </summary>
+        public int ShownCellCount
+        {
+            get { return shownCellCount; }
+
+            set
+            {
+                shownCellCount = value;
+                RefreshArrowState();
+            }
+        }
+
+        private int shownCellCount = 3;
+
+        /// <summary>
+        /// 是否显示最后几个的空白（暂时不起作用）
+        /// </summary>
+        public bool ShowSpace = false;
+
+        public int Duration = 1000;
+
+        public void SetIndex(int index)
+        {
+            if (index == currentCellIndex)
+                return;
+        }
+
+        public void SetCellInfo(float cellWidth, float cellHeight)
+        {
+            if (cellWidth <= 0 || cellHeight <= 0)
+                throw new ArgumentException($"cellWidth,cellHeight must greater than 0");
+
+            this.cellWidth = cellWidth;
+            this.cellHeight = cellHeight;
+
+            maxCellCount = (int)Math.Ceiling(_contentWidth / cellWidth);
+            RefreshArrowState();
+        }
+
+        /// <summary>
+        /// 内容左移
+        /// </summary>
+        public void MoveLeft()
+        {
+            //Log.Info($"MoveLeft  currentCellIndex:{currentCellIndex}    targetCellIndex:{currentCellIndex + 1}    ShownCellCount:{ShownCellCount}    maxCellCount:{maxCellCount}");
+
+            if (currentCellIndex + ShownCellCount >= maxCellCount)
+            {
+                return;
+            }
+
+            float from = content.x;
+            float to = -(currentCellIndex + 1) * cellWidth;
+            currentCellIndex++;
+
+            tl?.Release();
+            tl = TweenLite.To(from, to, Duration, Cubic.EaseOut, v =>
+            {
+                content.x = v;
+            });
+
+            RefreshArrowState();
+        }
+
+        /// <summary>
+        /// 内容右移
+        /// </summary>
+        public void MoveRight()
+        {
+            //Log.Info($"MoveRight  currentCellIndex:{currentCellIndex}    targetCellIndex:{currentCellIndex - 1}");
+
+            if (currentCellIndex - 1 < 0)
+            {
+                return;
+            }
+
+            float from = content.x;
+            float to = -(currentCellIndex - 1) * cellWidth;
+            currentCellIndex--;
+
+            tl?.Release();
+            tl = TweenLite.To(from, to, Duration, Cubic.EaseOut, v =>
+            {
+                content.x = v;
+            });
+
+            RefreshArrowState();
+        }
+
+        private void RefreshArrowState()
+        {
+            if (maxCellCount <= ShownCellCount)
+            {
+                ArrowShownStateChanged?.Invoke(this, new ArrowShownStateEventArgs { State = ArrowShownState.None });
+            }
+            else if (currentCellIndex + ShownCellCount >= maxCellCount)
+            {
+                ArrowShownStateChanged?.Invoke(this, new ArrowShownStateEventArgs { State = ArrowShownState.LeftOrTop });
+            }
+            else if (currentCellIndex - 1 < 0)
+            {
+                ArrowShownStateChanged?.Invoke(this, new ArrowShownStateEventArgs { State = ArrowShownState.RightOrBottom });
+            }
+            else
+            {
+                ArrowShownStateChanged?.Invoke(this, new ArrowShownStateEventArgs { State = ArrowShownState.Both });
+            }
+        }
+
+        /// <summary>
+        /// 下一页（暂未实现）
+        /// </summary>
+        public void MoveNextPage()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 上一页（暂未实现）
+        /// </summary>
+        public void MovePrevPage()
+        {
+            throw new NotImplementedException();
+        }
+
+        public event EventHandler<ArrowShownStateEventArgs> ArrowShownStateChanged;
+
+    }
+
+    public class ArrowShownStateEventArgs : EventArgs
+    {
+        public ArrowShownState State { get; set; }
+    }
+
+    public enum ArrowShownState
+    {
+        /// <summary>
+        /// 内容数量<=显示数量，不显示左右箭头
+        /// </summary>
+        None,
+
+        /// <summary>
+        /// 左右箭头都显示
+        /// </summary>
+        Both,
+
+        /// <summary>
+        /// 只显示左（上）箭头
+        /// </summary>
+        LeftOrTop,
+
+        /// <summary>
+        /// 只显示右（下）箭头
+        /// </summary>
+        RightOrBottom,
     }
 }

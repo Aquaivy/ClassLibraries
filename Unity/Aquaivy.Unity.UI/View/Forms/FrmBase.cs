@@ -5,7 +5,6 @@ namespace Aquaivy.Unity.UI
 {
     public abstract class FrmBase : UIElement
     {
-        //public abstract FrmType Type { get; }
         public abstract FrmLayer Layer { get; }
         public bool IsShowing { get; private set; }
 
@@ -15,12 +14,24 @@ namespace Aquaivy.Unity.UI
         protected TaskLite TaskAdder { set { tasks.Add(value); } }
         protected List<TaskLite> tasks = new List<TaskLite>();
 
+        protected List<TweenLite> Tweens
+        {
+            set
+            {
+                foreach (var item in value)
+                {
+                    TweenAdder = item;
+                }
+            }
+        }
+
         public FrmBase()
         {
 #if UNITY_EDITOR
             Name = "FrmBase";
 #endif
 
+            UIRootManager.AddForm(this);
             Hide();
         }
 
@@ -81,7 +92,10 @@ namespace Aquaivy.Unity.UI
             Close();
         }
 
-
+        /// <summary>
+        /// 由UIRootManager每帧调用一次，
+        /// 一般情况下请勿调用该方法
+        /// </summary>
         public virtual void RunUpdate(/*int milliseconds*/)
         {
             OnUpdate();
@@ -91,9 +105,6 @@ namespace Aquaivy.Unity.UI
         {
             tweens.ForEach(o => o?.Release());
             tasks.ForEach(o => o?.Release());
-
-            //alltls.ForEach(o => { if (o != null) o.Release(); });
-            //alltasks.ForEach(o => { if (o != null) o.Release(); });
         }
     }
 }

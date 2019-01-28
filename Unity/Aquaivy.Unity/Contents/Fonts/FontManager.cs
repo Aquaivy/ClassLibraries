@@ -31,8 +31,8 @@ namespace Aquaivy.Unity
         public static void Init()
         {
             var arial = Resources.Load<Font>("Arial");
-            font_zh = Resources.Load<Font>("Font/方正兰亭黑");
-            font_en = Resources.Load<Font>("Font/Helvetica");
+            font_zh = Resources.Load<Font>("Fonts/FZLTH");   //方正兰亭黑
+            font_en = Resources.Load<Font>("Fonts/Helvetica");
         }
 
         public static void SetDefaultFont(Font font) => DefaultFont = font;

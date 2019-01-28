@@ -22,103 +22,230 @@ namespace Aquaivy.Unity.UI
             return string.Format("({0:F6},{1:F6},{2:F6},{3:F6})", q.x, q.y, q.z, q.w);
         }
 
+
+        //public static List<T> GetComponents<T>(this UIElement element)
+        //{
+        //    var lst = new List<T>();
+
+        //    if (element is T)
+        //        lst.Add(element as T);
+
+        //    return null;
+        //}
+
         /// <summary>
         /// 获取所有包含UIImage组件的物体（包含自身和孩子）
         /// </summary>
-        /// <param name="parent"></param>
+        /// <param name="element"></param>
         /// <returns></returns>
-        //public static List<UIElement> GetAllAlphableElements(this UIElement parent)
+        //public static List<UIElement> GetColorableElements(this UIElement element)
         //{
         //    var lst = new List<UIElement>();
 
-        //    if (parent is IAlphable)
-        //        lst.Add(parent);
+        //    if (element is IColorable)
+        //        lst.Add(element);
 
-        //    foreach (var item in parent.AllChilds)
+        //    foreach (var item in element.AllChilds)
         //    {
-        //        if (item is IAlphable)
+        //        if (item is IColorable)
         //            lst.Add(item);
         //    }
 
         //    return lst;
         //}
 
-        //public static List<IAlphable> GetAllAlphable(this UIElement parent)
+        //public static List<IColorable> GetAlphableInterfaces(this UIElement element)
         //{
-        //    var allElements = parent.GetAllAlphableElements();
-        //    List<IAlphable> allAlpha = new List<IAlphable>(allElements.Count);
+        //    var allElements = element.GetColorableElements();
+        //    List<IColorable> allAlpha = new List<IColorable>(allElements.Count);
         //    for (int i = 0; i < allElements.Count; i++)
         //    {
-        //        allAlpha.Add(allElements[i] as IAlphable);
+        //        allAlpha.Add(allElements[i] as IColorable);
         //    }
 
         //    return allAlpha;
         //}
 
-        //public static TweenLite[] FadeInExtension(this UIElement element, float duration, Action callback)
-        //{
-        //    var all = element.GetAllAlphable();
-        //    float[] targetAlpha = new float[all.Count];
-        //    for (int i = 0; i < all.Count; i++)
-        //    {
-        //        targetAlpha[i] = all[i].Alpha;
-        //        all[i].Alpha = 0;
-        //    }
+        public static List<IColorable> GetAlphableInterfaces(this UIElement element)
+        {
+            List<IColorable> lstColorable = new List<IColorable>(4);
 
-        //    TweenLite[] tl = new TweenLite[all.Count];
+            if (element is IColorable)
+                lstColorable.Add(element as IColorable);
 
-        //    for (int i = 0; i < all.Count; i++)
-        //    {
-        //        int index = i;
+            var childs = element.AllChilds;
+            foreach (var item in childs)
+            {
+                if (item is IColorable)
+                    lstColorable.Add(item as IColorable);
+            }
 
-        //        tl[index] = TweenLite.To(0, targetAlpha[index], duration, Linear.EaseIn, v =>
-        //        {
-        //            all[index].Alpha = v;
-        //        }, () =>
-        //        {
-        //            all[index].Alpha = targetAlpha[index];
+            return lstColorable;
+        }
 
-        //            //只有在最后一个才回调
-        //            if (index == all.Count - 1)
-        //            {
-        //                //callback();
-        //            }
-        //        });
-        //    }
+        /// <summary>
+        /// 渐渐显示
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="duration"></param>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        public static List<TweenLite> FadeIn(this UIElement element, float duration, Action callback = null)
+        {
+            var all = element.GetAlphableInterfaces();
+            float[] targetAlpha = new float[all.Count];
+            for (int i = 0; i < all.Count; i++)
+            {
+                //targetAlpha[i] = all[i].Alpha;
+                targetAlpha[i] = 1;     //这里默认alpha恢复到1吧，不太好处理
+                all[i].Alpha = 0;
+            }
 
-        //    return tl;
-        //}
+            List<TweenLite> tl = new List<TweenLite>(all.Count);
 
-        //public static TweenLite[] FadeOutExtension(this UIElement element, float duration, Action callback)
-        //{
-        //    var all = element.GetAllAlphable();
-        //    float[] targetAlpha = new float[all.Count];
-        //    for (int i = 0; i < all.Count; i++)
-        //    {
-        //        targetAlpha[i] = all[i].Alpha;
-        //    }
+            for (int i = 0; i < all.Count; i++)
+            {
+                int index = i;
 
-        //    TweenLite[] tl = new TweenLite[all.Count];
+                var t = TweenLite.To(0, targetAlpha[index], duration, Linear.EaseIn, v =>
+                {
+                    all[index].Alpha = v;
+                }, () =>
+                {
+                    all[index].Alpha = targetAlpha[index];
 
-        //    for (int i = 0; i < all.Count; i++)
-        //    {
-        //        int index = i;
+                    //只有在最后一个才回调
+                    if (index == all.Count - 1)
+                    {
+                        callback?.Invoke();
+                    }
+                });
 
-        //        TweenLite.To(targetAlpha[index], 0, duration, Linear.EaseIn, v =>
-        //        {
-        //            all[index].Alpha = v;
-        //        }, () =>
-        //        {
-        //            //只有在最后一个才回调
-        //            if (index == all.Count - 1)
-        //            {
-        //                callback();
-        //            }
-        //        });
-        //    }
+                tl.Add(t);
+            }
 
-        //    return tl;
-        //}
+            return tl;
+        }
 
+        /// <summary>
+        /// 渐渐消失
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="duration"></param>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        public static List<TweenLite> FadeOut(this UIElement element, float duration, Action callback = null)
+        {
+            var all = element.GetAlphableInterfaces();
+            float[] targetAlpha = new float[all.Count];
+            for (int i = 0; i < all.Count; i++)
+            {
+                targetAlpha[i] = all[i].Alpha;
+            }
+
+            List<TweenLite> tl = new List<TweenLite>(all.Count);
+
+            for (int i = 0; i < all.Count; i++)
+            {
+                int index = i;
+
+                var t = TweenLite.To(targetAlpha[index], 0, duration, Linear.EaseIn, v =>
+                {
+                    all[index].Alpha = v;
+                }, () =>
+                {
+                    //只有在最后一个才回调
+                    if (index == all.Count - 1)
+                    {
+                        callback?.Invoke();
+                    }
+                });
+
+                tl.Add(t);
+            }
+
+            return tl;
+        }
+
+
+        public static List<TweenLite> FlyUp(this UIElement element, float duration, Displacement disY, Displacement disZ, Displacement disRot, Action callback = null)
+        {
+            List<TweenLite> tl = new List<TweenLite>(128);
+
+            //上移
+            float start_y = element.y;
+            float end_y = element.y - element.HarfHeight;
+            var t1 = TweenLite.To(disY.Start, disY.End, duration, Linear.EaseIn, v =>
+            {
+                element.y = v;
+            });
+
+            //后移
+            float start_z = element.z;
+            float end_z = element.z + element.Height;
+            var t2 = TweenLite.To(disZ.Start, disZ.End, duration, Linear.EaseIn, v =>
+            {
+                element.z = v;
+            });
+
+            //旋转
+            float start_rot = 0;
+            float end_rot = 90;
+            var t3 = TweenLite.To(disRot.Start, disRot.End, duration, Linear.EaseIn, v =>
+            {
+                element.SetRotation(v, 0, 0);
+            });
+
+            //逐渐消失
+            var t4 = element.FadeOut(duration, callback);
+
+
+            tl.Add(t1);
+            tl.Add(t2);
+            tl.Add(t3);
+            tl.AddRange(t4);
+
+            return tl;
+        }
+
+        public static List<TweenLite> FlyDown(this UIElement element, float duration, Displacement disY, Displacement disZ, Displacement disRot, Action callback = null)
+        {
+            List<TweenLite> tl = new List<TweenLite>(128);
+
+            //上移
+            float start_y = element.y;
+            float end_y = element.y - element.HarfHeight;
+            var t1 = TweenLite.To(disY.Start, disY.End, duration, Linear.EaseIn, v =>
+            {
+                element.y = v;
+            });
+
+            //后移
+            float start_z = element.z;
+            float end_z = element.z + element.Height;
+            var t2 = TweenLite.To(disZ.Start, disZ.End, duration, Linear.EaseIn, v =>
+            {
+                element.z = v;
+            });
+
+            //旋转
+            float start_rot = 0;
+            float end_rot = 90;
+            var t3 = TweenLite.To(disRot.Start, disRot.End, duration, Linear.EaseIn, v =>
+            {
+                element.SetRotation(v, 0, 0);
+            });
+
+            //逐渐消失
+            var t4 = element.FadeIn(duration, callback);
+
+
+            tl.Add(t1);
+            tl.Add(t2);
+            tl.Add(t3);
+            tl.AddRange(t4);
+
+            return tl;
+        }
     }
 }

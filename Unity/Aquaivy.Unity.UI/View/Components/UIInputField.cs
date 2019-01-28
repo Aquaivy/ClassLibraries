@@ -12,8 +12,8 @@ namespace Aquaivy.Unity.UI
     /// </summary>
     public class UIInputField : Selectable
     {
+        public Image image { get; set; }
         public InputField input { get; set; }
-        //public BoxCollider collider { get; set; }
 
         public UIInputField(float x, float y, float width, float height, string text, int fontsize, Color color)
         {
@@ -21,18 +21,8 @@ namespace Aquaivy.Unity.UI
             Name = "InputField";
 #endif
 
+            image = gameObject.AddComponent<Image>();
             input = gameObject.AddComponent<InputField>();
         }
-
-        /// <summary>
-        /// 重置Collider，使其与图像完全重合
-        /// </summary>
-        //public override void ResetCollider()
-        //{
-        //    collider.size = new Vector3(Width, Height, 0.1f);
-        //    float ccx = (0.5f - Pivot.x) * Width;
-        //    float ccy = (0.5f - Pivot.y) * Height;
-        //    collider.center = new Vector3(ccx, ccy, 0);
-        //}
     }
 }

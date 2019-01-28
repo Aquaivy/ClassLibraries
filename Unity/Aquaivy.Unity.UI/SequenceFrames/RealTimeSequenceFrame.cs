@@ -1,4 +1,4 @@
-﻿using Aquaivy.Core.Logs;
+﻿using Stark.Core.Logs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +9,14 @@ using UnityEngine.UI;
 
 namespace Aquaivy.Unity.UI
 {
-    public class SequenceFrame : Graphic, IImageable, ISequenceFrame
+    public class RealTimeSequenceFrame : Graphic, IImageable, ISequenceFrame
     {
         private List<string> frames = new List<string>();
         private bool isPlaying;
         private int rate;
         private int index;
         private int interval;
-        private DateTime lastFrameTime;
+        private DateTime startPlayTime;
         private TaskLite animationTask;
 
         public event Action<object> OnPlayedOver;
@@ -36,7 +36,7 @@ namespace Aquaivy.Unity.UI
         public int Rate
         {
             get { return rate; }
-            set { rate = value; interval = 1000 / rate; }
+            set { rate = value; interval = (int)(1000f / rate); }
         }
 
 
@@ -61,7 +61,7 @@ namespace Aquaivy.Unity.UI
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="pivot"></param>
-        public SequenceFrame(string pathPattern, int startIndex, int count, int rate, bool loop, bool autoSize, float x, float y, Vector2 pivot)
+        public RealTimeSequenceFrame(string pathPattern, int startIndex, int count, int rate, bool loop, bool autoSize, float x, float y, Vector2 pivot)
         {
 #if UNITY_EDITOR
             Name = "SequenceFrame";
@@ -89,30 +89,19 @@ namespace Aquaivy.Unity.UI
         /// pathPattern应形如：Images/Frames_{0:D3}.png 这种格式，
         /// 则会检测 Images/Frames_001.png,Images/Frames_002.png这样的图片
         /// </summary>
-        /// <param name="pathPattern"></param>
+        /// <param name="pathPattern">形如：Images/Frames_{0:D3}.png 这种格式</param>
         /// <param name="startIndex"></param>
         /// <param name="count"></param>
         public void SetFramesPath(string pathPattern, int startIndex, int count)
         {
-            SetFramesPath(pathPattern, startIndex, count, 1);
-        }
-
-        public void SetFramesPath(string pathPattern, int startIndex, int count, int interval)
-        {
-            if (interval < 1)
+            var frames = new List<string>(count);
+            for (int i = startIndex; i < startIndex + count; i++)
             {
-                Log.Warn("SequenceFrame.SetFramesPath(), interval must >=1");
-                interval = 1;
-            }
-
-            var framesPath = new List<string>(count / interval + 1);
-            for (int i = startIndex; i < startIndex + count; i += interval)
-            {
-                framesPath.Add(string.Format(pathPattern, i));
+                frames.Add(string.Format(pathPattern, i));
             }
             //Log.Info($"framesPath  Capacity={framesPath.Capacity}  Count={framesPath.Count}");
 
-            SetFramesPath(framesPath);
+            SetFramesPath(frames);
         }
 
         public void SetFramesPath(List<string> framesPath)
@@ -132,7 +121,7 @@ namespace Aquaivy.Unity.UI
             }
 
             if (AutoSize)
-                image.SetNativeSize();
+                SetNativeSize();
         }
 
         public void SetNativeSize()
@@ -161,7 +150,7 @@ namespace Aquaivy.Unity.UI
             }
 
             isPlaying = true;
-            lastFrameTime = DateTime.Now;
+            startPlayTime = DateTime.Now;
             SetImage(frames[index]);
 
             animationTask = TaskLite.Invoke(t =>
@@ -172,23 +161,22 @@ namespace Aquaivy.Unity.UI
                     return true;
                 }
 
-                if ((DateTime.Now - lastFrameTime).TotalMilliseconds < interval)
+                var now = DateTime.Now;
+                var elapse = (now - startPlayTime).TotalMilliseconds;
+                var standardized = elapse % (frames.Count * interval);
+                int index = (int)(standardized / interval);
+                if (this.index == index)
                     return false;
 
-                lastFrameTime = DateTime.Now;
-                index++;
-
-                if (index >= frames.Count)
-                {
-                    index = 0;
-                    if (!Loop)
-                    {
-                        OnPlayedOver?.Invoke(Tag);
-                        return true;
-                    }
-                }
-
+                this.index = index;
                 SetImage(frames[index]);
+
+                if (elapse >= frames.Count * interval
+                    && !Loop)
+                {
+                    OnPlayedOver?.Invoke(Tag);
+                    return true;
+                }
 
                 return false;
             });

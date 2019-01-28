@@ -3,14 +3,13 @@ using UnityEngine.UI;
 
 namespace Aquaivy.Unity.UI
 {
-    public class UIButton : Selectable, IImageable, IEnable
+    public class UIButton : Selectable, IImageable
     {
         private static readonly Vector3 minScale = new Vector3(0.95f, 0.95f, 1f);
 
         public Button button { get; set; }
         public Image image { get; set; }
         public UIText text { get; set; }
-        //public BoxCollider collider { get; set; }
 
         public bool IsClickScale { get; set; }
 
@@ -91,11 +90,19 @@ namespace Aquaivy.Unity.UI
             image.SetNativeSize();
         }
 
-
-        public bool Enable
+        public override bool Enable
         {
-            get { return button.enabled; }
-            set { button.enabled = value; }
+            get
+            {
+                return base.Enable;
+            }
+
+            set
+            {
+                if (button != null)
+                    button.enabled = value;
+                base.Enable = value;
+            }
         }
 
     }

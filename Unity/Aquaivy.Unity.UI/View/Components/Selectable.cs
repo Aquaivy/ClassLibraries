@@ -9,18 +9,21 @@ using UnityEngine.EventSystems;
 
 namespace Aquaivy.Unity.UI
 {
-    public abstract class Selectable : UIElement
+    public abstract class Selectable : UIElement, IEnable
     {
         public event PointerGazeEvent Click;
         public event PointerGazeEvent Enter;
         public event PointerGazeEvent Exit;
-        //public event PointerGazeEvent Move;
+        public event PointerGazeEvent Down;
+        public event PointerGazeEvent Up;
 
         private static Type inputHandlerType;
         private BaseInputHandler inputHandler;
 
         public Selectable()
         {
+            Enable = true;
+
             if (inputHandlerType == null)
                 inputHandlerType = InputManager.InputHandlerType;
 
@@ -31,11 +34,16 @@ namespace Aquaivy.Unity.UI
 
         private void RegistEvent()
         {
-            inputHandler.Click += data => Click?.Invoke(this, data);
-            inputHandler.Enter += data => Enter?.Invoke(this, data);
-            inputHandler.Exit += data => Exit?.Invoke(this, data);
-            //basePointerHandler.Move += data => Move?.Invoke(this, data);
+            inputHandler.Click += data => { if (Enable) Click?.Invoke(this, data); };
+
+            inputHandler.Enter += data => { if (Enable) Enter?.Invoke(this, data); };
+            inputHandler.Exit += data => { if (Enable) Exit?.Invoke(this, data); };
+
+            inputHandler.Down += data => { if (Enable) Down?.Invoke(this, data); };
+            inputHandler.Up += data => { if (Enable) Up?.Invoke(this, data); };
         }
+
+        public virtual bool Enable { get; set; }
     }
 
 }
