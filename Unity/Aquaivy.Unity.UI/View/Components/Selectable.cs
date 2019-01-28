@@ -1,4 +1,4 @@
-﻿using Aquaivy.Unity.UI.Input;
+﻿using Aquaivy.Unity.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;

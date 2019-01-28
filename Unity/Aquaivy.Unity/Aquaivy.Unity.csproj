@@ -74,6 +74,12 @@
     <Compile Include="Contents\Textures\TextureManager.cs" />
     <Compile Include="GameManager\GameManager.cs" />
     <Compile Include="GameManager\UpdateDelegate.cs" />
+    <Compile Include="Input\InputHandlers\BaseHoldHandler.cs" />
+    <Compile Include="Input\InputHandlers\BaseInputHandler.cs" />
+    <Compile Include="Input\InputManager.cs" />
+    <Compile Include="Input\PlatformInputHandlers\HololensInputHandler.cs" />
+    <Compile Include="Input\PlatformInputHandlers\StandaloneInputHandler.cs" />
+    <Compile Include="Input\PlatformInputHandlers\SunflowerInputHandler.cs" />
     <Compile Include="Logs\UnityAppender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tasks\DelayTask.cs" />

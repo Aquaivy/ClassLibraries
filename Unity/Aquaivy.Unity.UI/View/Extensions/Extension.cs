@@ -168,84 +168,84 @@ namespace Aquaivy.Unity.UI
         }
 
 
-        public static List<TweenLite> FlyUp(this UIElement element, float duration, Displacement disY, Displacement disZ, Displacement disRot, Action callback = null)
-        {
-            List<TweenLite> tl = new List<TweenLite>(128);
+        //public static List<TweenLite> FlyUp(this UIElement element, float duration, Displacement disY, Displacement disZ, Displacement disRot, Action callback = null)
+        //{
+        //    List<TweenLite> tl = new List<TweenLite>(128);
 
-            //上移
-            float start_y = element.y;
-            float end_y = element.y - element.HarfHeight;
-            var t1 = TweenLite.To(disY.Start, disY.End, duration, Linear.EaseIn, v =>
-            {
-                element.y = v;
-            });
+        //    //上移
+        //    float start_y = element.y;
+        //    float end_y = element.y - element.HarfHeight;
+        //    var t1 = TweenLite.To(disY.Start, disY.End, duration, Linear.EaseIn, v =>
+        //    {
+        //        element.y = v;
+        //    });
 
-            //后移
-            float start_z = element.z;
-            float end_z = element.z + element.Height;
-            var t2 = TweenLite.To(disZ.Start, disZ.End, duration, Linear.EaseIn, v =>
-            {
-                element.z = v;
-            });
+        //    //后移
+        //    float start_z = element.z;
+        //    float end_z = element.z + element.Height;
+        //    var t2 = TweenLite.To(disZ.Start, disZ.End, duration, Linear.EaseIn, v =>
+        //    {
+        //        element.z = v;
+        //    });
 
-            //旋转
-            float start_rot = 0;
-            float end_rot = 90;
-            var t3 = TweenLite.To(disRot.Start, disRot.End, duration, Linear.EaseIn, v =>
-            {
-                element.SetRotation(v, 0, 0);
-            });
+        //    //旋转
+        //    float start_rot = 0;
+        //    float end_rot = 90;
+        //    var t3 = TweenLite.To(disRot.Start, disRot.End, duration, Linear.EaseIn, v =>
+        //    {
+        //        element.SetRotation(v, 0, 0);
+        //    });
 
-            //逐渐消失
-            var t4 = element.FadeOut(duration, callback);
-
-
-            tl.Add(t1);
-            tl.Add(t2);
-            tl.Add(t3);
-            tl.AddRange(t4);
-
-            return tl;
-        }
-
-        public static List<TweenLite> FlyDown(this UIElement element, float duration, Displacement disY, Displacement disZ, Displacement disRot, Action callback = null)
-        {
-            List<TweenLite> tl = new List<TweenLite>(128);
-
-            //上移
-            float start_y = element.y;
-            float end_y = element.y - element.HarfHeight;
-            var t1 = TweenLite.To(disY.Start, disY.End, duration, Linear.EaseIn, v =>
-            {
-                element.y = v;
-            });
-
-            //后移
-            float start_z = element.z;
-            float end_z = element.z + element.Height;
-            var t2 = TweenLite.To(disZ.Start, disZ.End, duration, Linear.EaseIn, v =>
-            {
-                element.z = v;
-            });
-
-            //旋转
-            float start_rot = 0;
-            float end_rot = 90;
-            var t3 = TweenLite.To(disRot.Start, disRot.End, duration, Linear.EaseIn, v =>
-            {
-                element.SetRotation(v, 0, 0);
-            });
-
-            //逐渐消失
-            var t4 = element.FadeIn(duration, callback);
+        //    //逐渐消失
+        //    var t4 = element.FadeOut(duration, callback);
 
 
-            tl.Add(t1);
-            tl.Add(t2);
-            tl.Add(t3);
-            tl.AddRange(t4);
+        //    tl.Add(t1);
+        //    tl.Add(t2);
+        //    tl.Add(t3);
+        //    tl.AddRange(t4);
 
-            return tl;
-        }
+        //    return tl;
+        //}
+
+        //public static List<TweenLite> FlyDown(this UIElement element, float duration, Displacement disY, Displacement disZ, Displacement disRot, Action callback = null)
+        //{
+        //    List<TweenLite> tl = new List<TweenLite>(128);
+
+        //    //上移
+        //    float start_y = element.y;
+        //    float end_y = element.y - element.HarfHeight;
+        //    var t1 = TweenLite.To(disY.Start, disY.End, duration, Linear.EaseIn, v =>
+        //    {
+        //        element.y = v;
+        //    });
+
+        //    //后移
+        //    float start_z = element.z;
+        //    float end_z = element.z + element.Height;
+        //    var t2 = TweenLite.To(disZ.Start, disZ.End, duration, Linear.EaseIn, v =>
+        //    {
+        //        element.z = v;
+        //    });
+
+        //    //旋转
+        //    float start_rot = 0;
+        //    float end_rot = 90;
+        //    var t3 = TweenLite.To(disRot.Start, disRot.End, duration, Linear.EaseIn, v =>
+        //    {
+        //        element.SetRotation(v, 0, 0);
+        //    });
+
+        //    //逐渐消失
+        //    var t4 = element.FadeIn(duration, callback);
+
+
+        //    tl.Add(t1);
+        //    tl.Add(t2);
+        //    tl.Add(t3);
+        //    tl.AddRange(t4);
+
+        //    return tl;
+        //}
     }
 }
