@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Aquaivy.Core.Logs;
 using Aquaivy.Core.Utilities;
 
@@ -8,13 +10,61 @@ namespace UnitTest.Library
     {
         internal void Run()
         {
-            Test_Lang();
+            //Test_Lang();
             //Test_FileSize();
             //Test_PathEx();
             //Test_File();
             //Test_LineEndings();
             //Test_RandomName();
+            //Test_Converter();
+            Test_Stopwatch();
+        }
 
+        private void Test_Stopwatch()
+        {
+            //var sw = Stopwatch.StartNew();
+            //Log.Info($"{sw.ElapsedTicks}  {sw.ElapsedMilliseconds}  {sw.Elapsed}");
+            //Log.Info($"{sw.ElapsedTicks}  {sw.ElapsedMilliseconds}  {sw.Elapsed}");
+            //Log.Info($"{sw.ElapsedTicks}  {sw.ElapsedMilliseconds}  {sw.Elapsed}");
+            //sw.Stop();
+            //sw.Start();
+            //Log.Info($"{sw.ElapsedTicks}  {sw.ElapsedMilliseconds}  {sw.Elapsed}");
+            //sw.Stop();
+            //Log.Info($"{sw.ElapsedTicks}  {sw.ElapsedMilliseconds}  {sw.Elapsed}");
+            //Log.Info($"{sw.ElapsedTicks}  {sw.ElapsedMilliseconds}  {sw.Elapsed}");
+
+
+            Log.Info("");
+
+            StopwatchWrap.Start("sw1");
+            StopwatchWrap.Print("sw1");
+            StopwatchWrap.Print("sw1");
+            StopwatchWrap.Restart("sw1");
+            StopwatchWrap.Print("sw1");
+            StopwatchWrap.Print("sw1");
+            StopwatchWrap.Print("sw1");
+            StopwatchWrap.Stop("sw1");
+
+            Log.Info("");
+        }
+
+        private void Test_Converter()
+        {
+            //方案一
+            {
+                var list = new List<string>() { "11.5", "500.3" };
+                List<float> listint;
+                var ret = Converter.TryToList<float>(list, out listint);
+                Log.Info($"{ret}  {listint[0]}");
+            }
+
+            //方案二
+            {
+                var list = new List<int>() { 11, 500 };
+                List<string> strlist;
+                var ret = Converter.TryToList<int>(list, out strlist);
+                Log.Info($"{ret}  {strlist[1].GetType()}");
+            }
         }
 
         private void Test_RandomName()

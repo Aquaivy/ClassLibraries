@@ -55,6 +55,7 @@
     <Compile Include="Utilities\Character\CharOperation.cs" />
     <Compile Include="Utilities\Character\Chinese2Spell.cs" />
     <Compile Include="Utilities\Character\Chinese2SpellSimple.cs" />
+    <Compile Include="Utilities\Converter.cs" />
     <Compile Include="Utilities\Lang\CsvLanguage.cs" />
     <Compile Include="Utilities\Lang\ILanguage.cs" />
     <Compile Include="Utilities\Lang\JsonLanguage.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Utilities\Simulation\NameSimulation\NameSetting.cs" />
     <Compile Include="Utilities\Simulation\NameSimulation\NameSimulation.cs" />
     <Compile Include="Utilities\Character\SpecialChar.cs" />
+    <Compile Include="Utilities\Stopwatch.cs" />
     <Compile Include="Web\HttpUtils.cs" />
     <Content Include="Utilities\Lang\Lang.cs.txt" />
     <Compile Include="Utilities\MemorySize.cs" />
