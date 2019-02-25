@@ -104,6 +104,24 @@ namespace Aquaivy.Unity.UI
         }
 
         /// <summary>
+        /// 字体大小
+        /// </summary>
+        public int FontSize
+        {
+            get { return textComponent.fontSize; }
+            set { textComponent.fontSize = value; }
+        }
+
+        /// <summary>
+        /// 字体样式
+        /// </summary>
+        public FontStyle FontStyle
+        {
+            get { return textComponent.fontStyle; }
+            set { textComponent.fontStyle = value; }
+        }
+
+        /// <summary>
         /// 文字的锚点位置（左距中、右距中）
         /// </summary>
         public TextAnchor Alignment
@@ -114,15 +132,6 @@ namespace Aquaivy.Unity.UI
                 textComponent.alignment = value;
                 SetAnchor(value);
             }
-        }
-
-        /// <summary>
-        /// 字体大小
-        /// </summary>
-        public int FontSize
-        {
-            get { return textComponent.fontSize; }
-            set { textComponent.fontSize = value; }
         }
 
         /// <summary>
