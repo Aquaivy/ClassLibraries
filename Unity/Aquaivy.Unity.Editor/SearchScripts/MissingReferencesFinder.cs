@@ -1,23 +1,26 @@
 ﻿using System.Collections;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// A helper editor script for finding missing references to objects.
 /// </summary>
-public class MissingReferencesFinder : MonoBehaviour
+public class MissingReferencesFinder
 {
     private const string MENU_ROOT = "Tools/Missing References/";
 
     /// <summary>
     /// Finds all missing references to objects in the currently loaded scene.
     /// </summary>
-    [MenuItem(MENU_ROOT + "Search in scene", false, 50)]
+    [MenuItem(MENU_ROOT + "Search in current scene", false, 50)]
     public static void FindMissingReferencesInCurrentScene()
     {
+        var scenePath = EditorSceneManager.GetActiveScene().path;
         var sceneObjects = GetSceneObjects();
-        FindMissingReferences(EditorApplication.currentScene, sceneObjects);
+        FindMissingReferences(scenePath, sceneObjects);
     }
 
     /// <summary>
@@ -27,11 +30,28 @@ public class MissingReferencesFinder : MonoBehaviour
     [MenuItem(MENU_ROOT + "Search in all scenes", false, 51)]
     public static void MissingSpritesInAllScenes()
     {
+        //本想最后回到当前场景，但是发现current.path为空，先舍弃
+        //var current = EditorSceneManager.GetActiveScene();
+
         foreach (var scene in EditorBuildSettings.scenes.Where(s => s.enabled))
         {
-            EditorApplication.OpenScene(scene.path);
+            Debug.Log($"Begin analyze:    {scene.path}");
+            EditorSceneManager.OpenScene(scene.path, OpenSceneMode.Single);
             FindMissingReferencesInCurrentScene();
         }
+
+        //int totalInBuildSettings = EditorSceneManager.sceneCountInBuildSettings;
+        //for (int i = 0; i < totalInBuildSettings; i++)
+        //{
+        //    var scene = EditorSceneManager.GetSceneByBuildIndex(i);
+        //    scene.path
+        //}
+
+        //检索项目中所有场景的方法
+        //var scenes = AssetDatabase.GetAllAssetPaths()
+        //    .Where(path => path.EndsWith(".unity"))
+        //    .Where(path => path.StartsWith("Assets/"))
+        //    .ToList();
     }
 
     /// <summary>
@@ -57,7 +77,7 @@ public class MissingReferencesFinder : MonoBehaviour
                 // Missing components will be null, we can't find their type, etc.
                 if (!c)
                 {
-                    Debug.LogError("Missing Component in GO: " + GetFullPath(go), go);
+                    Debug.LogError($"Missing Component:  Path:{GetFullPath(go)}", go);
                     continue;
                 }
 
@@ -72,7 +92,7 @@ public class MissingReferencesFinder : MonoBehaviour
                         if (sp.objectReferenceValue == null
                             && sp.objectReferenceInstanceIDValue != 0)
                         {
-                            ShowError(context, go, c.GetType().Name, ObjectNames.NicifyVariableName(sp.name));
+                            PrintError(context, go, c.GetType().Name, ObjectNames.NicifyVariableName(sp.name));
                         }
                     }
                 }
@@ -82,23 +102,23 @@ public class MissingReferencesFinder : MonoBehaviour
 
     private static GameObject[] GetSceneObjects()
     {
-        // Use this method since GameObject.FindObjectsOfType will not return disabled objects.
+        // 因为 GameObject.FindObjectsOfType 不会返回 disabled 的对象
+        // 所以使用下面这个 Resources.FindObjectsOfTypeAll 方法
         return Resources.FindObjectsOfTypeAll<GameObject>()
             .Where(go => string.IsNullOrEmpty(AssetDatabase.GetAssetPath(go))
-                   && go.hideFlags == HideFlags.None).ToArray();
+            && go.hideFlags == HideFlags.None).ToArray();
     }
 
-    private static void ShowError(string context, GameObject go, string componentName, string propertyName)
+    private static void PrintError(string context, GameObject go, string component, string property)
     {
-        var ERROR_TEMPLATE = "Missing Ref in: [{3}]{0}. Component: {1}, Property: {2}";
-
-        Debug.LogError(string.Format(ERROR_TEMPLATE, GetFullPath(go), componentName, propertyName, context), go);
+        var error = $"Missing Reference:  Scene:[{context}]    Path:{GetFullPath(go)}    Component:{component}    Property:{property}";
+        Debug.LogError(error, go);
     }
 
     private static string GetFullPath(GameObject go)
     {
         return go.transform.parent == null
             ? go.name
-                : GetFullPath(go.transform.parent.gameObject) + "/" + go.name;
+            : GetFullPath(go.transform.parent.gameObject) + "/" + go.name;
     }
 }

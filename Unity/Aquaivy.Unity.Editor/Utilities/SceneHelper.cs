@@ -33,5 +33,13 @@ namespace Aquaivy.Unity.Editor
             }
             return lst;
         }
+
+
+
+        //方案二
+        //var scenes = AssetDatabase.GetAllAssetPaths()
+        //   .Where(path => path.EndsWith(".unity"))
+        //   .Where(path => path.StartsWith("Assets/"))
+        //   .ToList();
     }
 }
