@@ -10,24 +10,22 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class MissingReferencesFinder
 {
-    private const string MENU_ROOT = "Tools/Missing References/";
-
     /// <summary>
     /// Finds all missing references to objects in the currently loaded scene.
     /// </summary>
-    [MenuItem(MENU_ROOT + "Search in current scene", false, 50)]
+    [MenuItem("Tools/Missing References/Search in current scene", false, 50)]
     public static void FindMissingReferencesInCurrentScene()
     {
         var scenePath = EditorSceneManager.GetActiveScene().path;
-        var sceneObjects = GetSceneObjects();
-        FindMissingReferences(scenePath, sceneObjects);
+        var gameObjects = GetCurrentSceneGameObjects();
+        FindMissingReferences(scenePath, gameObjects);
     }
 
     /// <summary>
     /// Finds all missing references to objects in all enabled scenes in the project.
     /// This works by loading the scenes one by one and checking for missing object references.
     /// </summary>
-    [MenuItem(MENU_ROOT + "Search in all scenes", false, 51)]
+    [MenuItem("Tools/Missing References/Search in all scenes", false, 51)]
     public static void MissingSpritesInAllScenes()
     {
         //本想最后回到当前场景，但是发现current.path为空，先舍弃
@@ -57,7 +55,7 @@ public class MissingReferencesFinder
     /// <summary>
     /// Finds all missing references to objects in assets (objects from the project window).
     /// </summary>
-    [MenuItem(MENU_ROOT + "Search in assets", false, 52)]
+    [MenuItem("Tools/Missing References/Search in assets", false, 52)]
     public static void MissingSpritesInAssets()
     {
         var allAssets = AssetDatabase.GetAllAssetPaths().Where(path => path.StartsWith("Assets/")).ToArray();
@@ -100,13 +98,13 @@ public class MissingReferencesFinder
         }
     }
 
-    private static GameObject[] GetSceneObjects()
+    private static GameObject[] GetCurrentSceneGameObjects()
     {
         // 因为 GameObject.FindObjectsOfType 不会返回 disabled 的对象
         // 所以使用下面这个 Resources.FindObjectsOfTypeAll 方法
         return Resources.FindObjectsOfTypeAll<GameObject>()
-            .Where(go => string.IsNullOrEmpty(AssetDatabase.GetAssetPath(go))
-            && go.hideFlags == HideFlags.None).ToArray();
+            .Where(go => string.IsNullOrEmpty(AssetDatabase.GetAssetPath(go)) && go.hideFlags == HideFlags.None)
+            .ToArray();
     }
 
     private static void PrintError(string context, GameObject go, string component, string property)
@@ -115,6 +113,8 @@ public class MissingReferencesFinder
         Debug.LogError(error, go);
     }
 
+    // 获取完整路径
+    // （这个方案很赞）
     private static string GetFullPath(GameObject go)
     {
         return go.transform.parent == null
