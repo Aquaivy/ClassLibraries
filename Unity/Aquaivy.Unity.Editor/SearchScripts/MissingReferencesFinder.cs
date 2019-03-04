@@ -25,7 +25,7 @@ public class MissingReferencesFinder
     /// Finds all missing references to objects in all enabled scenes in the project.
     /// This works by loading the scenes one by one and checking for missing object references.
     /// </summary>
-    [MenuItem("Tools/Missing References/Search in all scenes", false, 51)]
+    [MenuItem("Tools/Missing References/Search in BuildSetting scenes（enabled only）", false, 51)]
     public static void MissingSpritesInAllScenes()
     {
         //本想最后回到当前场景，但是发现current.path为空，先舍弃
@@ -36,6 +36,11 @@ public class MissingReferencesFinder
             Debug.Log($"Begin analyze:    {scene.path}");
             EditorSceneManager.OpenScene(scene.path, OpenSceneMode.Single);
             FindMissingReferencesInCurrentScene();
+        }
+
+        if (EditorUtility.DisplayDialog("注意", "搜索结束，当前场景已发生修改，请手动切换回到您的场景", "OK"))
+        {
+
         }
 
         //int totalInBuildSettings = EditorSceneManager.sceneCountInBuildSettings;
