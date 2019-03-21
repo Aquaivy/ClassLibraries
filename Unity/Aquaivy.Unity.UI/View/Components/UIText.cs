@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Aquaivy.Unity.UI
@@ -9,7 +10,7 @@ namespace Aquaivy.Unity.UI
 
         public UnityEngine.UI.Text textComponent { get; set; }
 
-
+        [Obsolete("Obsolete")]
         public UIText(float x, float y, int fontsize, Color color)
             : this(string.Empty, x, y, fontsize, color,
                   TextAnchor.UpperLeft,
