@@ -31,15 +31,28 @@ namespace Aquaivy.Unity
         {
             if (m_tweeners.Count > 0)
             {
+                // 更新每一个tween
                 for (var i = 0; i < m_tweeners.Count; i++)
                 {
                     var tween = m_tweeners[i];
-                    if (tween.InternalUpdate(elapsedTime))
+                    if (!tween.waitRelease && tween.InternalUpdate(elapsedTime))
                     {
                         m_tweeners.RemoveAt(i);
                         i--;
                     }
                 }
+
+                // 移出被标记为waitRelease的
+                for (var i = 0; i < m_tweeners.Count; i++)
+                {
+                    var tween = m_tweeners[i];
+                    if (tween.waitRelease)
+                    {
+                        m_tweeners.RemoveAt(i);
+                        i--;
+                    }
+                }
+
             }
         }
 
@@ -216,9 +229,11 @@ namespace Aquaivy.Unity
             if (elapsed >= duration)
             {
                 elapsed = duration;
+
+                //方案一：本次计算已满足条件，不在调用onUpdate
                 //Position = from + change;
 
-                //这里补充一个执行最后1帧的代码
+                //方案二：调用onUpdate，补充一个执行最后1帧
                 Position = tweeningFunction(elapsed, from, change, duration);
                 if (onUpdate != null)
                     onUpdate(Position);
@@ -267,10 +282,12 @@ namespace Aquaivy.Unity
             from = Position;
         }
 
+
+        private bool waitRelease = false;
         public void Release()
         {
             Stop();
-            m_tweeners.Remove(this);
+            waitRelease = true;
         }
 
         //public override string ToString()
