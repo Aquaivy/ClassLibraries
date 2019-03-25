@@ -1,4 +1,8 @@
-﻿v0.0.3
+﻿v0.0.4
+1.弃用Texture Packer，使用SpriteAtlas
+
+
+v0.0.3
 1.添加 UIPrefab
 2.添加 UIAnimation
 3.添加 LOTUSSDK条件编译符

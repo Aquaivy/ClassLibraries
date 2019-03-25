@@ -177,11 +177,11 @@ namespace Aquaivy.Unity.UI
                 {
                     if (this.AnchorMin == this.AnchorMax)
                     {
-                        float parentx = (0.5f - this.AnchorMin.x) * Parent.Width;
-                        float parenty = (0.5f - this.AnchorMin.y) * Parent.Height;
+                        float parentx = (0.5f - this.AnchorMin.x) * Parent.Width * Parent.Scale.x;
+                        float parenty = (0.5f - this.AnchorMin.y) * Parent.Height * Parent.Scale.y;
 
-                        float selfx = (this.Pivot.x - 0.5f) * this.Width;
-                        float selfy = (this.Pivot.y - 0.5f) * this.Height;
+                        float selfx = (this.Pivot.x - 0.5f) * this.Width * this.Scale.x;
+                        float selfy = (this.Pivot.y - 0.5f) * this.Height * this.Scale.y;
 
                         SetPosition(parentx + selfx, -(parenty + selfy));
                     }
