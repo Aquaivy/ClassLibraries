@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\UnitTest\TaskLite\Test_TaskLite.cs" />
+    <Compile Include="Assets\UnitTest\TweenLite\Test_TweenLite.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

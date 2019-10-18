@@ -25,34 +25,42 @@ namespace Aquaivy.Unity
     {
         #region Static Members
 
+        private static readonly object m_tasklock = new object();
         private static List<TweenLite> m_tweeners = new List<TweenLite>();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="elapsedTime"></param>
         public static void Update(int elapsedTime)
         {
-            if (m_tweeners.Count > 0)
+            lock (m_tasklock)
             {
-                // 更新每一个tween
-                for (var i = 0; i < m_tweeners.Count; i++)
+                if (m_tweeners.Count > 0)
                 {
-                    var tween = m_tweeners[i];
-                    if (!tween.waitRelease && tween.InternalUpdate(elapsedTime))
+                    // 更新每一个tween
+                    for (var i = 0; i < m_tweeners.Count; i++)
                     {
-                        m_tweeners.RemoveAt(i);
-                        i--;
+                        var tween = m_tweeners[i];
+                        if (!tween.waitRelease && tween.InternalUpdate(elapsedTime))
+                        {
+                            m_tweeners.RemoveAt(i);
+                            i--;
+                        }
                     }
-                }
 
-                // 移出被标记为waitRelease的
-                for (var i = 0; i < m_tweeners.Count; i++)
-                {
-                    var tween = m_tweeners[i];
-                    if (tween.waitRelease)
+                    // 移出被标记为waitRelease的
+                    for (var i = 0; i < m_tweeners.Count; i++)
                     {
-                        m_tweeners.RemoveAt(i);
-                        i--;
+                        var tween = m_tweeners[i];
+                        if (tween.waitRelease)
+                        {
+                            m_tweeners.RemoveAt(i);
+                            i--;
+                        }
                     }
-                }
 
+                }
             }
         }
 
@@ -71,16 +79,25 @@ namespace Aquaivy.Unity
         /// <returns></returns>
         public static TweenLite To(float from, float to, float duration, TweeningFunction tweeningFunction, Action<float> onupdate, Action onend = null)
         {
-            var tween = new TweenLite(from, to, duration, tweeningFunction, onupdate);
-            if (onend != null)
-                tween.Ended += () => { onend(); };
-            m_tweeners.Add(tween);
-            return tween;
+            lock (m_tasklock)
+            {
+                var tween = new TweenLite(from, to, duration, tweeningFunction, onupdate);
+                if (onend != null)
+                    tween.Ended += () => { onend(); };
+                m_tweeners.Add(tween);
+                return tween;
+            }
         }
 
+        /// <summary>
+        /// 释放所有任务
+        /// </summary>
         public static void ReleaseAll()
         {
-            m_tweeners.ForEach(o => o.Release());
+            lock (m_tasklock)
+            {
+                m_tweeners.ForEach(o => o.Release());
+            }
         }
 
         #endregion
