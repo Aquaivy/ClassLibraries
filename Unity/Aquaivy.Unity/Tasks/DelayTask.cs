@@ -58,10 +58,6 @@ namespace Aquaivy.Unity
 
         private TaskLite taskLite;
 
-        public void Release()
-        {
-            Release(this);
-        }
 
         /// <summary>
         /// 压入一个延迟函数，按照时间来延迟
@@ -125,11 +121,28 @@ namespace Aquaivy.Unity
             return delayTask;
         }
 
+        /// <summary>
+        /// 释放某个任务
+        /// </summary>
+        /// <param name="delayTask"></param>
         public static void Release(DelayTask delayTask)
         {
             delayTask.taskLite.Release();
         }
 
+
+        /// <summary>
+        /// 释放这个任务
+        /// </summary>
+        public void Release()
+        {
+            Release(this);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             if (Type == DelayType.Time)

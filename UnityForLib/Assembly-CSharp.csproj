@@ -60,8 +60,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\UnitTest\TaskLite\Test_TaskLite.cs" />
-    <Compile Include="Assets\UnitTest\TweenLite\Test_TweenLite.cs" />
+    <Compile Include="Assets\UnitTest\01_TaskLite\Test_01_TaskLite.cs" />
+    <Compile Include="Assets\UnitTest\02_TweenLite\Test_02_TweenLite.cs" />
+    <Compile Include="Assets\UnitTest\03_ThrottleTask\Test_03_ThrottleTask.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -278,6 +279,18 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>D:/Softwares/Unity 2018.3.14/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="Aquaivy.Core">
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Assets/Libs/Aquaivy.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Aquaivy.Cryptography">
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Assets/Libs/Aquaivy.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Aquaivy.Unity">
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Assets/Libs/Aquaivy.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Aquaivy.Unity.UI">
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Assets/Libs/Aquaivy.Unity.UI.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -286,18 +299,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="Aquaivy.Core">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Assets/Libs/Aquaivy.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Aquaivy.Unity">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Assets/Libs/Aquaivy.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Aquaivy.Cryptography">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Assets/Libs/Aquaivy.Cryptography.dll</HintPath>
-    </Reference>
-    <Reference Include="Aquaivy.Unity.UI">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Assets/Libs/Aquaivy.Unity.UI.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:/Softwares/Unity 2018.3.14/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

@@ -50,7 +50,7 @@ namespace Aquaivy.Unity
 
         private void Start()
         {
-            Init();
+
         }
 
         private void Update()
