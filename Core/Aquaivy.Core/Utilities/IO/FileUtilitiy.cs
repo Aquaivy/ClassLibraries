@@ -100,7 +100,6 @@ namespace Aquaivy.Core.Utilities
         /// 获得文件行尾类型
         /// </summary>
         /// <param name="path"></param>
-        /// <param name="encoding"></param>
         public static void GetFileLineEndings(string path)
         {
             if (!File.Exists(path))

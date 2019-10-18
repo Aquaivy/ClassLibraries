@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Aquaivy.Core.Utilities
 {
+    /// <summary>
+    /// Path类扩展
+    /// </summary>
     public class PathEx
     {
         /// <summary>

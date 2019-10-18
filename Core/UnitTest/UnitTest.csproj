@@ -48,6 +48,7 @@
     <Compile Include="Library\Component.cs" />
     <Compile Include="Library\Serialize.cs" />
     <Compile Include="Library\Util.cs" />
+    <Compile Include="Library\Thread.cs" />
     <Compile Include="Library\Web.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

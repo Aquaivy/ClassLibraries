@@ -15,7 +15,7 @@ namespace UnitTest.Library
             //Test_PathEx();
             //Test_File();
             //Test_LineEndings();
-            Test_RandomName();
+            //Test_RandomName();
             //Test_Converter();
             //Test_Stopwatch();
         }
