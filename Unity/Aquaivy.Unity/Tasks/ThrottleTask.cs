@@ -28,20 +28,23 @@ namespace Aquaivy.Unity
     }
 
     /// <summary>
-    /// 延迟任务，可按照帧数或者ms毫秒值来延迟
+    /// 按照固定时间间隔执行的任务，
+    /// 可设置自动结束任务的方式
     /// </summary>
     public class ThrottleTask
     {
+        private static readonly object m_tasklock = new object();
+
         private ThrottleStopType stopType;
         private int stopValue;
 
         /// <summary>
-        /// 执行任务间隔时长，单位：ms
+        /// 每次执行任务间隔时长，单位：ms
         /// </summary>
         public int Interval;
 
         /// <summary>
-        /// 任务执行过的次数
+        /// 当前任务执行过的次数
         /// </summary>
         public int Times { get; private set; }
 
@@ -51,24 +54,47 @@ namespace Aquaivy.Unity
         public int Timer { get { return taskLite.Timer; } }
 
         /// <summary>
-        /// 剩余时间
+        /// 剩余时间（只有当stopType为Duration时才有意义）
         /// </summary>
-        public int TimerRemaining { get { return stopValue - taskLite.Timer; } }
+        public int TimerRemaining
+        {
+            get
+            {
+                if (stopType == ThrottleStopType.Duration)
+                    return stopValue - Timer;
+
+                return 0;
+            }
+        }
 
         /// <summary>
         /// 关联数据
         /// </summary>
         public object Tag;
 
+        /// <summary>
+        /// Task
+        /// </summary>
         public Action Task;
 
         private TaskLite taskLite;
 
         private int lastRunTime = 0;
 
+        /// <summary>
+        /// 压入一个任务，按照一定时间间隔来执行
+        /// </summary>
+        /// <param name="task"></param>
+        /// <param name="interval"></param>
+        /// <param name="tag"></param>
+        /// <returns></returns>
+        public static ThrottleTask Invoke(Action task, int interval, object tag = null)
+        {
+            return Invoke(task, interval, ThrottleStopType.Forever, 0, tag);
+        }
 
         /// <summary>
-        /// 压入一个延迟函数，按照时间来延迟
+        /// 压入一个任务，按照一定时间间隔来执行
         /// </summary>
         /// <param name="task"></param>
         /// <param name="interval"></param>
@@ -76,44 +102,47 @@ namespace Aquaivy.Unity
         /// <param name="stopValue"></param>
         /// <param name="tag"></param>
         /// <returns></returns>
-        public static ThrottleTask Invoke(Action task, int interval, ThrottleStopType stopType = ThrottleStopType.Forever, int stopValue = 0, object tag = null)
+        public static ThrottleTask Invoke(Action task, int interval, ThrottleStopType stopType, int stopValue, object tag = null)
         {
-            var throttleTask = new ThrottleTask
+            lock (m_tasklock)
             {
-                Task = task,
-                Interval = interval,
-                stopType = stopType,
-                stopValue = stopValue,
-                Tag = tag
-            };
-
-            throttleTask.taskLite = TaskLite.Invoke(t =>
-            {
-                if (t < throttleTask.lastRunTime + throttleTask.Interval)
-                    return false;
-
-                throttleTask.lastRunTime = t;
-
-                task?.Invoke();
-
-                throttleTask.Times++;
-
-                if (throttleTask.stopType == ThrottleStopType.Times)
+                var throttleTask = new ThrottleTask
                 {
-                    return throttleTask.Times >= stopValue;
-                }
-                else if (throttleTask.stopType == ThrottleStopType.Duration)
-                {
-                    return throttleTask.Timer >= stopValue;
-                }
-                else
-                {
-                    return false;
-                }
+                    Task = task,
+                    Interval = interval,
+                    stopType = stopType,
+                    stopValue = stopValue,
+                    Tag = tag
+                };
 
-            });
+                throttleTask.taskLite = TaskLite.Invoke(t =>
+                {
+                    if (t < throttleTask.lastRunTime + throttleTask.Interval)
+                        return false;
 
-            return throttleTask;
+                    throttleTask.lastRunTime = t;
+
+                    task?.Invoke();
+
+                    throttleTask.Times++;
+
+                    if (throttleTask.stopType == ThrottleStopType.Times)
+                    {
+                        return throttleTask.Times >= stopValue;
+                    }
+                    else if (throttleTask.stopType == ThrottleStopType.Duration)
+                    {
+                        return throttleTask.Timer >= stopValue;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                });
+
+                return throttleTask;
+            }
         }
 
         /// <summary>
@@ -122,9 +151,11 @@ namespace Aquaivy.Unity
         /// <param name="throttleTask"></param>
         public static void Release(ThrottleTask throttleTask)
         {
-            throttleTask.taskLite.Release();
+            lock (m_tasklock)
+            {
+                throttleTask.taskLite.Release();
+            }
         }
-
 
         /// <summary>
         /// 释放这个任务

@@ -21,6 +21,10 @@ namespace NameSpace_Test_TaskLite
             {
                 CreateThrottleTask();
             }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                TaskLite.ReleaseAll();
+            }
         }
 
         private void CreateThrottleTask()
