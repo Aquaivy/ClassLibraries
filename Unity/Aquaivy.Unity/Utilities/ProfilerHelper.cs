@@ -7,6 +7,9 @@ using UnityEngine.Profiling;
 
 namespace Aquaivy.Unity.Utilities
 {
+    /// <summary>
+    /// Unity Profiler调试工具，可加入自定义监测项目
+    /// </summary>
     public class ProfilerHelper
     {
         public static bool EnableProfilerSample = true;

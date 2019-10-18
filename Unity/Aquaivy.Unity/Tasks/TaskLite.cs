@@ -63,6 +63,7 @@ namespace Aquaivy.Unity
 
         #region 静态方法
 
+        private static readonly object m_tasklock = new object();
         private static List<TaskLite> m_tasks = new List<TaskLite>(8);
         private static int currentOperateTaskIndex = 0;
 
@@ -77,14 +78,18 @@ namespace Aquaivy.Unity
         /// <returns></returns>
         public static TaskLite Invoke(Func<int, bool> action, int delayFrame = 0, object tag = null)
         {
-            var r = new TaskLite
+            lock (m_tasklock)
             {
-                Func = action,
-                DelayFrame = delayFrame,
-                Tag = tag
-            };
-            m_tasks.Add(r);
-            return r;
+                var r = new TaskLite
+                {
+                    Func = action,
+                    DelayFrame = delayFrame,
+                    Tag = tag
+                };
+
+                m_tasks.Add(r);
+                return r;
+            }
         }
 
         /// <summary>
@@ -93,37 +98,40 @@ namespace Aquaivy.Unity
         /// <param name="elapseTime"></param>
         public static void Update(int elapseTime)
         {
-            if (m_tasks.Count <= 0)
-                return;
-
-            for (currentOperateTaskIndex = 0; currentOperateTaskIndex < m_tasks.Count; currentOperateTaskIndex++)
+            lock (m_tasklock)
             {
-                var task = m_tasks[currentOperateTaskIndex];
-                task.Timer += elapseTime;
-                task.Frame++;
+                if (m_tasks.Count <= 0)
+                    return;
 
-                if (task.Frame >= task.DelayFrame)
+                for (currentOperateTaskIndex = 0; currentOperateTaskIndex < m_tasks.Count; currentOperateTaskIndex++)
                 {
-                    try
-                    {
-                        task.IsDone = task.Func(task.Timer);
+                    var task = m_tasks[currentOperateTaskIndex];
+                    task.Timer += elapseTime;
+                    task.Frame++;
 
-                        if (task.IsDone)
-                        {
-                            Release(task);
-                        }
-                    }
-                    catch (Exception ex)
+                    if (task.Frame >= task.DelayFrame)
                     {
+                        try
+                        {
+                            task.IsDone = task.Func(task.Timer);
+
+                            if (task.IsDone)
+                            {
+                                Release(task);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
 #if DEBUG || UNITY_EDITOR
-                        Log.Error("run tasklite.invoke fail. {0} \n{1}", ex.Message, ex.StackTrace);
+                            Log.Error("run tasklite.invoke fail. {0} \n{1}", ex.Message, ex.StackTrace);
 #else
                         Log.Error("run tasklite.invoke fail. {0}", ex.Message);
 #endif
 
-                        Release(task);
-                    }
+                            Release(task);
+                        }
 
+                    }
                 }
             }
         }
@@ -131,32 +139,45 @@ namespace Aquaivy.Unity
 
         private static void Release(TaskLite task)
         {
-            int index = m_tasks.IndexOf(task);
-            if (index < 0)
-                return;
+            lock (m_tasklock)
+            {
+                int index = m_tasks.IndexOf(task);
+                if (index < 0)
+                    return;
 
-            int current = currentOperateTaskIndex;
-            if (index <= current)
-            {
-                //移除当前索引之前的task
-                //移除当前索引的task
-                m_tasks.RemoveAt(index);
-                currentOperateTaskIndex--;
-            }
-            else
-            {
-                //移除当前索引的之后的task
-                m_tasks.RemoveAt(index);
+                int current = currentOperateTaskIndex;
+                if (index <= current)
+                {
+                    //移除当前索引之前的task
+                    //移除当前索引的task
+                    m_tasks.RemoveAt(index);
+                    currentOperateTaskIndex--;
+                }
+                else
+                {
+                    //移除当前索引的之后的task
+                    m_tasks.RemoveAt(index);
+                }
             }
         }
 
+        /// <summary>
+        /// 释放所有task任务
+        /// </summary>
         public static void ReleaseAll()
         {
-            m_tasks.Clear();
-            currentOperateTaskIndex = 0;
+            lock (m_tasklock)
+            {
+                m_tasks.Clear();
+                currentOperateTaskIndex = 0;
+            }
         }
 
-        public static string GetInfo()
+        /// <summary>
+        /// 返回task数量信息
+        /// </summary>
+        /// <returns></returns>
+        public static string Debug_GetInfo()
         {
             return $"All TaskLites count: {m_tasks.Count}";
         }

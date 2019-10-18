@@ -1,5 +1,4 @@
 ﻿using Aquaivy.Unity;
-using Aquaivy.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +50,7 @@ namespace Aquaivy.Unity
 
         private void Start()
         {
-
+            Init();
         }
 
         private void Update()
