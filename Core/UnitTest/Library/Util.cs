@@ -15,9 +15,9 @@ namespace UnitTest.Library
             //Test_PathEx();
             //Test_File();
             //Test_LineEndings();
-            //Test_RandomName();
+            Test_RandomName();
             //Test_Converter();
-            Test_Stopwatch();
+            //Test_Stopwatch();
         }
 
         private void Test_Stopwatch()
@@ -69,25 +69,34 @@ namespace UnitTest.Library
 
         private void Test_RandomName()
         {
-            //Logs.Info(Chinese2Spell.Convert("替换图片"));
-            //Logs.Info(Chinese2SpellSimple.GetPYString("替换图片"));
+            //Log.Info(Chinese2Spell.Convert("替换图片"));
+            //Log.Info(Chinese2SpellSimple.GetPYString("替换图片"));
+
+            for (int i = 0; i < 20; i++)
+            {
+                Log.Info(NameSimulation.GetRandomChineseName());
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                Log.Info(NameSimulation.GetRandomEnglishName());
+            }
 
             //var lst = NameSimulation.GetRandomChineseNames(ChineseNameSetting.Default, 20);
             //for (int i = 0; i < lst.Count; i++)
             //{
-            //    Logs.Info(lst[i]);
+            //    Log.Info(lst[i]);
             //}
 
-            var lst = NameSimulation.GetRandomEnglishNames(EnglishNameSetting.Default, 20);
-            for (int i = 0; i < lst.Count; i++)
-            {
-                Log.Info(lst[i]);
-            }
+            //var lst = NameSimulation.GetRandomEnglishNames(EnglishNameSetting.Default, 20);
+            //for (int i = 0; i < lst.Count; i++)
+            //{
+            //    Log.Info(lst[i]);
+            //}
 
-            //Logs.Info(ChineseWordLibrary.Common.Length.ToString());
-            //Logs.Info(ChineseWordLibrary.Family.Length.ToString());
-            //Logs.Info(ChineseWordLibrary.CompoundFamily.Length.ToString());
-            //Logs.Info(EnglishNameLibrary.FirstName.Length.ToString());
+            //Log.Info(ChineseWordLibrary.Common.Length.ToString());
+            //Log.Info(ChineseWordLibrary.Family.Length.ToString());
+            //Log.Info(ChineseWordLibrary.CompoundFamily.Length.ToString());
+            //Log.Info(EnglishNameLibrary.FirstName.Length.ToString());
         }
 
         private void Test_LineEndings()
@@ -102,7 +111,7 @@ namespace UnitTest.Library
             var files = FileUtilitiy.GetFilesSize(@"D:\----------------替换图片", "*.*", System.IO.SearchOption.AllDirectories);
             //foreach (var item in files)
             //{
-            //    Logs.Info(item);
+            //    Log.Info(item);
             //}
             Log.Info("" + files.TotalKBs);
             Log.Info("" + files.TotalMBs);
@@ -110,43 +119,43 @@ namespace UnitTest.Library
 
         private void Test_PathEx()
         {
-            //Logs.Info(PathEx.GetDirectoryName(@"D:\Parent\file.txt"));
-            //Logs.Info(PathEx.GetDirectoryName(@"\Parent\file.txt"));
-            //Logs.Info(PathEx.GetDirectoryName(@"Parent\file.txt"));
-            //Logs.Info(PathEx.GetDirectoryName(@"\file.txt"));
-            //Logs.Info(PathEx.GetDirectoryName(@"file.txt"));
-            //Logs.Info(PathEx.GetDirectoryName(@"D:\Parent\file\"));
-            //Logs.Info(PathEx.GetDirectoryName(@"D:\Parent\file"));
-            //Logs.Info(PathEx.GetDirectoryName(@"\Parent\file"));
-            //Logs.Info(PathEx.GetDirectoryName(@"\file"));
-            //Logs.Info(PathEx.GetDirectoryName(@"\"));
+            //Log.Info(PathEx.GetDirectoryName(@"D:\Parent\file.txt"));
+            //Log.Info(PathEx.GetDirectoryName(@"\Parent\file.txt"));
+            //Log.Info(PathEx.GetDirectoryName(@"Parent\file.txt"));
+            //Log.Info(PathEx.GetDirectoryName(@"\file.txt"));
+            //Log.Info(PathEx.GetDirectoryName(@"file.txt"));
+            //Log.Info(PathEx.GetDirectoryName(@"D:\Parent\file\"));
+            //Log.Info(PathEx.GetDirectoryName(@"D:\Parent\file"));
+            //Log.Info(PathEx.GetDirectoryName(@"\Parent\file"));
+            //Log.Info(PathEx.GetDirectoryName(@"\file"));
+            //Log.Info(PathEx.GetDirectoryName(@"\"));
 
-            //Logs.Info(PathEx.GetParentDirectoryName(@"D:\Parent\file.txt"));
-            //Logs.Info(PathEx.GetParentDirectoryName(@"\Parent\file.txt"));
-            //Logs.Info(PathEx.GetParentDirectoryName(@"Parent\file.txt"));
-            //Logs.Info(PathEx.GetParentDirectoryName(@"\file.txt"));
-            //Logs.Info(PathEx.GetParentDirectoryName(@"file.txt"));
-            //Logs.Info(PathEx.GetParentDirectoryName(@"D:\Parent\file\"));
-            //Logs.Info(PathEx.GetParentDirectoryName(@"D:\Parent\file"));
-            //Logs.Info(PathEx.GetParentDirectoryName(@"\Parent\file"));
-            //Logs.Info(PathEx.GetParentDirectoryName(@"\file"));
-            //Logs.Info(PathEx.GetParentDirectoryName(@"\"));
+            //Log.Info(PathEx.GetParentDirectoryName(@"D:\Parent\file.txt"));
+            //Log.Info(PathEx.GetParentDirectoryName(@"\Parent\file.txt"));
+            //Log.Info(PathEx.GetParentDirectoryName(@"Parent\file.txt"));
+            //Log.Info(PathEx.GetParentDirectoryName(@"\file.txt"));
+            //Log.Info(PathEx.GetParentDirectoryName(@"file.txt"));
+            //Log.Info(PathEx.GetParentDirectoryName(@"D:\Parent\file\"));
+            //Log.Info(PathEx.GetParentDirectoryName(@"D:\Parent\file"));
+            //Log.Info(PathEx.GetParentDirectoryName(@"\Parent\file"));
+            //Log.Info(PathEx.GetParentDirectoryName(@"\file"));
+            //Log.Info(PathEx.GetParentDirectoryName(@"\"));
 
-            //Logs.Info(PathEx.GetPathWithoutExtension(@"D:\Parent\file.txt"));
-            //Logs.Info(PathEx.GetPathWithoutExtension(@"\Parent\file.txt"));
-            //Logs.Info(PathEx.GetPathWithoutExtension(@"Parent\file.txt"));
-            //Logs.Info(PathEx.GetPathWithoutExtension(@"\file.txt"));
-            //Logs.Info(PathEx.GetPathWithoutExtension(@"file.txt"));
-            //Logs.Info(PathEx.GetPathWithoutExtension(@"D:\Parent\file\"));
-            //Logs.Info(PathEx.GetPathWithoutExtension(@"D:\Parent\file"));
-            //Logs.Info(PathEx.GetPathWithoutExtension(@"\Parent\file"));
-            //Logs.Info(PathEx.GetPathWithoutExtension(@"\file"));
-            //Logs.Info(PathEx.GetPathWithoutExtension(@"\"));
+            //Log.Info(PathEx.GetPathWithoutExtension(@"D:\Parent\file.txt"));
+            //Log.Info(PathEx.GetPathWithoutExtension(@"\Parent\file.txt"));
+            //Log.Info(PathEx.GetPathWithoutExtension(@"Parent\file.txt"));
+            //Log.Info(PathEx.GetPathWithoutExtension(@"\file.txt"));
+            //Log.Info(PathEx.GetPathWithoutExtension(@"file.txt"));
+            //Log.Info(PathEx.GetPathWithoutExtension(@"D:\Parent\file\"));
+            //Log.Info(PathEx.GetPathWithoutExtension(@"D:\Parent\file"));
+            //Log.Info(PathEx.GetPathWithoutExtension(@"\Parent\file"));
+            //Log.Info(PathEx.GetPathWithoutExtension(@"\file"));
+            //Log.Info(PathEx.GetPathWithoutExtension(@"\"));
 
 
-            //Logs.Info(PathEx.GetNewFileName(@"D:\Parent\file.txt", "222"));
+            //Log.Info(PathEx.GetNewFileName(@"D:\Parent\file.txt", "222"));
 
-            //Logs.Info(PathEx.ChangeSeparatorToPositive(@"D:\\Parent\\file.txt"));
+            //Log.Info(PathEx.ChangeSeparatorToPositive(@"D:\\Parent\\file.txt"));
 
             Log.Info(@"D:\\Parent\\file.txt");
             Log.Info(PathEx.ChangeEscapeToPath("D:\\\"Parent\\file.txt"));

@@ -90,10 +90,7 @@ namespace Aquaivy.Core.Utilities
                 {
                     defaultSetting = new EnglishNameSetting
                     {
-                        //MinLength = 2,
-                        //MaxLength = 4,
                         CanUseSpecialChar = false,
-                        LengthWeight = new int[] { 0, 100, 100, 10 }
                     };
                 }
 

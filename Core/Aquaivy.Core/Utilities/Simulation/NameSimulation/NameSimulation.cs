@@ -8,58 +8,21 @@ using System.Threading.Tasks;
 namespace Aquaivy.Core.Utilities
 {
     /// <summary>
-    /// 随机名字
+    /// 随机名字模拟器
     /// </summary>
     public class NameSimulation
     {
         private static Random random = new Random();
 
-        /// <summary>
-        /// 返回一个中文姓氏
-        /// （5%的概率返回2个字的复姓）
-        /// </summary>
-        /// <returns></returns>
-        public static string GetRandomChineseFamilyName(bool useCompoundFamily)
-        {
-            string family = string.Empty;
-            if (useCompoundFamily && random.Next(100) < 5)
-            {
-                family = ChineseNameLibrary.CompoundFamily[random.Next(ChineseNameLibrary.CompoundFamilyLength)];
-            }
-            else
-            {
-                family = ChineseNameLibrary.Family[random.Next(ChineseNameLibrary.FamilyLength)];
-            }
-
-            return family;
-        }
+        #region Chinese Name
 
         /// <summary>
-        /// 返回一个中文名
-        /// （不包含姓，5%概率出现叠名）
+        /// 返回一个随机中文名，包含"姓"+"名"
         /// </summary>
         /// <returns></returns>
-        public static string GetRandomChinesePersonalName(int length)
+        public static string GetRandomChineseName()
         {
-            if (length < 0)
-                return string.Empty;
-
-            string name = string.Empty;
-            if (length == 2 && random.Next(100) < 5)
-            {
-                //5%的概率使用叠词 ^_^
-                name = ChineseNameLibrary.Common[random.Next(ChineseNameLibrary.CommonLength)].ToString();
-                name += name;
-            }
-            else
-            {
-                for (int i = 0; i < length; i++)
-                {
-                    name += ChineseNameLibrary.Common[random.Next(ChineseNameLibrary.CommonLength)].ToString();
-                }
-            }
-
-            return name;
+            return GetRandomChineseName(ChineseNameSetting.Default);
         }
 
         /// <summary>
@@ -97,23 +60,84 @@ namespace Aquaivy.Core.Utilities
         }
 
         /// <summary>
+        /// 返回一个中文姓氏
+        /// （5%的概率返回2个字的复姓）
+        /// </summary>
+        /// <returns></returns>
+        public static string GetRandomChineseFamilyName(bool useCompoundFamily)
+        {
+            string family = string.Empty;
+            if (useCompoundFamily && random.Next(100) < 5)
+            {
+                family = ChineseNameLibrary.CompoundFamily[random.Next(ChineseNameLibrary.CompoundFamilyLength)];
+            }
+            else
+            {
+                family = ChineseNameLibrary.Family[random.Next(ChineseNameLibrary.FamilyLength)];
+            }
+
+            return family;
+        }
+
+        /// <summary>
+        /// 返回一个中文名
+        /// （不包含姓，5%概率出现叠名）
+        /// </summary>
+        /// <returns></returns>
+        public static string GetRandomChinesePersonalName(int length = 2)
+        {
+            if (length < 0)
+                return string.Empty;
+
+            string name = string.Empty;
+            if (length == 2 && random.Next(100) < 5)
+            {
+                //5%的概率使用叠词 ^_^
+                name = ChineseNameLibrary.Common[random.Next(ChineseNameLibrary.CommonLength)].ToString();
+                name += name;
+            }
+            else
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    name += ChineseNameLibrary.Common[random.Next(ChineseNameLibrary.CommonLength)].ToString();
+                }
+            }
+
+            return name;
+        }
+
+        /// <summary>
         /// 随机给定数量个中文名字。
         /// 2-3个汉字，小概率4个汉字
         /// </summary>
         /// <param name="count"></param>
         /// <returns></returns>
-        public static List<string> GetRandomChineseNames(ChineseNameSetting setting, int count)
+        //public static List<string> GetRandomChineseNames(ChineseNameSetting setting, int count)
+        //{
+        //    if (count <= 0)
+        //        throw new ArgumentException();
+
+        //    var lst = new List<string>(count);
+        //    for (int i = 0; i < count; i++)
+        //    {
+        //        lst.Add(GetRandomChineseName(setting));
+        //    }
+
+        //    return lst;
+        //}
+
+        #endregion
+
+
+        #region English Name
+        /// <summary>
+        /// 随机一个英文名字。
+        /// </summary>
+        /// <returns></returns>
+        public static string GetRandomEnglishName()
         {
-            if (count <= 0)
-                throw new ArgumentException();
-
-            var lst = new List<string>(count);
-            for (int i = 0; i < count; i++)
-            {
-                lst.Add(GetRandomChineseName(setting));
-            }
-
-            return lst;
+            return GetRandomEnglishName(EnglishNameSetting.Default);
         }
 
         /// <summary>
@@ -124,6 +148,20 @@ namespace Aquaivy.Core.Utilities
         public static string GetRandomEnglishName(EnglishNameSetting setting)
         {
             string name = EnglishNameLibrary.FirstName[random.Next(EnglishNameLibrary.FirstNameLength)];
+
+            if (setting.UseChineseFamilyName)
+            {
+                string chineseName = GetRandomChineseFamilyName(true);
+                if (setting.LastNameInFront)
+                {
+                    name = chineseName + "." + name;
+                }
+                else
+                {
+                    name = name + "." + chineseName;
+                }
+            }
+
             return name;
         }
 
@@ -133,19 +171,21 @@ namespace Aquaivy.Core.Utilities
         /// <param name="setting"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public static List<string> GetRandomEnglishNames(EnglishNameSetting setting, int count)
-        {
-            if (count <= 0)
-                throw new ArgumentException();
+        //public static List<string> GetRandomEnglishNames(EnglishNameSetting setting, int count)
+        //{
+        //    if (count <= 0)
+        //        throw new ArgumentException();
 
-            var lst = new List<string>(count);
-            for (int i = 0; i < count; i++)
-            {
-                lst.Add(GetRandomEnglishName(setting));
-            }
+        //    var lst = new List<string>(count);
+        //    for (int i = 0; i < count; i++)
+        //    {
+        //        lst.Add(GetRandomEnglishName(setting));
+        //    }
 
-            return lst;
-        }
+        //    return lst;
+        //}
+        #endregion
+
 
     }
 }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Aquaivy.Core.Utilities
 {
+    /// <summary>
+    /// 中文所有姓氏
+    /// </summary>
     public class ChineseNameLibrary
     {
         /// <summary>
