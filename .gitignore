@@ -7,6 +7,7 @@ UnityForLib/Library/
 UnityForLib/Logs/
 UnityForLib/Packages/
 UnityForLib/Temp/
+UnityForLib/Assets/Libs/
 
 # User-specific files
 *.suo

@@ -8,8 +8,10 @@ using UnityEngine;
 
 namespace NameSpace_Test_TaskLite
 {
-    public class Test_TaskLite : MonoBehaviour
+    public class Test_TweenLite : MonoBehaviour
     {
+        public GameObject cube;
+
         private void Start()
         {
 
@@ -31,10 +33,9 @@ namespace NameSpace_Test_TaskLite
                 int idx = i;
                 Thread thread = new Thread(() =>
                 {
-                    TaskLite.Invoke(t =>
+                    TweenLite.To(0, 10, 2000, Linear.EaseIn, v =>
                     {
-                        Debug.Log($"{name}  {idx}");
-                        return true;
+                        cube.transform.position = new Vector3(0, 0, v);
                     });
                 });
                 thread.Start();
