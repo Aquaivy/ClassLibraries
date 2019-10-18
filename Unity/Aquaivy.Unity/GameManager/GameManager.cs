@@ -1,4 +1,6 @@
-﻿using Aquaivy.Unity;
+﻿using Aquaivy.Core.Logs;
+using Aquaivy.Unity;
+using Aquaivy.Unity.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +11,12 @@ using UnityEngine;
 namespace Aquaivy.Unity
 {
     /// <summary>
-    /// Unity模块的基础管理器，
-    /// 使用其他模块前先调用GameManager.Init()
+    /// Unity模块的基础管理器
     /// </summary>
-    public class GameManager : MonoBehaviour
+    public class GameManager : UnitySingleton<GameManager>
     {
-        private static GameObject gameManagerObject;
+
+        public LogMessageType LogLevel = LogMessageType.MSG_INFO;
 
         /// <summary>
         /// 每一帧都会触发该事件，不管被监听物体是否显示
@@ -36,17 +38,19 @@ namespace Aquaivy.Unity
         /// </summary>
         public static event ApplicationQuitDelegate ApplicationQuit;
 
-        /// <summary>
-        /// 初始化游戏世界管理器
-        /// </summary>
-        public static void Init()
-        {
-            if (gameManagerObject != null)
-                return;
 
-            gameManagerObject = new GameObject("GameManager");
-            gameManagerObject.AddComponent<GameManager>();
+        /// <summary>
+        /// 
+        /// </summary>
+        protected override void Awake()
+        {
+            base.Awake();
+            Debug.Log("GameManager Awake");
+
+            LogManager.Instance.Init(LogLevel);
+            InputManager.RegisterInputHandler();
         }
+
 
         private void Start()
         {

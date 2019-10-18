@@ -49,7 +49,9 @@ namespace Aquaivy.Unity
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected virtual void Awake()
         {
             if (IsInitialized && instance != this)

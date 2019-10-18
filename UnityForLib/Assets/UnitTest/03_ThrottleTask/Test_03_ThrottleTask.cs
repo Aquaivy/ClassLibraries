@@ -1,4 +1,5 @@
-﻿using Aquaivy.Core.Utilities;
+﻿using Aquaivy.Core.Logs;
+using Aquaivy.Core.Utilities;
 using Aquaivy.Unity;
 using System;
 using System.Collections;
@@ -25,6 +26,18 @@ namespace NameSpace_Test_TaskLite
             {
                 TaskLite.ReleaseAll();
             }
+            else if (Input.GetKeyDown(KeyCode.W))
+            {
+                WebTest();
+            }
+        }
+
+        private void WebTest()
+        {
+            string url = "https://www.processon.com/diagrams";
+            string ret = Aquaivy.Core.Webs.HttpRequestUtils.Get(url, "");
+
+            Debug.Log(ret);
         }
 
         private void CreateThrottleTask()

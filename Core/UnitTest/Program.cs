@@ -13,12 +13,12 @@ namespace UnitTest
 
             //Common.Instance.ObjectPoolTest();
             //new Component().Run();
-            new Thread().Run();
+            //new Thread().Run();
             //Serialize.Instance.ReadValues();
             //Serialize.Instance.WriteValues();
             //new Util().Run();
             //new VersionTest().Run();
-            //new Web().Run();
+            new Web().Run();
 
             Console.ReadKey();
         }

@@ -73,6 +73,7 @@
     <Compile Include="Contents\Resources\ResourcesManager.cs" />
     <Compile Include="Contents\Textures\TextureManager.cs" />
     <Compile Include="GameManager\GameManager.cs" />
+    <Compile Include="GameManager\LogManager.cs" />
     <Compile Include="GameManager\UpdateDelegate.cs" />
     <Compile Include="Input\InputHandlers\BaseHoldHandler.cs" />
     <Compile Include="Input\InputHandlers\BaseInputHandler.cs" />
