@@ -183,7 +183,7 @@ namespace Aquaivy.Unity.Profiling
         /// <returns></returns>
         public float GetMonoHeapSize()
         {
-            return new MemorySize(Profiler.GetMonoHeapSizeLong()).TotalMBs;
+            return new StorageUnit(Profiler.GetMonoHeapSizeLong()).TotalMBs;
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Aquaivy.Unity.Profiling
         /// <returns></returns>
         public float GetMonoUsedSize()
         {
-            return new MemorySize(Profiler.GetMonoUsedSizeLong()).TotalMBs;
+            return new StorageUnit(Profiler.GetMonoUsedSizeLong()).TotalMBs;
         }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace Aquaivy.Unity.Profiling
         /// <returns></returns>
         public float GetTotalAllocatedMemory()
         {
-            return new MemorySize(Profiler.GetTotalAllocatedMemoryLong()).TotalMBs;
+            return new StorageUnit(Profiler.GetTotalAllocatedMemoryLong()).TotalMBs;
         }
 
     }

@@ -163,10 +163,10 @@ namespace UnitTest.Library
 
         private void Test_FileSize()
         {
-            Log.Info("" + MemorySize.KB);
-            Log.Info("" + MemorySize.MB);
-            Log.Info("" + MemorySize.GB);
-            Log.Info("" + MemorySize.TB);
+            Log.Info("" + StorageUnit.KBSize);
+            Log.Info("" + StorageUnit.MBSize);
+            Log.Info("" + StorageUnit.GBSize);
+            Log.Info("" + StorageUnit.TBSize);
 
             ulong a = ulong.MaxValue;
             for (int i = 0; i < 5; i++)
@@ -176,7 +176,7 @@ namespace UnitTest.Library
 
             Log.Info("\n{0}\n", a);
 
-            Log.Info("" + new MemorySize(10241).TotalKBs);
+            Log.Info("" + new StorageUnit(10241).TotalKBs);
         }
 
         private void Test_Lang()
