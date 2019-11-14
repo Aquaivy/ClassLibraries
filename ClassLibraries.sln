@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VersionTools", "Tools\Versi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "UnityForLib\Assembly-CSharp.csproj", "{3B0BE3EF-0330-84AB-088D-78AE7A9A9C61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aquaivy.SearchEngine", "Core\Aquaivy.SearchEngine\Aquaivy.SearchEngine.csproj", "{87AD046C-F3D6-4C68-8889-3A2C6326777F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{3B0BE3EF-0330-84AB-088D-78AE7A9A9C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B0BE3EF-0330-84AB-088D-78AE7A9A9C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B0BE3EF-0330-84AB-088D-78AE7A9A9C61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87AD046C-F3D6-4C68-8889-3A2C6326777F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87AD046C-F3D6-4C68-8889-3A2C6326777F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87AD046C-F3D6-4C68-8889-3A2C6326777F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87AD046C-F3D6-4C68-8889-3A2C6326777F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{D512B7F9-4D8C-41C2-B811-C0C26A6600F5} = {C13934A9-F97E-4A7E-BBB6-98077CE3989C}
 		{EA704A05-D016-487F-8F93-F7416EAD3359} = {C13934A9-F97E-4A7E-BBB6-98077CE3989C}
 		{7C95814D-BDF6-437D-B351-B957DB305D49} = {1AFC37C3-2A15-42D5-B01E-3B04313A857F}
+		{87AD046C-F3D6-4C68-8889-3A2C6326777F} = {C13934A9-F97E-4A7E-BBB6-98077CE3989C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9EB0FAE-681B-4BDB-BA30-30B227050D04}
