@@ -42,21 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoomTown.FuzzySharp\Algorithms\Algoritm.cs" />
-    <Compile Include="BoomTown.FuzzySharp\Algorithms\TokenSet.cs" />
-    <Compile Include="BoomTown.FuzzySharp\Algorithms\TokenSort.cs" />
-    <Compile Include="BoomTown.FuzzySharp\Extractor.cs" />
-    <Compile Include="BoomTown.FuzzySharp\Fuzzy.cs" />
-    <Compile Include="BoomTown.FuzzySharp\InternalDiffUtils\DiffUtils.cs" />
-    <Compile Include="BoomTown.FuzzySharp\InternalDiffUtils\Models\EditOperations.cs" />
-    <Compile Include="BoomTown.FuzzySharp\InternalDiffUtils\Models\MatchingBlock.cs" />
-    <Compile Include="BoomTown.FuzzySharp\Models\ExtractedResult.cs" />
-    <Compile Include="BoomTown.FuzzySharp\Ratios\IRatio.cs" />
-    <Compile Include="BoomTown.FuzzySharp\Ratios\PartialRatio.cs" />
-    <Compile Include="BoomTown.FuzzySharp\Ratios\SimpleRatio.cs" />
-    <Compile Include="BoomTown.FuzzySharp\Ratios\WeightedRatio.cs" />
-    <Compile Include="BoomTown.FuzzySharp\StringOptions.cs" />
-    <Compile Include="FuzzySearchController.cs" />
+    <Compile Include="FuzzySearch\BoomTown.FuzzySharp\Algorithms\Algoritm.cs" />
+    <Compile Include="FuzzySearch\BoomTown.FuzzySharp\Algorithms\TokenSet.cs" />
+    <Compile Include="FuzzySearch\BoomTown.FuzzySharp\Algorithms\TokenSort.cs" />
+    <Compile Include="FuzzySearch\BoomTown.FuzzySharp\Extractor.cs" />
+    <Compile Include="FuzzySearch\BoomTown.FuzzySharp\Fuzzy.cs" />
+    <Compile Include="FuzzySearch\BoomTown.FuzzySharp\InternalDiffUtils\DiffUtils.cs" />
+    <Compile Include="FuzzySearch\BoomTown.FuzzySharp\InternalDiffUtils\Models\EditOperations.cs" />
+    <Compile Include="FuzzySearch\BoomTown.FuzzySharp\InternalDiffUtils\Models\MatchingBlock.cs" />
+    <Compile Include="FuzzySearch\BoomTown.FuzzySharp\Models\ExtractedResult.cs" />
+    <Compile Include="FuzzySearch\BoomTown.FuzzySharp\Ratios\IRatio.cs" />
+    <Compile Include="FuzzySearch\BoomTown.FuzzySharp\Ratios\PartialRatio.cs" />
+    <Compile Include="FuzzySearch\BoomTown.FuzzySharp\Ratios\SimpleRatio.cs" />
+    <Compile Include="FuzzySearch\BoomTown.FuzzySharp\Ratios\WeightedRatio.cs" />
+    <Compile Include="FuzzySearch\BoomTown.FuzzySharp\StringOptions.cs" />
+    <Compile Include="FuzzySearch\FuzzySearchController.cs" />
+    <Compile Include="KeywordSearch\HashKeywordSearch.cs" />
+    <Compile Include="KeywordSearch\IKeywordSearch.cs" />
+    <Compile Include="KeywordSearch\TrieKeywordSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
