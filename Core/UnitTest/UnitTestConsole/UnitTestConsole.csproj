@@ -58,7 +58,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Aquaivy.Core\Aquaivy.Core.csproj">
+    <ProjectReference Include="..\..\Aquaivy.Core\Aquaivy.Core.csproj">
       <Project>{d18fc391-9203-4b3a-9896-a1316c30b12b}</Project>
       <Name>Aquaivy.Core</Name>
     </ProjectReference>

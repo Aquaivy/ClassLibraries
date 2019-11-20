@@ -10,6 +10,8 @@ namespace Aquaivy.Core.Utilities
     public enum SpecialChar
     {
         Letter,
-        Number
+        Number,
+        UnderLine,
+
     }
 }

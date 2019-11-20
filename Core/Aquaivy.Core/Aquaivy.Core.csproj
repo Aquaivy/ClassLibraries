@@ -51,10 +51,8 @@
     <Compile Include="Common\ObjectPool\ObjectPoolStateInfo.cs" />
     <Compile Include="Common\ObjectPool\PoolInfo.cs" />
     <Compile Include="Common\ObjectPool\StaticInstanceObjectPool.cs" />
-    <Compile Include="Utilities\Character\Character.cs" />
-    <Compile Include="Utilities\Character\CharOperation.cs" />
-    <Compile Include="Utilities\Character\Chinese2Spell.cs" />
-    <Compile Include="Utilities\Character\Chinese2SpellSimple.cs" />
+    <Compile Include="Utilities\Characters\Character.cs" />
+    <Compile Include="Utilities\EncodingUtils.cs" />
     <Compile Include="Utilities\Converter.cs" />
     <Compile Include="Utilities\Lang\CsvLanguage.cs" />
     <Compile Include="Utilities\Lang\ILanguage.cs" />
@@ -65,7 +63,7 @@
     <Compile Include="Utilities\Simulation\NameSimulation\EnglishNameLibrary.cs" />
     <Compile Include="Utilities\Simulation\NameSimulation\NameSetting.cs" />
     <Compile Include="Utilities\Simulation\NameSimulation\NameSimulation.cs" />
-    <Compile Include="Utilities\Character\SpecialChar.cs" />
+    <Compile Include="Utilities\Characters\SpecialChar.cs" />
     <Compile Include="Utilities\StopwatchWrap.cs" />
     <Compile Include="Web\HttpUtils.cs" />
     <Content Include="Utilities\Lang\Lang.cs.txt" />
