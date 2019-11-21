@@ -18,7 +18,7 @@ namespace Aquaivy.Core.Utilities
         /// <param name="str"></param>
         /// <param name="specialChar"></param>
         /// <returns></returns>
-        public static string HasSpecialChar(string str, params SpecialChar[] specialChar)
+        public static string HasSpecialChar(string str, params CharacterType[] specialChar)
         {
             throw new NotImplementedException();
         }

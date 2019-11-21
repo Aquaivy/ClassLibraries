@@ -47,5 +47,15 @@ namespace TestCore
         {
             TestContext.WriteLine($"{unicode}  {EncodingUtils.UnicodeToString(unicode)}");
         }
+
+
+        [DataTestMethod]
+        [DataRow("ºº×Ö", "27721 23383")]
+        [DataRow("Èç¹û", "22914 26524")]
+        [DataRow("ÉúÃü", "29983 21629")]
+        public void Test_GetUnicode10(string str, string unicode)
+        {
+            TestContext.WriteLine($"{str}  {EncodingUtils.GetUnicodeDEC(str)}");
+        }
     }
 }

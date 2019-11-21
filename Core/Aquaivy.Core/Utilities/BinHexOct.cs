@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Aquaivy.Core.Utilities
 {
-    [Flags]
-    public enum SpecialChar
+    /// <summary>
+    /// 进制转换
+    /// </summary>
+    public static class BinHexOct
     {
-        Letter,
-        Number,
-        UnderLine,
-
     }
 }

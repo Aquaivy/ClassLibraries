@@ -9,6 +9,13 @@ namespace Aquaivy.Core.Utilities
     /// <summary>
     /// 编码相关的工具类
     /// </summary>
+    /// 
+    /// <remarks>
+    /// BIN 二进制
+    /// OCT 八进制
+    /// DEC 十进制
+    /// HEX 十六进制
+    /// </remarks>
     public static class EncodingUtils
     {
         /// <summary>
@@ -127,31 +134,57 @@ namespace Aquaivy.Core.Utilities
         }
 
         /// <summary>
-        /// 获取字符的Unicode码（类似：\u679C）
+        /// 获取字符的16进制Unicode码(HEX)（类似：\u679C）
         /// </summary>
         /// <param name="str"></param>
+        /// <param name="hexPrefix"></param>
+        /// <param name="endian">字节序</param>
         /// <returns></returns>
-        public static string GetUnicode(string str)
+        public static string GetUnicode(string str, HexPrefix hexPrefix = HexPrefix.U, Endian endian = Endian.Big)
         {
             char[] charbuffers = str.ToCharArray();
             byte[] buffer;
+            var prefix = hexPrefix == HexPrefix.U ? "\\u" : string.Empty;
 
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < charbuffers.Length; i++)
             {
                 buffer = Encoding.Unicode.GetBytes(charbuffers[i].ToString());
-                sb.Append(String.Format("\\u{0:X2}{1:X2}", buffer[1], buffer[0]));
+                sb.Append(prefix + string.Format("{0:X2}{1:X2}", buffer[1], buffer[0]));
             }
 
             return sb.ToString();
         }
 
-        /// <summary>  
-        /// Unicode字符串转为正常字符串  
-        /// </summary>  
-        /// <param name="unicode"></param>  
-        /// <returns></returns>  
-        public static string UnicodeToString(string unicode)
+        /// <summary>
+        /// 获取字符的10进制Unicode码(DEC)（类似：27721 23383）
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="endian"></param>
+        /// <returns></returns>
+        public static string GetUnicodeDEC(string str, Endian endian = Endian.Big)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < str.Length; i++)
+            {
+                var s = str[i].ToString();
+                var hex = GetUnicode(s, HexPrefix.None);
+                var dec = Convert.ToInt32(hex, 16);
+
+                sb.Append(dec + " ");
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Unicode字符串转为正常字符串
+        /// （目前只能支持带\u前缀的16进制Unicode码，类似：\u679C）
+        /// </summary>
+        /// <param name="unicode"></param>
+        /// <param name="endian">字节序</param>
+        /// <returns></returns>
+        public static string UnicodeToString(string unicode, Endian endian = Endian.Big)
         {
             if (unicode.Length % 6 != 0)
                 throw new ArgumentException("unicode字符串长度不是6的整数倍，无法转换为正常字符", unicode);
@@ -177,5 +210,42 @@ namespace Aquaivy.Core.Utilities
 
             return sb.ToString();
         }
+    }
+
+    /// <summary>
+    /// 字节序
+    /// </summary>
+    public enum Endian
+    {
+        /// <summary>
+        /// 默认字节序（Big）
+        /// </summary>
+        Default,
+
+        /// <summary>
+        /// 大头字节序（默认）
+        /// </summary>
+        Big,
+
+        /// <summary>
+        /// 小头字节序
+        /// </summary>
+        Little,
+    }
+
+    /// <summary>
+    /// 16进制前缀
+    /// </summary>
+    public enum HexPrefix
+    {
+        /// <summary>
+        /// \u前缀
+        /// </summary>
+        U,
+
+        /// <summary>
+        /// 无前缀
+        /// </summary>
+        None,
     }
 }
