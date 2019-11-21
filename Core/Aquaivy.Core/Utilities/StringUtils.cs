@@ -9,7 +9,7 @@ namespace Aquaivy.Core.Utilities
     /// <summary>
     /// 修改转义字符（&lt;这种）
     /// </summary>
-    class StringEx
+    class StringUtils
     {
     }
 }

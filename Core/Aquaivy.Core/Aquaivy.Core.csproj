@@ -65,7 +65,7 @@
     <Compile Include="Utilities\Simulation\NameSimulation\NameSetting.cs" />
     <Compile Include="Utilities\Simulation\NameSimulation\NameSimulation.cs" />
     <Compile Include="Utilities\Characters\CharacterType.cs" />
-    <Compile Include="Utilities\StopwatchWrap.cs" />
+    <Compile Include="Utilities\StopwatchUtils.cs" />
     <Compile Include="Web\HttpUtils.cs" />
     <Content Include="Utilities\Lang\Lang.cs.txt" />
     <Compile Include="Utilities\StorageUnit.cs" />
@@ -97,8 +97,8 @@
     <Compile Include="Utilities\CSV\InfoSplit.cs" />
     <Compile Include="Utilities\Insensitive.cs" />
     <Compile Include="Utilities\MathHelper.cs" />
-    <Compile Include="Utilities\RandomEx.cs" />
-    <Compile Include="Utilities\StringEx.cs" />
+    <Compile Include="Utilities\RandomUtils.cs" />
+    <Compile Include="Utilities\StringUtils.cs" />
     <Compile Include="Utilities\Utility.cs" />
   </ItemGroup>
   <ItemGroup>

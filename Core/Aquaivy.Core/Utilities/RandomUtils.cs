@@ -7,7 +7,7 @@ namespace Aquaivy.Core.Utilities
     /// <summary>
     /// 
     /// </summary>
-    public static class RandomEx
+    public static class RandomUtils
     {
         /// <summary>
         /// 

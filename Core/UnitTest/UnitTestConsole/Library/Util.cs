@@ -36,14 +36,14 @@ namespace UnitTest.Library
 
             Log.Info("");
 
-            StopwatchWrap.Start("sw1");
-            StopwatchWrap.Print("sw1");
-            StopwatchWrap.Print("sw1");
-            StopwatchWrap.Restart("sw1");
-            StopwatchWrap.Print("sw1");
-            StopwatchWrap.Print("sw1");
-            StopwatchWrap.Print("sw1");
-            StopwatchWrap.Stop("sw1");
+            StopwatchUtils.Start("sw1");
+            StopwatchUtils.Print("sw1");
+            StopwatchUtils.Print("sw1");
+            StopwatchUtils.Restart("sw1");
+            StopwatchUtils.Print("sw1");
+            StopwatchUtils.Print("sw1");
+            StopwatchUtils.Print("sw1");
+            StopwatchUtils.Stop("sw1");
 
             Log.Info("");
         }
