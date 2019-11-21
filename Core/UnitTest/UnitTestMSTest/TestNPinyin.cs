@@ -1,4 +1,5 @@
 using Aquaivy.Core.Utilities;
+using Aquaivy.Pinyin.PinyinMap;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NPinyin;
 
@@ -34,6 +35,25 @@ namespace TestCore
         {
             string converted = Pinyin.GetChineseText(pinyin);
             Assert.IsTrue(converted == hanzi);
+        }
+
+        [TestMethod]
+        public void Test_LoadMapFile()
+        {
+            PinyinMapController map = new PinyinMapController();
+            map.LoadMapFile(@"D:\Unity\VSProjects\ClassLibraries\Core\UnitTest\UnitTestMSTest\PinyinMapDest.txt");
+
+            var mapValue = map.Query("drq");
+            var mapValue1 = map.Query("kg");
+            var mapValue2 = map.Query("mm");
+        }
+
+        [TestMethod]
+        public void Test_PinyinMapCreater()
+        {
+            var srcPath = @"..\..\..\PinyinMapSource.txt";
+            var destPath = @"..\..\..\PinyinMapDest.txt";
+            PinyinMapCreater.Create(srcPath, destPath);
         }
     }
 }

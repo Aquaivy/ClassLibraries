@@ -1,0 +1,2 @@
+hanzi,hz:汉字
+yingshe,ys:映射

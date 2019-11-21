@@ -1,0 +1,12 @@
+﻿DianRongQi,drq:电容器
+KaiGuan,kg:开关
+KaiGuan,kg:开馆
+KaiGuan,kg:开罐
+MuXian,mx:母线
+CeJieTou,cjt:侧接头
+YaLiBiao,ylb:压力表
+BenTi,bt:本体
+ZhaDao,zd:闸刀
+FenHeZhuangTai,fhzt:分合状态
+BiLeiQi,blq:避雷器
+XieLouDianLiuBiao,xldlb:泄漏电流表

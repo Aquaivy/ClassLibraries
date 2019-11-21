@@ -58,7 +58,8 @@ namespace NPinyin
             for (var i = 0; i < text.Length; ++i)
             {
                 string py = GetPinyin(text[i]);
-                if (py != "") chars.Append(py[0]);
+                if (py != "")
+                    chars.Append(py[0]);
             }
 
             return chars.ToString().ToUpper();
@@ -87,15 +88,16 @@ namespace NPinyin
 
         public static string GetPinyin(string text)
         {
-            StringBuilder sbPinyin = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             for (var i = 0; i < text.Length; ++i)
             {
                 string py = GetPinyin(text[i]);
-                if (py != "") sbPinyin.Append(py);
-                sbPinyin.Append(" ");
+                if (py != "")
+                    sb.Append(py);
+                sb.Append(" ");
             }
 
-            return sbPinyin.ToString().Trim();
+            return sb.ToString().Trim();
         }
 
         /// <summary>
@@ -156,7 +158,10 @@ namespace NPinyin
                 short index = PyHash.hashes[hash][i];
                 var pos = PyCode.codes[index].IndexOf(ch, 7);
                 if (pos != -1)
-                    return PyCode.codes[index].Substring(0, 6).Trim();
+                {
+                    string pinyin = PyCode.codes[index].Substring(0, 6).Trim();
+                    return pinyin.Substring(0, 1).ToUpper() + pinyin.Substring(1);
+                }
             }
             return ch.ToString();
         }

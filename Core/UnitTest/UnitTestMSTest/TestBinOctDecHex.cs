@@ -23,15 +23,5 @@ namespace UnitTestMSTest
             TestContext.WriteLine($"{dec}  {ret}");
             //Assert.IsTrue(ret == pinyin);
         }
-
-
-        [DataTestMethod]
-        [DataRow(10, "0")]
-        public void Test_Dec2OtherNumSystem(int dec, string other)
-        {
-            string ret = BinOctDecHex.Dec2OtherNumSystem(dec, 3);
-            TestContext.WriteLine($"{dec}  {ret}");
-            //Assert.IsTrue(ret == pinyin);
-        }
     }
 }
