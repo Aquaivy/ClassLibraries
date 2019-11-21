@@ -37,5 +37,10 @@ namespace Aquaivy.Core.Utilities
         /// 共33个
         /// </summary>
         Symbol,
+
+        /// <summary>
+        /// 其他字符
+        /// </summary>
+        Others,
     }
 }

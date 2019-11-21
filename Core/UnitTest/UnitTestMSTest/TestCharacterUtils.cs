@@ -53,8 +53,15 @@ namespace TestCore
         [DataRow("ºº×Ö", "27721 23383")]
         [DataRow("Èç¹û", "22914 26524")]
         [DataRow("ÉúÃü", "29983 21629")]
-        public void Test_GetUnicode10(string str, string unicode)
+        [DataRow("`~!@#$%^&*()-+=[]{}|\\/;:'\",.<>?*.", "")]
+        public void Test_GetUnicodeDEC(string str, string unicode)
         {
+            //for (int i = 0; i < str.Length; i++)
+            //{
+            //    var s = str[i].ToString();
+            //    TestContext.WriteLine($"{s}  {EncodingUtils.GetUnicodeDEC(s)}");
+            //}
+
             TestContext.WriteLine($"{str}  {EncodingUtils.GetUnicodeDEC(str)}");
         }
     }

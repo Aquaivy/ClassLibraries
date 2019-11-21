@@ -51,7 +51,7 @@
     <Compile Include="Common\ObjectPool\ObjectPoolStateInfo.cs" />
     <Compile Include="Common\ObjectPool\PoolInfo.cs" />
     <Compile Include="Common\ObjectPool\StaticInstanceObjectPool.cs" />
-    <Compile Include="Utilities\BinHexOct.cs" />
+    <Compile Include="Utilities\BinOctDecHex.cs" />
     <Compile Include="Utilities\Characters\CharacterUtils.cs" />
     <Compile Include="Utilities\EncodingUtils.cs" />
     <Compile Include="Utilities\Converter.cs" />

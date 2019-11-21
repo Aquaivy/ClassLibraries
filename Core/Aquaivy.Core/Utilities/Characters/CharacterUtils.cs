@@ -13,12 +13,12 @@ namespace Aquaivy.Core.Utilities
     {
 
         /// <summary>
-        /// 是否有特殊字符
+        /// 是否有非法字符
         /// </summary>
         /// <param name="str"></param>
-        /// <param name="specialChar"></param>
+        /// <param name="allowableChar"></param>
         /// <returns></returns>
-        public static string HasSpecialChar(string str, params CharacterType[] specialChar)
+        public static string HasIllegalityChar(string str, params CharacterType[] allowableChar)
         {
             throw new NotImplementedException();
         }

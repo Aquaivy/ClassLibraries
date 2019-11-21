@@ -9,13 +9,6 @@ namespace Aquaivy.Core.Utilities
     /// <summary>
     /// 编码相关的工具类
     /// </summary>
-    /// 
-    /// <remarks>
-    /// BIN 二进制
-    /// OCT 八进制
-    /// DEC 十进制
-    /// HEX 十六进制
-    /// </remarks>
     public static class EncodingUtils
     {
         /// <summary>
@@ -35,37 +28,37 @@ namespace Aquaivy.Core.Utilities
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [Obsolete("请使用CharacterUtils.GetEncodingBytesLength()代替")]
-        public static int GetUTF8CharBytesLength(char c)
-        {
-            int maxLen = 0;
+        //[Obsolete("请使用CharacterUtils.GetEncodingBytesLength()代替")]
+        //public static int GetUTF8CharBytesLength(char c)
+        //{
+        //    int maxLen = 0;
 
-            var bytes = Encoding.UTF8.GetBytes(new char[] { c });
-            for (int i = 0; i < bytes.Length;)
-            {
-                int len = 1;
-                byte b = bytes[i];
-                if (b >= 0xFC)
-                    len = 6;
-                else if (b >= 0xF8)
-                    len = 5;
-                else if (b >= 0xF0)
-                    len = 4;
-                else if (b >= 0xE0)
-                    len = 3;
-                else if (b >= 0xC0)
-                    len = 2;
+        //    var bytes = Encoding.UTF8.GetBytes(new char[] { c });
+        //    for (int i = 0; i < bytes.Length;)
+        //    {
+        //        int len = 1;
+        //        byte b = bytes[i];
+        //        if (b >= 0xFC)
+        //            len = 6;
+        //        else if (b >= 0xF8)
+        //            len = 5;
+        //        else if (b >= 0xF0)
+        //            len = 4;
+        //        else if (b >= 0xE0)
+        //            len = 3;
+        //        else if (b >= 0xC0)
+        //            len = 2;
 
-                i += len;
-                maxLen = Math.Max(maxLen, len);
-            }
+        //        i += len;
+        //        maxLen = Math.Max(maxLen, len);
+        //    }
 
-            return maxLen;
-        }
+        //    return maxLen;
+        //}
 
 
         /// <summary>
-        /// 字符串里是否包含4字节的字符
+        /// UTF8编码字符串里是否包含4字节的字符
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
