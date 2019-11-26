@@ -55,6 +55,7 @@
     <Compile Include="Utilities\Characters\CharacterUtils.cs" />
     <Compile Include="Utilities\EncodingUtils.cs" />
     <Compile Include="Utilities\Converter.cs" />
+    <Compile Include="Utilities\IO\LineEnding.cs" />
     <Compile Include="Utilities\Lang\CsvLanguage.cs" />
     <Compile Include="Utilities\Lang\ILanguage.cs" />
     <Compile Include="Utilities\Lang\JsonLanguage.cs" />

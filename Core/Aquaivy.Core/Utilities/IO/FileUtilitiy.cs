@@ -97,7 +97,7 @@ namespace Aquaivy.Core.Utilities
         }
 
         /// <summary>
-        /// 获得文件行尾类型
+        /// 【未完成】获得文件行尾类型
         /// </summary>
         /// <param name="path"></param>
         public static void GetFileLineEndings(string path)
@@ -112,21 +112,69 @@ namespace Aquaivy.Core.Utilities
         }
 
         /// <summary>
-        /// 设置行尾
+        /// 【未完成】设置行尾
         /// </summary>
         /// <param name="path"></param>
         /// <param name="encoding"></param>
-        public static void SetFileLineEndings(string path, Encoding encoding)
+        /// <param name="lineEnding"></param>
+        public static void SetFileLineEndings(string path, Encoding encoding, LineEnding lineEnding)
         {
+            if (!File.Exists(path))
+                throw new FileNotFoundException();
 
+            var lines = File.ReadAllLines(path, encoding);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var ending = GetLineEnding(lines[i]);
+                Console.WriteLine(ending);
+            }
+        }
+
+        /// <summary>
+        /// 获取行尾类型
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
+        public static LineEnding GetLineEnding(string line)
+        {
+            LineEnding ending = LineEnding.Others;
+
+            if (line.Length == 1)
+            {
+                switch (line[0])
+                {
+                    case '\n': ending = LineEnding.LF; break;
+                    case '\r': ending = LineEnding.CR; break;
+                }
+            }
+            else
+            {
+                char last1 = line[line.Length - 1];
+                char last2 = line[line.Length - 2];
+
+                if (last2 == '\r' && last1 == '\n')
+                {
+                    ending = LineEnding.CRLF;
+                }
+                else if (last2 != '\r' && last1 == '\n')
+                {
+                    ending = LineEnding.LF;
+                }
+                else if (last2 != '\r' && last1 == '\r')
+                {
+                    ending = LineEnding.CR;
+                }
+            }
+
+            return ending;
         }
 
         /// <summary>
         /// 行尾标准化
         /// </summary>
         /// <param name="path"></param>
-        /// <param name="encoding"></param>
-        public static void StandardizeLineEndings(string path, Encoding encoding)
+        /// <param name="lineEnding"></param>
+        public static void StandardizeLineEndings(string path, LineEnding lineEnding)
         {
 
         }
