@@ -19,8 +19,25 @@ namespace Aquaivy.Pinyin.PinyinMap
 
             List<string> destMap = new List<string>();
 
+            //方案一
+            //var lines = File.ReadAllLines(srcMapPath, Encoding.UTF8);
+            //for (int i = 0; i < lines.Length; i++)
+            //{
+            //    var line = lines[i];
+
+            //    var pinyin = NPinyin.Pinyin.GetPinyin(line);
+            //    var initials = NPinyin.Pinyin.GetInitials(line);
+
+            //    pinyin = pinyin.Replace(" ", "");
+            //    initials = initials.ToLower();
+
+            //    destMap.Add($"{pinyin},{initials}:{line}");
+            //}
+
+            //方案二
             string line;
-            using (StreamReader sr = new StreamReader(srcMapPath, Encoding.UTF8))
+            var stream = new FileStream(srcMapPath, FileMode.OpenOrCreate);
+            using (StreamReader sr = new StreamReader(stream))
             {
                 while ((line = sr.ReadLine()) != null)
                 {
@@ -33,6 +50,7 @@ namespace Aquaivy.Pinyin.PinyinMap
                     destMap.Add($"{pinyin},{initials}:{line}");
                 }
             }
+            stream.Dispose();
 
             File.WriteAllLines(destMapPath, destMap, Encoding.UTF8);
         }

@@ -25,8 +25,36 @@ namespace Aquaivy.Pinyin.PinyinMap
             if (!File.Exists(path))
                 throw new FileNotFoundException();
 
+            //方案一
+            //var lines = File.ReadAllLines(path, Encoding.UTF8);
+            //for (int i = 0; i < lines.Length; i++)
+            //{
+            //    var line = lines[i];
+
+            //    var array = line.Split(':');
+            //    if (array.Length != 2)
+            //        throw new Exception("Pinyin映射文件配置错误，解析失败");
+
+            //    var pinyin = array[0];
+            //    var hanzi = array[1];
+
+            //    var keys = pinyin.Split(',');
+            //    for (int k = 0; k < keys.Length; k++)
+            //    {
+            //        var key = keys[k];
+            //        if (!s_map.TryGetValue(key, out MapValue map))
+            //            map = new MapValue();
+
+            //        map.Add(hanzi);
+
+            //        s_map[key] = map;
+            //    }
+            //}
+
+            //方案二
             string line;
-            using (StreamReader sr = new StreamReader(path, Encoding.UTF8))
+            var stream = new FileStream(path, FileMode.OpenOrCreate);
+            using (StreamReader sr = new StreamReader(stream))
             {
                 while ((line = sr.ReadLine()) != null)
                 {
@@ -38,9 +66,9 @@ namespace Aquaivy.Pinyin.PinyinMap
                     var hanzi = array[1];
 
                     var keys = pinyin.Split(',');
-                    for (int i = 0; i < keys.Length; i++)
+                    for (int k = 0; k < keys.Length; k++)
                     {
-                        var key = keys[i];
+                        var key = keys[k];
                         if (!s_map.TryGetValue(key, out MapValue map))
                             map = new MapValue();
 
@@ -50,6 +78,7 @@ namespace Aquaivy.Pinyin.PinyinMap
                     }
                 }
             }
+            stream.Dispose();
         }
 
         public void SetMap(Dictionary<string, MapValue> map)
