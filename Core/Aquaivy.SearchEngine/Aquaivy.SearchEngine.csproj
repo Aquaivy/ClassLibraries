@@ -57,9 +57,11 @@
     <Compile Include="FuzzySearch\BoomTown.FuzzySharp\Ratios\WeightedRatio.cs" />
     <Compile Include="FuzzySearch\BoomTown.FuzzySharp\StringOptions.cs" />
     <Compile Include="FuzzySearch\FuzzySearchController.cs" />
+    <Compile Include="KeywordSearch\ExtractedResult.cs" />
     <Compile Include="KeywordSearch\HashKeywordSearch.cs" />
     <Compile Include="KeywordSearch\IKeywordSearch.cs" />
     <Compile Include="KeywordSearch\TrieKeywordSearch.cs" />
+    <Compile Include="KeywordSearch\TrieKeywordSearchController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

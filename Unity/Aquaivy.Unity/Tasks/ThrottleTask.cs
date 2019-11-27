@@ -7,27 +7,6 @@ using System.Threading.Tasks;
 namespace Aquaivy.Unity
 {
     /// <summary>
-    /// 自动结束任务的方式
-    /// </summary>
-    public enum ThrottleStopType
-    {
-        /// <summary>
-        /// 永不结束
-        /// </summary>
-        Forever,
-
-        /// <summary>
-        /// 持续的时间，单位：ms
-        /// </summary>
-        Duration,
-
-        /// <summary>
-        /// 执行的次数
-        /// </summary>
-        Times
-    }
-
-    /// <summary>
     /// 按照固定时间间隔执行的任务，
     /// 可设置自动结束任务的方式
     /// </summary>
@@ -180,5 +159,27 @@ namespace Aquaivy.Unity
             else
                 return string.Empty;
         }
+    }
+
+
+    /// <summary>
+    /// 自动结束任务的方式
+    /// </summary>
+    public enum ThrottleStopType
+    {
+        /// <summary>
+        /// 永不结束
+        /// </summary>
+        Forever,
+
+        /// <summary>
+        /// 持续的时间，单位：ms
+        /// </summary>
+        Duration,
+
+        /// <summary>
+        /// 执行的次数
+        /// </summary>
+        Times
     }
 }
