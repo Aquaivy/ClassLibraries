@@ -13,7 +13,7 @@ namespace UnitTest.Library
         internal void Run()
         {
             string url = "https://www.processon.com/diagrams";
-            string ret = HttpRequestUtils.Get(url, "");
+            string ret = HttpRequestUtils.Get(url).ResponseString;
 
             Log.Info(ret);
         }

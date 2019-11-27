@@ -16,22 +16,22 @@ namespace Aquaivy.Unity
     /// </summary>
     public static class AudioManager
     {
-        private static Dictionary<string, AudioClip> m_clips = new Dictionary<string, AudioClip>();
-        private static List<Audio> m_audios = new List<Audio>(8);
-        private static GameObject audiosParent;
+        private static Dictionary<string, AudioClip> s_clips = new Dictionary<string, AudioClip>();
+        private static List<Audio> s_audios = new List<Audio>(8);
+        private static GameObject s_audiosParent;
 
         internal static void Add(Audio audio)
         {
-            m_audios.Add(audio);
+            s_audios.Add(audio);
 
-            if (audiosParent == null)
-                audiosParent = new GameObject("Audios");
-            audio.GameObject.transform.SetParent(audiosParent.transform);
+            if (s_audiosParent == null)
+                s_audiosParent = new GameObject("Audios");
+            audio.GameObject.transform.SetParent(s_audiosParent.transform);
         }
 
         internal static void Remove(Audio audio)
         {
-            m_audios.Remove(audio);
+            s_audios.Remove(audio);
         }
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace Aquaivy.Unity
         /// </summary>
         public static void StopAll()
         {
-            for (int i = 0; i < m_audios.Count; i++)
+            for (int i = 0; i < s_audios.Count; i++)
             {
-                m_audios[i].Stop();
+                s_audios[i].Stop();
                 i--;
             }
         }
@@ -52,9 +52,9 @@ namespace Aquaivy.Unity
         /// <param name="volume"></param>
         public static void SetVolume(float volume)
         {
-            for (int i = 0; i < m_audios.Count; i++)
+            for (int i = 0; i < s_audios.Count; i++)
             {
-                m_audios[i].Volume = volume;
+                s_audios[i].Volume = volume;
             }
         }
 
@@ -87,7 +87,7 @@ namespace Aquaivy.Unity
         public static AudioClip LoadResource(string path)
         {
             AudioClip clip;
-            m_clips.TryGetValue(path, out clip);
+            s_clips.TryGetValue(path, out clip);
             if (clip != null)
                 return clip;
 
@@ -95,7 +95,7 @@ namespace Aquaivy.Unity
             Resources.UnloadUnusedAssets();
             if (clip != null)
             {
-                m_clips[path] = clip;
+                s_clips[path] = clip;
                 return clip;
             }
 
@@ -109,12 +109,12 @@ namespace Aquaivy.Unity
         public static void UnloadResource(string path)
         {
             AudioClip clip;
-            m_clips.TryGetValue(path, out clip);
+            s_clips.TryGetValue(path, out clip);
             if (clip == null)
                 return;
 
-            clip = m_clips[path];
-            m_clips.Remove(path);
+            clip = s_clips[path];
+            s_clips.Remove(path);
             Resources.UnloadAsset(clip);
         }
     }

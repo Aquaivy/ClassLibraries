@@ -8,39 +8,69 @@ using System.Threading.Tasks;
 
 namespace Aquaivy.Core.Webs
 {
+    public class RequestResponse
+    {
+        public bool Success;
+        public int StatusCode;
+
+        public string ResponseString;
+    }
+
+
     /// <summary>
     /// 
     /// </summary>
     public class HttpRequestUtils
     {
         /// <summary>
-        /// Http发送Get请求方法
+        /// HTTP发送Get请求方法
         /// </summary>
-        /// <param name="url"></param>
-        /// <param name="postData"></param>
+        /// <param name="uri"></param>
         /// <returns></returns>
-        public static string Get(string url, string postData)
+        public static RequestResponse Get(string uri)
         {
-            var data = string.IsNullOrEmpty(postData) ? string.Empty : ("?" + postData);
-            url = url + data;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-            request.ContentType = "text/html;charset=UTF-8";
+            var contentType = "text/html;charset=UTF-8";
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream stream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-            string retString = reader.ReadToEnd();
-
-            reader.Close();
-            stream.Close();
-            reader.Dispose();
-            stream.Dispose();
-
-            return retString;
+            return Get(uri, contentType, 10);
         }
+
+        public static RequestResponse Get(string uri, string contentType, int timeout)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+            request.Method = "GET";
+            request.ContentType = contentType;
+            request.Timeout = timeout;
+
+            RequestResponse rr = new RequestResponse();
+
+            try
+            {
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+                var stream = response.GetResponseStream();
+                var reader = new StreamReader(stream, Encoding.UTF8);
+                string responseString = reader.ReadToEnd();
+
+                reader.Close();
+                stream.Close();
+                reader.Dispose();
+                stream.Dispose();
+
+                rr.Success = true;
+                rr.ResponseString = responseString;
+
+            }
+            catch (Exception)
+            {
+                rr.Success = false;
+
+            }
+
+            return rr;
+        }
+
         /// <summary>
-        /// Http发送Post请求方法
+        /// HTTP发送Post请求方法
         /// </summary>
         /// <param name="url"></param>
         /// <param name="postDataStr"></param>

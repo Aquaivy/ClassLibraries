@@ -9,6 +9,11 @@ namespace VersionTools
 {
     class AssemblyInfoIncreaser
     {
+        /// <summary>
+        /// AssemblyInfo.cs版本+1
+        /// </summary>
+        /// <param name="path">AssemblyInfo.cs的路径</param>
+        /// <param name="incrVer"></param>
         internal static void UpgradeVersion(string path, string incrVer)
         {
             if (string.IsNullOrEmpty(path) || string.IsNullOrEmpty(incrVer))

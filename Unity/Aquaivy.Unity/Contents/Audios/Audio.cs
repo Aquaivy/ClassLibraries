@@ -75,12 +75,13 @@ namespace Aquaivy.Unity
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="path">需要添加.mp3 .wav等音频后缀</param>
+        /// <param name="audioClip"></param>
         /// <param name="loop"></param>
         /// <param name="volume"></param>
-        private Audio(AudioClip audioClip, string path, bool loop, float volume, bool stereo)
+        /// <param name="stereo"></param>
+        private Audio(AudioClip audioClip, bool loop, float volume, bool stereo)
         {
-            GameObject = new GameObject("Audio_" + Path.GetFileName(path));
+            GameObject = new GameObject("Audio_" + audioClip.name);
             AudioSource = GameObject.AddComponent<AudioSource>();
             AudioSource.clip = audioClip;
             AudioSource.loop = loop;
@@ -131,7 +132,7 @@ namespace Aquaivy.Unity
         /// <summary>
         /// 从StreamingAssets播放一个音频，需要添加.mp3 .wav .ogg等后缀
         /// </summary>
-        /// <param name="path">需要添加.mp3 .wav等音频后缀</param>
+        /// <param name="path">需要添加.mp3 .wav等音频后缀（虽然麻烦，但是辨识度更高）</param>
         /// <param name="loop"></param>
         /// <param name="volume"></param>
         /// <param name="stereo"></param>
@@ -141,14 +142,11 @@ namespace Aquaivy.Unity
             var clip = AudioManager.Load(path);
             if (clip == null)
             {
-                Core.Logs.Log.Warn($"Load audio fail. path={path}");
+                Log.Warn($"Load audio fail. path={path}");
                 return null;
             }
 
-            var audio = new Audio(clip, path, loop, volume, stereo);
-            AudioManager.Add(audio);
-            audio.Play();
-            return audio;
+            return PlayInternal(clip, loop, volume, stereo);
         }
 
         /// <summary>
@@ -164,17 +162,21 @@ namespace Aquaivy.Unity
             var clip = AudioManager.LoadResource(path);
             if (clip == null)
             {
-                Core.Logs.Log.Warn($"Load audio fail. path={path}");
+                Log.Warn($"Load audio fail. path={path}");
                 return null;
             }
 
-            var audio = new Audio(clip, path, loop, volume, stereo);
+            return PlayInternal(clip, loop, volume, stereo);
+        }
+
+        private static Audio PlayInternal(AudioClip clip, bool loop, float volume, bool stereo)
+        {
+            var audio = new Audio(clip, loop, volume, stereo);
 
             AudioManager.Add(audio);
             audio.Play();
             return audio;
         }
-
     }
 
 }
