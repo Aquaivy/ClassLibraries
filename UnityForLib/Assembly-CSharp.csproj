@@ -63,6 +63,7 @@
     <Compile Include="Assets\UnitTest\01_TaskLite\Test_01_TaskLite.cs" />
     <Compile Include="Assets\UnitTest\02_TweenLite\Test_02_TweenLite.cs" />
     <Compile Include="Assets\UnitTest\03_ThrottleTask\Test_03_ThrottleTask.cs" />
+    <Compile Include="Assets\UnitTest\04_Audio\Test_04_Audio.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

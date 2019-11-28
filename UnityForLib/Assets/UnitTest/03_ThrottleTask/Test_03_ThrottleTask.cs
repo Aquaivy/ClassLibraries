@@ -35,7 +35,7 @@ namespace NameSpace_Test_TaskLite
         private void WebTest()
         {
             string url = "https://www.processon.com/diagrams";
-            string ret = Aquaivy.Core.Webs.HttpRequestUtils.Get(url, "");
+            string ret = Aquaivy.Core.Webs.HttpRequestUtils.Get(url).ResponseString;
 
             Debug.Log(ret);
         }

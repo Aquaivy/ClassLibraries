@@ -16,8 +16,11 @@ namespace Aquaivy.Unity
     /// </summary>
     public static class AudioManager
     {
+        //clip resources
         private static Dictionary<string, AudioClip> s_clips = new Dictionary<string, AudioClip>();
+        //all playing audios
         private static List<Audio> s_audios = new List<Audio>(8);
+
         private static GameObject s_audiosParent;
 
         internal static void Add(Audio audio)
@@ -35,7 +38,7 @@ namespace Aquaivy.Unity
         }
 
         /// <summary>
-        /// 
+        /// 停止播放所有声音
         /// </summary>
         public static void StopAll()
         {
@@ -47,7 +50,7 @@ namespace Aquaivy.Unity
         }
 
         /// <summary>
-        /// 
+        /// 设置所有音量的大小
         /// </summary>
         /// <param name="volume"></param>
         public static void SetVolume(float volume)
@@ -59,12 +62,18 @@ namespace Aquaivy.Unity
         }
 
         /// <summary>
-        /// 从StreamingAssets内加载一个音频（暂未实现）
+        /// 从StreamingAssets内加载一个音频（暂未实现，因为暂未找到直接读取MP3文件的方式，目前只能读AssetBundle）
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
         public static AudioClip Load(string path)
         {
+            //var name = Path.GetFileName(path);
+            //var bytes = File.ReadAllBytes(path);
+            //AudioClip clip = AudioClip.Create(name, 843264, 2, 32000, true);
+            //clip.SetData(Convert.ToSingle(), 0);
+            //return clip;
+
             throw new NotImplementedException();
         }
 

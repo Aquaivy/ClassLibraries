@@ -21,7 +21,7 @@ namespace UnitTestMSTest
                 "电容器",
                 "电抗器",
                 "本体",
-                "A",
+                "A相",
             };
             string[] choices = new string[] {
                 "110kV72号电容器1172电抗器A相本体",

@@ -90,7 +90,7 @@ namespace Aquaivy.Unity
         }
 
         /// <summary>
-        /// 
+        /// Play
         /// </summary>
         public void Play()
         {
@@ -106,7 +106,7 @@ namespace Aquaivy.Unity
         }
 
         /// <summary>
-        /// 
+        /// Pause
         /// </summary>
         public void Pause()
         {
@@ -114,7 +114,7 @@ namespace Aquaivy.Unity
         }
 
         /// <summary>
-        /// 
+        /// Stop
         /// </summary>
         public void Stop()
         {
@@ -139,6 +139,8 @@ namespace Aquaivy.Unity
         /// <returns></returns>
         public static Audio Play(string path, bool loop = false, float volume = 1f, bool stereo = false)
         {
+            Log.Info("" + Application.streamingAssetsPath);
+
             var clip = AudioManager.Load(path);
             if (clip == null)
             {
