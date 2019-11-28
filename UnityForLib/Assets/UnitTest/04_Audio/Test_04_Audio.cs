@@ -9,6 +9,8 @@ namespace NameSpace_Test_04_Audio
 {
     public class Test_04_Audio : MonoBehaviour
     {
+        public GameObject go;
+
         Audio audio;
 
         private void Start()

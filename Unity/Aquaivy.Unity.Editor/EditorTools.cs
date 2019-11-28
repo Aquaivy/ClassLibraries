@@ -14,12 +14,11 @@ namespace Aquaivy.Unity.Editor
         //--------------------------------------------------------------------------
         //--------------------------------------------------------------------------
 
-        [MenuItem("Tools/Clear Log %Q", false, 1)]
-        public static void CorrectCsprojFile() => ConsoleLog.Clear();
+        [MenuItem("Tools/Clear Editor Log %Q", false, 1)]
+        public static void ClearEditorConsoleLog() => ConsoleLog.Clear();
 
         [MenuItem("Tools/Open PlayerSetting %J", false, 1)]
         public static void OpenPlayerSetting() => PlayerSettingShortcutKey.Open();
-
 
         [MenuItem("Tools/Refresh Project", false, 51)]
         public static void RefreshProject() => RefreshProjectFile.Refresh();
@@ -37,7 +36,7 @@ namespace Aquaivy.Unity.Editor
         public static void OpenResourceCheckerWindow() => ResourceChecker.Init();
 
         [MenuItem("Tools/Test", false, 1001)]
-        public static void TestNewScript() => SearchScript.Search(typeof(Camera));
+        public static void TestNewScript() => EditorUtils.OpenPersistentDataPath();
 
 
 

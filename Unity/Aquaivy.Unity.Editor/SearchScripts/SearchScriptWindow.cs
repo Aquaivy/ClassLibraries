@@ -12,38 +12,38 @@ namespace Aquaivy.Unity.Editor
     class SearchScriptWindow : EditorWindow
     {
         private string scriptName;
+        private bool searchBtnClicked = false;
 
         public static void OpenWindow()
         {
             var window = GetWindow<SearchScriptWindow>();
-            window.titleContent = new GUIContent("Search Script");
+            window.titleContent = new GUIContent("搜索脚本");
             window.Show();
         }
 
         public void OnGUI()
         {
             GUILayout.Space(10);
-            EditorGUILayout.LabelField(new GUIContent("还没增加场景保存确认，请先手动保存场景！！！","123"));
             EditorGUILayout.LabelField("还没增加场景保存确认，请先手动保存场景！！！");
             EditorGUILayout.LabelField("还没增加场景保存确认，请先手动保存场景！！！");
-
+            EditorGUILayout.LabelField("还没增加场景保存确认，请先手动保存场景！！！");
             GUILayout.Space(10);
 
-            //Search for Mame
+
             GUILayout.BeginHorizontal();
 
-            GUILayout.Label("Search with Name:");
+            GUILayout.Label("脚本名称：");
             scriptName = GUILayout.TextField(scriptName);
             if (GUILayout.Button("Search") && !string.IsNullOrEmpty(scriptName))
             {
+                searchBtnClicked = true;
                 SearchScript.Search(scriptName);
             }
 
-            GUILayout.EndHorizontal();
-
-
             if (GUILayout.Button("Search In All Scenes") && !string.IsNullOrEmpty(scriptName))
             {
+                searchBtnClicked = true;
+
                 var scenes = SceneHelper.GetAllScenesInProject();
                 var currentScene = EditorSceneManager.GetActiveScene();
                 if (scenes.Count > 0 && currentScene.isDirty)
@@ -60,6 +60,13 @@ namespace Aquaivy.Unity.Editor
                 }
             }
 
+            GUILayout.EndHorizontal();
+            GUILayout.Space(30);
+
+            if (searchBtnClicked)
+            {
+                EditorGUILayout.LabelField("搜索结果已经显示在EditorConsole界面！！！");
+            }
 
         }
     }

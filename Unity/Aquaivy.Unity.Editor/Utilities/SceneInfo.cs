@@ -7,7 +7,10 @@ using UnityEngine.SceneManagement;
 
 namespace Aquaivy.Unity.Editor
 {
-    public struct SceneWrap 
+    /// <summary>
+    /// 场景信息
+    /// </summary>
+    public struct SceneInfo 
     {
         public Scene NativeScene;
         public string FullPath;

@@ -80,7 +80,7 @@ public class MissingReferencesFinder
                 // Missing components will be null, we can't find their type, etc.
                 if (!c)
                 {
-                    Debug.LogError($"Missing Component:  Path:{GetFullPath(go)}", go);
+                    Debug.LogError($"Missing Component:  Path={GetFullPath(go)}", go);
                     continue;
                 }
 
@@ -114,12 +114,15 @@ public class MissingReferencesFinder
 
     private static void PrintError(string context, GameObject go, string component, string property)
     {
-        var error = $"Missing Reference:  Scene:[{context}]    Path:{GetFullPath(go)}    Component:{component}    Property:{property}";
+        var error = $"Missing Reference:  Scene=[{context}]    Path={GetFullPath(go)}    Component={component}    Property={property}";
         Debug.LogError(error, go);
     }
 
-    // 获取完整路径
-    // （这个方案很赞）
+    /// <summary>
+    /// 获取完整路径（这个方案很赞）
+    /// </summary>
+    /// <param name="go"></param>
+    /// <returns></returns>
     private static string GetFullPath(GameObject go)
     {
         return go.transform.parent == null

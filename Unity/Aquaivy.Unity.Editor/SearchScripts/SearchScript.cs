@@ -10,6 +10,9 @@ using UnityEngine.SceneManagement;
 
 namespace Aquaivy.Unity.Editor
 {
+    /// <summary>
+    /// 脚本搜索
+    /// </summary>
     public class SearchScript
     {
         public static void Search(Type type)
@@ -34,7 +37,8 @@ namespace Aquaivy.Unity.Editor
             {
                 if (go.GetComponent(script) != null)
                 {
-                    Debug.Log($"Found script:  scene={scene.name}  script={script}  path={go.transform.GetFullPath()}");
+                    Debug.Log($"Found script:  Scene={scene.name}  Script={script}  Path={go.transform.GetFullPath("/", "")}"
+                        , go);
                 }
             }
         }

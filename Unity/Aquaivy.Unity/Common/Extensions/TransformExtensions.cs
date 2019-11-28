@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Aquaivy.Unity
 {
+    /// <summary>
+    /// Transform类的扩展方法
+    /// </summary>
     public static class TransformExtensions
     {
         /// <summary>

@@ -57,6 +57,7 @@
     <Compile Include="EditorTools.cs" />
     <Compile Include="FindMissingScripts\FindMissingScripts.cs" />
     <Compile Include="Importer\ModelImporter.cs" />
+    <Compile Include="ProjectFile\EditorUtils.cs" />
     <Compile Include="SearchScripts\MissingReferencesFinder.cs" />
     <Compile Include="SearchScripts\SearchScript.cs" />
     <Compile Include="SearchScripts\SearchScriptWindow.cs" />
@@ -70,7 +71,7 @@
     <Compile Include="Template\OptimizeTemplateFile.cs" />
     <Compile Include="Utilities\ResourceChecker.cs" />
     <Compile Include="Utilities\SceneHelper.cs" />
-    <Compile Include="Utilities\SceneWrap.cs" />
+    <Compile Include="Utilities\SceneInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Aquaivy.Core\Aquaivy.Core.csproj">
