@@ -14,7 +14,7 @@ namespace Aquaivy.Unity.Editor
     /// <summary>
     /// 场景相关的工具
     /// </summary>
-    class SceneHelper
+    public class SceneHelper
     {
         /// <summary>
         /// 返回项目中所有场景，无论是否在Build Setting中，
@@ -54,6 +54,9 @@ namespace Aquaivy.Unity.Editor
         public static void LocateCurrentSceneInProject()
         {
             EditorUtility.FocusProjectWindow();
+            //Selection.activeObject = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/UnitTest/04_Audio/GameObject.prefab");
+            Selection.activeObject = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>("Assets/UnitTest/04_Audio/04_Audio.unity");
+            //ProjectWindowUtil.ShowCreatedAsset
         }
 
         public static void LocateSceneInProject(Scene scene)

@@ -36,7 +36,7 @@ namespace Aquaivy.Unity.Editor
         public static void OpenResourceCheckerWindow() => ResourceChecker.Init();
 
         [MenuItem("Tools/Test", false, 1001)]
-        public static void TestNewScript() => EditorUtils.OpenPersistentDataPath();
+        public static void TestNewScript() => SceneHelper.LocateCurrentSceneInProject();
 
 
 
