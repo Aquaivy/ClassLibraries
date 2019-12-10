@@ -27,7 +27,7 @@ namespace Aquaivy.Unity.Utilities
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
-        /// <param name="path"></param>
+        /// <param name="t"></param>
         /// <returns></returns>
         public static bool Write<T>(string key, T t)
         {
