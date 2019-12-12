@@ -43,6 +43,7 @@ namespace Aquaivy.Unity.Utilities
         /// <param name="p0"></param>
         /// <param name="p1"></param>
         /// <param name="p2"></param>
+        /// <param name="scale"></param>
         /// <returns></returns>
         private static float CalculateTriangleArea(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 scale)
         {

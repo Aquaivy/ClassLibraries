@@ -101,6 +101,7 @@
     <Compile Include="TweenLite\Sinusoidal.cs" />
     <Compile Include="TweenLite\TweenLite.cs" />
     <Compile Include="Utilities\GameObjectHelper.cs" />
+    <Compile Include="Utilities\MeshUtils.cs" />
     <Compile Include="Utilities\Persistence.cs" />
     <Compile Include="Utilities\ProfilerHelper.cs" />
     <Compile Include="Utilities\RuntimeProfiler.cs" />

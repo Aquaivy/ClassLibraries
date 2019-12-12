@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{3B0BE3EF-0330-84AB-088D-78AE7A9A9C61}</ProjectGuid>
+    <ProjectGuid>{2617F365-0A26-4EED-3AC3-80E72894BCA2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -64,20 +64,24 @@
     <Compile Include="Assets\UnitTest\02_TweenLite\Test_02_TweenLite.cs" />
     <Compile Include="Assets\UnitTest\03_ThrottleTask\Test_03_ThrottleTask.cs" />
     <Compile Include="Assets\UnitTest\04_Audio\Test_04_Audio.cs" />
+    <Compile Include="Assets\UnitTest\05_Mesh\CreateMesh.cs" />
+    <Compile Include="Assets\UnitTest\05_Mesh\GetEnterPoints.cs" />
+    <Compile Include="Assets\UnitTest\05_Mesh\Test_05_CreateMeshWithPoint.cs" />
+    <Compile Include="Assets\UnitTest\05_Mesh\Test_05_Mesh.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForAquaivy/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForAquaivy/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForAquaivy/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForAquaivy/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForAquaivy/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Softwares/Unity 2018.3.14/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -281,25 +285,25 @@
       <HintPath>D:/Softwares/Unity 2018.3.14/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Aquaivy.Core">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Assets/Libs/Aquaivy.Core.dll</HintPath>
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForAquaivy/Assets/Libs/Aquaivy.Core.dll</HintPath>
     </Reference>
     <Reference Include="Aquaivy.Cryptography">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Assets/Libs/Aquaivy.Cryptography.dll</HintPath>
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForAquaivy/Assets/Libs/Aquaivy.Cryptography.dll</HintPath>
     </Reference>
     <Reference Include="Aquaivy.Unity">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Assets/Libs/Aquaivy.Unity.dll</HintPath>
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForAquaivy/Assets/Libs/Aquaivy.Unity.dll</HintPath>
     </Reference>
     <Reference Include="Aquaivy.Unity.UI">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Assets/Libs/Aquaivy.Unity.UI.dll</HintPath>
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForAquaivy/Assets/Libs/Aquaivy.Unity.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForAquaivy/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForAquaivy/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForLib/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForAquaivy/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:/Softwares/Unity 2018.3.14/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
