@@ -68,6 +68,7 @@
     <Compile Include="Assets\UnitTest\05_Mesh\GetEnterPoints.cs" />
     <Compile Include="Assets\UnitTest\05_Mesh\Test_05_CreateMeshWithPoint.cs" />
     <Compile Include="Assets\UnitTest\05_Mesh\Test_05_Mesh.cs" />
+    <Compile Include="Assets\UnitTest\06_Layer\Test_06_Layer.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForAquaivy/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

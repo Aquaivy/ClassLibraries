@@ -3,49 +3,21 @@
 
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace Aquaivy.Unity
 {
+    /// <summary>
+    /// Extension methods for Unity's LayerMask struct
+    /// </summary>
     public static class LayerExtensions
     {
-        private const int InvalidLayer = -1;
-
-        #region Local layers
-        private static int defaultLayer = InvalidLayer;
-        private static int surfaceLayer = InvalidLayer;
-        private static int interactionLayer = InvalidLayer;
-        private static int activationLayer = InvalidLayer;
-        #endregion
-
-        public static int Default
-        {
-            get
-            {
-                return GetLayerNumber(ref defaultLayer, "Default");
-            }
-        }
-
-        public static int Surface
-        {
-            get
-            {
-                return GetLayerNumber(ref surfaceLayer, "SR");
-            }
-        }
-        public static int Interaction
-        {
-            get
-            {
-                return GetLayerNumber(ref interactionLayer, "Interaction");
-            }
-        }
-
-        public static int Activation
-        {
-            get
-            {
-                return GetLayerNumber(ref activationLayer, "Activation");
-            }
-        }
+        /// <summary>
+        /// The Invalid Layer Id.
+        /// </summary>
+        public const int InvalidLayerId = -1;
 
         /// <summary>
         /// Look through the layerMaskList and find the index in that list for which the supplied layer is part of
@@ -91,18 +63,113 @@ namespace Aquaivy.Unity
             return combinedLayerMask;
         }
 
-        public static LayerMask ToMask(int layer)
+        /// <summary>
+        /// Transform layer id to <see href="https://docs.unity3d.com/ScriptReference/LayerMask.html">LayerMask</see>
+        /// </summary>
+        /// <param name="layerId"></param>
+        /// <returns></returns>
+        public static LayerMask ToMask(int layerId)
         {
-            return 1 << layer;
+            return 1 << layerId;
         }
 
-        private static int GetLayerNumber(ref int cache, string layerName)
+        /// <summary>
+        /// Gets a valid layer id using the layer name.
+        /// </summary>
+        /// <param name="cache">The cached layer id.</param>
+        /// <param name="layerName">The name of the layer to look for if the cache is unset.</param>
+        /// <returns>The layer id.</returns>
+        public static int GetLayerId(ref int cache, string layerName)
         {
-            if (cache == InvalidLayer)
+            if (cache == InvalidLayerId)
             {
                 cache = LayerMask.NameToLayer(layerName);
             }
+
             return cache;
         }
+
+#if UNITY_EDITOR
+
+        private static SerializedProperty tagManagerLayers = null;
+
+        /// <summary>
+        /// The current layers defined in the Tag Manager.
+        /// </summary>
+        public static UnityEditor.SerializedProperty TagManagerLayers
+        {
+            get
+            {
+                if (tagManagerLayers == null)
+                {
+                    InitializeTagManager();
+                }
+
+                return tagManagerLayers;
+            }
+        }
+
+        private static void InitializeTagManager()
+        {
+            Object[] tagAssets = UnityEditor.AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset");
+
+            if ((tagAssets == null) || (tagAssets.Length == 0))
+            {
+                Debug.LogError("Failed to load TagManager!");
+                return;
+            }
+
+            var tagsManager = new UnityEditor.SerializedObject(tagAssets);
+            tagManagerLayers = tagsManager.FindProperty("layers");
+
+            Debug.Assert(tagManagerLayers != null);
+        }
+
+        /// <summary>
+        /// Attempts to set the layer in Project Settings Tag Manager.
+        /// </summary>
+        /// <param name="layerId">The layer Id to attempt to set the layer on.</param>
+        /// <param name="layerName">The layer name to attempt to set the layer on.</param>
+        /// <returns>
+        /// True if the specified layerId was newly configured, false otherwise.
+        /// </returns>
+        public static bool  SetupLayer(int layerId, string layerName)
+        {
+            SerializedProperty layer = TagManagerLayers.GetArrayElementAtIndex(layerId);
+
+            if (!string.IsNullOrEmpty(layer.stringValue))
+            {
+                // layer already set.
+                return false;
+            }
+
+            layer.stringValue = layerName;
+            layer.serializedObject.ApplyModifiedProperties();
+            AssetDatabase.SaveAssets();
+            return true;
+        }
+
+        /// <summary>
+        /// Attempts to remove the layer from the Project Settings Tag Manager.
+        /// </summary>
+        /// <param name="layerName"></param>
+        /// <returns></returns>
+        public static void RemoveLayer(string layerName)
+        {
+            for (int i = 0; i < TagManagerLayers.arraySize; i++)
+            {
+                var layer = TagManagerLayers.GetArrayElementAtIndex(i);
+
+                if (layer.stringValue == layerName)
+                {
+                    layer.stringValue = string.Empty;
+                    layer.serializedObject.ApplyModifiedProperties();
+                    AssetDatabase.SaveAssets();
+                    break;
+                }
+            }
+        }
+
+#endif // UNITY_EDITOR
     }
 }
