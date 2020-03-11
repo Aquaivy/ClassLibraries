@@ -10,7 +10,7 @@ namespace Aquaivy.Core.Utilities
     /// <summary>
     /// 一些IO常用操作
     /// </summary>
-    public static class FileUtilitiy
+    public static class FileUtility
     {
         /// <summary>
         /// 返回路径下所有文件，包含隐藏文件，
@@ -43,6 +43,9 @@ namespace Aquaivy.Core.Utilities
         /// <returns></returns>
         public static string[] GetDirectories(string path)
         {
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
             return Directory.GetDirectories(path, "*", SearchOption.AllDirectories);
         }
 
@@ -55,6 +58,9 @@ namespace Aquaivy.Core.Utilities
         /// <returns></returns>
         public static string[] GetDirectories(string path, string searchPattern, SearchOption searchOption)
         {
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
             return Directory.GetDirectories(path, searchPattern, searchOption);
         }
 

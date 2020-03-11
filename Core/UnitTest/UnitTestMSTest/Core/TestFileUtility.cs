@@ -15,7 +15,7 @@ namespace UnitTestMSTest
         [DataRow(@"..\..\..\PinyinMapSource.txt")]
         public void Test_GetLineEnding(string path)
         {
-            FileUtilitiy.SetFileLineEndings(path, Encoding.UTF8, LineEnding.CRLF);
+            FileUtility.SetFileLineEndings(path, Encoding.UTF8, LineEnding.CRLF);
             //TestContext.WriteLine($"{dec}  {ret}");
             //Assert.IsTrue(ret == pinyin);
         }

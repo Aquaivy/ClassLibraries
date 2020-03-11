@@ -101,14 +101,14 @@ namespace UnitTest.Library
 
         private void Test_LineEndings()
         {
-            FileUtilitiy.GetFileLineEndings(@"D:\HttpUtils.cs");
+            FileUtility.GetFileLineEndings(@"D:\HttpUtils.cs");
         }
 
         private void Test_File()
         {
             //var files = File.GetFiles(@"D:\----------------替换图片");
             //var files = FileUtilitiy.GetDirectories(@"D:\");
-            var files = FileUtilitiy.GetFilesSize(@"D:\----------------替换图片", "*.*", System.IO.SearchOption.AllDirectories);
+            var files = FileUtility.GetFilesSize(@"D:\----------------替换图片", "*.*", System.IO.SearchOption.AllDirectories);
             //foreach (var item in files)
             //{
             //    Log.Info(item);
