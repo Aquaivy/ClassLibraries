@@ -69,6 +69,10 @@
     <Compile Include="Assets\UnitTest\05_Mesh\Test_05_CreateMeshWithPoint.cs" />
     <Compile Include="Assets\UnitTest\05_Mesh\Test_05_Mesh.cs" />
     <Compile Include="Assets\UnitTest\06_Layer\Test_06_Layer.cs" />
+    <Compile Include="Assets\UnitTest\08_HTTP\Test_08_HTTP.cs" />
+    <None Include="Assets\UnitTest\07_Shader\圆角矩形\RoundedRectangle.shader" />
+    <None Include="Assets\UnitTest\07_Shader\ZTest2.shader" />
+    <None Include="Assets\UnitTest\07_Shader\ZTest1.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Unity/VSProjects/ClassLibraries/UnityForAquaivy/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
