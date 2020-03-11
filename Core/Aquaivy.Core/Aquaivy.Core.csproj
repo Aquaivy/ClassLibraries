@@ -70,7 +70,7 @@
     <Compile Include="Web\HttpUtils.cs" />
     <Content Include="Utilities\Lang\Lang.cs.txt" />
     <Compile Include="Utilities\StorageUnit.cs" />
-    <Compile Include="Utilities\IO\FileUtilitiy.cs" />
+    <Compile Include="Utilities\IO\FileUtility.cs" />
     <Compile Include="Utilities\IO\PathEx.cs" />
     <Compile Include="Utilities\SimpleJson\SimpleJson.cs" />
     <Compile Include="Common\Singleton.cs" />
