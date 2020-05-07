@@ -71,6 +71,7 @@
     <Compile Include="Assets\UnitTest\06_Layer\Test_06_Layer.cs" />
     <Compile Include="Assets\UnitTest\08_HTTP\Test_08_HTTP.cs" />
     <Compile Include="Assets\UnitTest\09_Timeline\Test_09_Timeline.cs" />
+    <Compile Include="Assets\UnitTest\10_2D_Collider\Test_10_2DCollider.cs" />
     <None Include="Assets\UnitTest\07_Shader\圆角矩形\RoundedRectangle.shader" />
     <None Include="Assets\UnitTest\07_Shader\ZTest2.shader" />
     <None Include="Assets\UnitTest\07_Shader\ZTest1.shader" />
