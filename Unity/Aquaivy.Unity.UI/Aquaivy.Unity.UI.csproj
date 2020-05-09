@@ -41,11 +41,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\Unity 2017.2.0\UnityEngine.dll</HintPath>
+      <HintPath>..\..\Libs\Unity 2019.3.2\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\Unity 2017.2.0\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\..\Libs\Unity 2019.3.2\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
