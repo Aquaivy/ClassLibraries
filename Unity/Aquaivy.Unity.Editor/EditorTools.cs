@@ -32,8 +32,8 @@ namespace Aquaivy.Unity.Editor
         [MenuItem("Tools/Search Script Window", false, 101)]
         public static void Searchscript() => SearchScriptWindow.OpenWindow();
 
-        //[MenuItem("Tools/Resource Checker", false, 102)]
-        //public static void OpenResourceCheckerWindow() => ResourceChecker.Init();
+        [MenuItem("Tools/Resource Checker", false, 102)]
+        public static void OpenResourceCheckerWindow() => ResourceChecker.Init();
 
         [MenuItem("Tools/Test", false, 1001)]
         public static void TestNewScript() => SceneHelper.LocateCurrentSceneInProject();
