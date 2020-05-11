@@ -3,11 +3,11 @@
 
 
 # Unity files
-UnityForAquaivy/Library/
-UnityForAquaivy/Logs/
-UnityForAquaivy/Packages/
-UnityForAquaivy/Temp/
-UnityForAquaivy/Assets/Libs/
+/UnityForAquaivy/Library/
+/UnityForAquaivy/Logs/
+/UnityForAquaivy/Packages/
+/UnityForAquaivy/Temp/
+/UnityForAquaivy/Assets/Libs/
 
 # User-specific files
 *.suo
