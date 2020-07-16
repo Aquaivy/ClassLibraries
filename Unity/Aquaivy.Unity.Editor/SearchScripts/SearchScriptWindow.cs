@@ -33,14 +33,22 @@ namespace Aquaivy.Unity.Editor
             GUILayout.BeginHorizontal();
 
             GUILayout.Label("脚本名称：");
+
+
             scriptName = GUILayout.TextField(scriptName);
+
+            if (GUILayout.Button("Clear"))
+            {
+                scriptName = string.Empty;
+            }
+
             if (GUILayout.Button("Search") && !string.IsNullOrEmpty(scriptName))
             {
                 searchBtnClicked = true;
                 SearchScript.Search(scriptName);
             }
 
-            if (GUILayout.Button("Search In All Scenes") && !string.IsNullOrEmpty(scriptName))
+            if (GUILayout.Button("Search In All Project Scenes") && !string.IsNullOrEmpty(scriptName))
             {
                 searchBtnClicked = true;
 

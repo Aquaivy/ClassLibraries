@@ -31,9 +31,16 @@ namespace Aquaivy.Core.Webs
         {
             var contentType = "text/html;charset=UTF-8";
 
-            return Get(uri, contentType, 10);
+            return Get(uri, contentType, 10 * 1000);
         }
 
+        /// <summary>
+        /// HTTP发送Get请求方法
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <param name="contentType"></param>
+        /// <param name="timeout"></param>
+        /// <returns></returns>
         public static RequestResponse Get(string uri, string contentType, int timeout)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
@@ -60,10 +67,10 @@ namespace Aquaivy.Core.Webs
                 rr.ResponseString = responseString;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 rr.Success = false;
-
+                Console.WriteLine(ex.ToString());
             }
 
             return rr;
