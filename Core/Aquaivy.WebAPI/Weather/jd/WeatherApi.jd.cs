@@ -8,15 +8,16 @@ using System.Threading.Tasks;
 
 namespace Aquaivy.WebAPI.Weather
 {
+    public class jdResponseData
+    {
+
+    }
+
     /// <summary>
     /// 获取ip
     /// </summary>
     public partial class WeatherApi
     {
-        public class jdResponseData
-        {
-
-        }
 
         /// <summary>
         /// 获取指定城市id的天气（为完成开发）

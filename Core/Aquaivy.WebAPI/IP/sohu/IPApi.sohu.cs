@@ -8,17 +8,18 @@ using System.Threading.Tasks;
 
 namespace Aquaivy.WebAPI.IP
 {
+    public class SohuResponseData
+    {
+        public string cip;
+        public string cid;
+        public string cname;
+    }
+
     /// <summary>
     /// 获取ip
     /// </summary>
     public partial class IPApi
     {
-        public class SohuResponseData
-        {
-            public string cip;
-            public string cid;
-            public string cname;
-        }
 
         /// <summary>
         /// 获取自身ip

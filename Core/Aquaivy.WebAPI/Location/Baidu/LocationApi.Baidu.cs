@@ -9,43 +9,42 @@ using System.Threading.Tasks;
 
 namespace Aquaivy.WebAPI.Location
 {
+    public class BaiduResponseData
+    {
+        public string address;
+        public Content content;
+        public int status;
+    }
+
+    public class Content
+    {
+        public string address;
+        public Address_Detail address_detail;
+        public Point point;
+    }
+
+    public class Address_Detail
+    {
+
+        public string city;
+        public int city_code;
+        public string district;
+        public string province;
+        public string street;
+        public string street_number;
+    }
+
+    public class Point
+    {
+        public string x;
+        public string y;
+    }
+
     /// <summary>
     /// 获取位置
     /// </summary>
     public partial class LocationApi
     {
-        public class BaiduResponseData
-        {
-            public string address;
-            public Content content;
-            public int status;
-        }
-
-        public class Content
-        {
-            public string address;
-            public Address_Detail address_detail;
-            public Point point;
-        }
-
-        public class Address_Detail
-        {
-
-            public string city;
-            public int city_code;
-            public string district;
-            public string province;
-            public string street;
-            public string street_number;
-        }
-
-        public class Point
-        {
-            public string x;
-            public string y;
-        }
-
-
         /// <summary>
         /// 
         /// </summary>

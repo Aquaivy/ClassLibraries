@@ -9,57 +9,69 @@ using System.Threading.Tasks;
 
 namespace Aquaivy.WebAPI.Weather
 {
+
+    public class TianqiResponseData
+    {
+        public string cityid;           //"101020100",
+        public string city;             //"上海",
+        public string country;          //"中国",
+        public string update_time;      //"2020-07-16 13:29:57",
+        public DayWeather[] data;
+        public AirQualityIndex aqi;
+    }
+
+    public class DayWeather
+    {
+        public string day;              //"16日（星期四）"
+        public string date;             //"2020-07-16",
+        public string week;             //"星期四",
+
+        public string wea;              //"雨",
+        public string tem;              //气温，"22",
+        public string tem1;             //最高气温，"24",
+        public string tem2;             //最低气温，"20",
+
+        public string humidity;         //空气湿度，"91%",
+        public string visibility;       //能见度，"14.59km",
+        public string pressure;         //大气压,
+
+
+        public string win_speed;        //"3-4级",
+
+        public string air;              //"25",
+        public string air_level;        //"优",
+        public string air_tips;         //"空气很好，可以外出活动，呼吸新鲜空气，拥抱大自然！",
+    }
+
+    public class AirQualityIndex
+    {
+        public string air;              //"25",
+        public string air_level;        //"优",
+        public string air_tips;         //"空气很好，可以外出活动，呼吸新鲜空气，拥抱大自然！",
+
+        public string pm25;             //"14",
+        public string pm25_desc;        //"优",
+
+        public string pm10;             //"14",
+        public string pm10_desc;        //"优",
+
+        public string no2;              //"14",
+        public string no2_desc;         //"优",
+
+        public string so2;              //"14",
+        public string so2_desc;         //"优",
+
+        public string kouzhao;          //"无需戴口罩",
+        public string waichu;           //"适宜外出",
+
+        public string kaichuang;        //"适宜开窗",
+    }
+
     /// <summary>
     /// 获取天气
     /// </summary>
     public partial class WeatherApi
     {
-        public class TianqiResponseData
-        {
-            public string cityid;           //"101020100",
-            public string city;             //"上海",
-            public string country;          //"中国",
-            public string update_time;      //"2020-07-16 13:29:57",
-            public DayWeather[] data;
-            public AirQualityIndex aqi;
-        }
-
-        public class DayWeather
-        {
-            public string day;              //"16日（星期四）"
-            public string date;             //"2020-07-16",
-            public string week;             //"星期四",
-            public string wea;              //"雨",
-            public string pressure;         //大气压,
-            public string win_speed;        //"3-4级",
-            public string air;              //"25",
-            public string air_level;        //"优",
-            public string air_tips;         //"空气很好，可以外出活动，呼吸新鲜空气，拥抱大自然！",
-        }
-
-        public class AirQualityIndex
-        {
-            public string air;              //"25",
-            public string air_level;        //"优",
-            public string air_tips;         //"空气很好，可以外出活动，呼吸新鲜空气，拥抱大自然！",
-
-            public string pm25;             //"14",
-            public string pm25_desc;        //"优",
-
-            public string pm10;             //"14",
-            public string pm10_desc;        //"优",
-
-            public string no2;              //"14",
-            public string no2_desc;         //"优",
-
-            public string so2;              //"14",
-            public string so2_desc;         //"优",
-
-            public string kouzhao;          //"无需戴口罩",
-            public string waichu;           //"适宜外出",
-
-            public string kaichuang;        //"适宜开窗",
-        }
 
         /// <summary>
         /// 获取当前地点天气
