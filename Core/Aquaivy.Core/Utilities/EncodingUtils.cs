@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -179,27 +180,87 @@ namespace Aquaivy.Core.Utilities
         /// <returns></returns>
         public static string UnicodeToString(string unicode, Endian endian = Endian.Big)
         {
-            if (unicode.Length % 6 != 0)
-                throw new ArgumentException("unicode字符串长度不是6的整数倍，无法转换为正常字符", unicode);
-
             StringBuilder sb = new StringBuilder();
 
-            int len = unicode.Length / 6;
-            for (int i = 0; i < len; i++)
+            #region 新方案：可以只转换unicode部分，其他部分不影响
+            bool backslash_ready = false;       //准备反斜杠
+            bool backslash_ok = false;
+
+            int uni_len = 0;
+            char[] uni_arr = new char[4];
+            char[] tmp_arr = new char[6];
+
+            for (int i = 0; i < unicode.Length; i++)
             {
-                //后4位具体编码
-                string str = unicode.Substring(0, 6).Substring(2);
 
-                //原始unicode字符串，截掉前6位，保留后面的
-                unicode = unicode.Substring(6);
+                char c = unicode[i];
+                if (c == '\\')
+                {
+                    backslash_ready = true;
+                    tmp_arr[0] = c;
+                    continue;
+                }
+                else if (backslash_ready && (c == 'u' || c == 'U'))
+                {
+                    backslash_ok = true;
+                    tmp_arr[1] = c;
+                    continue;
+                }
+                else if (backslash_ok)
+                {
+                    uni_arr[uni_len] = c;
+                    tmp_arr[uni_len + 2] = c;
+                    uni_len++;
 
-                //16进制转回10进制
-                byte[] bytes = new byte[2];
-                bytes[1] = byte.Parse(int.Parse(str.Substring(0, 2), System.Globalization.NumberStyles.HexNumber).ToString());
-                bytes[0] = byte.Parse(int.Parse(str.Substring(2, 2), System.Globalization.NumberStyles.HexNumber).ToString());
+                    if (uni_len == 4)
+                    {
+                        byte[] bytes = new byte[2];
+                        bytes[1] = byte.Parse(int.Parse(new string(uni_arr).Substring(0, 2), System.Globalization.NumberStyles.HexNumber).ToString());
+                        bytes[0] = byte.Parse(int.Parse(new string(uni_arr).Substring(2, 2), System.Globalization.NumberStyles.HexNumber).ToString());
 
-                sb.Append(Encoding.Unicode.GetString(bytes));
+                        sb.Append(Encoding.Unicode.GetString(bytes));
+
+                        backslash_ready = false;
+                        backslash_ok = false;
+                        uni_len = 0;
+                        uni_arr = new char[4];
+                        tmp_arr = new char[6];
+                    }
+                }
+                else
+                {
+                    sb.Append(c);
+                }
             }
+
+            //收尾，如果已经判断是编码状态了，但最终长度不够4，没有编码完成，则需要补充回来
+            if (backslash_ready)
+            {
+                sb.Append(new string(tmp_arr));
+            }
+
+            #endregion
+
+            #region 原始方案：只能转换纯unicode码的
+
+            ////原始方案：只能转换纯unicode码的
+            //for (int i = 0; i < unicode.Length / 6; i++)
+            //{
+            //    //后4位具体编码
+            //    string str = unicode.Substring(0, 6).Substring(2);
+
+            //    //原始unicode字符串，截掉前6位，保留后面的
+            //    unicode = unicode.Substring(6);
+
+            //    //16进制转回10进制
+            //    byte[] bytes = new byte[2];
+            //    bytes[1] = byte.Parse(int.Parse(str.Substring(0, 2), System.Globalization.NumberStyles.HexNumber).ToString());
+            //    bytes[0] = byte.Parse(int.Parse(str.Substring(2, 2), System.Globalization.NumberStyles.HexNumber).ToString());
+
+            //    sb.Append(Encoding.Unicode.GetString(bytes));
+            //}
+
+            #endregion
 
             return sb.ToString();
         }
