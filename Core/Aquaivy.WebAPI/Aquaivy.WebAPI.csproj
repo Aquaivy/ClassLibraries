@@ -46,7 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Weather\sojson\WeatherApi.sojson.cs" />
+    <Compile Include="Weather\tianqiapi\WeatherApiTianqi.cs" />
+    <Compile Include="Weather\WeatherApi.cs" />
+    <Compile Include="IP\sohu\IPApi.sohu.cs" />
     <Compile Include="Location\Baidu\LocationApi.Baidu.cs" />
+    <Compile Include="IP\IPApi.cs" />
     <Compile Include="Location\LocationApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,6 +60,12 @@
       <Project>{d18fc391-9203-4b3a-9896-a1316c30b12b}</Project>
       <Name>Aquaivy.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Weather\sojson\city.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Weather\sojson\city.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

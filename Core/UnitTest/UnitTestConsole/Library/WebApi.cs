@@ -1,6 +1,8 @@
 ﻿using Aquaivy.Core.Logs;
 using Aquaivy.Core.Webs;
+using Aquaivy.WebAPI.IP;
 using Aquaivy.WebAPI.Location;
+using Aquaivy.WebAPI.Weather;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,9 @@ namespace UnitTest.Library
     {
         internal void Run()
         {
-            LocationApi.GetLocationByBaiduApi();
+            //LocationApi.GetLocationByBaiduApi();
+            //IPApi.GetIPBySohuApi();
+            WeatherApi.GetWeatherByTianqiApi();
 
             //Log.Info(ret);
         }

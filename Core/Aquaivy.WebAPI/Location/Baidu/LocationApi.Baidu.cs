@@ -61,7 +61,7 @@ namespace Aquaivy.WebAPI.Location
                 var s = response.ResponseString;
                 s = EncodingUtils.UnicodeToString(s);
                 data = JsonConvert.DeserializeObject<BaiduResponseData>(s);
-                //Console.WriteLine(s);
+                Console.WriteLine(s);
             }
             else
             {
