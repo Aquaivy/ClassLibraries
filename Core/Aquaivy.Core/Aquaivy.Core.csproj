@@ -67,6 +67,7 @@
     <Compile Include="Utilities\Simulation\NameSimulation\NameSimulation.cs" />
     <Compile Include="Utilities\Characters\CharacterType.cs" />
     <Compile Include="Utilities\StopwatchUtils.cs" />
+    <Compile Include="Utilities\StringUnicodeHelper.cs" />
     <Compile Include="Web\HttpUtils.cs" />
     <Content Include="Utilities\Lang\Lang.cs.txt" />
     <Compile Include="Utilities\StorageUnit.cs" />

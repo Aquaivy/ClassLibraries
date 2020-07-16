@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestMSTest", "Core\Unit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "UnityForAquaivy\Assembly-CSharp.csproj", "{2617F365-0A26-4EED-3AC3-80E72894BCA2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aquaivy.WebAPI", "Core\Aquaivy.WebAPI\Aquaivy.WebAPI.csproj", "{EB70D61F-04DF-4DAC-BE1F-C4C28E34A82A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{2617F365-0A26-4EED-3AC3-80E72894BCA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2617F365-0A26-4EED-3AC3-80E72894BCA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2617F365-0A26-4EED-3AC3-80E72894BCA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB70D61F-04DF-4DAC-BE1F-C4C28E34A82A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB70D61F-04DF-4DAC-BE1F-C4C28E34A82A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB70D61F-04DF-4DAC-BE1F-C4C28E34A82A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB70D61F-04DF-4DAC-BE1F-C4C28E34A82A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +110,7 @@ Global
 		{EA704A05-D016-487F-8F93-F7416EAD3359} = {C13934A9-F97E-4A7E-BBB6-98077CE3989C}
 		{0E9D8564-3727-472E-9BB1-9407B03B4995} = {C13934A9-F97E-4A7E-BBB6-98077CE3989C}
 		{2617F365-0A26-4EED-3AC3-80E72894BCA2} = {F0D33F12-8B34-48F1-8EB1-F0BA6D2BDC97}
+		{EB70D61F-04DF-4DAC-BE1F-C4C28E34A82A} = {C13934A9-F97E-4A7E-BBB6-98077CE3989C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9EB0FAE-681B-4BDB-BA30-30B227050D04}

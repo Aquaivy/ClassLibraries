@@ -4,17 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EA704A05-D016-487F-8F93-F7416EAD3359}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>UnitTest</RootNamespace>
-    <AssemblyName>UnitTest</AssemblyName>
+    <ProjectGuid>{EB70D61F-04DF-4DAC-BE1F-C4C28E34A82A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Aquaivy.WebAPI</RootNamespace>
+    <AssemblyName>Aquaivy.WebAPI</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,9 +22,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Aquaivy.WebAPI.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Libs\Json\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,30 +46,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityClass.cs" />
-    <Compile Include="Library\Common.cs" />
-    <Compile Include="Library\Component.cs" />
-    <Compile Include="Library\Serialize.cs" />
-    <Compile Include="Library\Util.cs" />
-    <Compile Include="Library\Thread.cs" />
-    <Compile Include="Library\WebApi.cs" />
-    <Compile Include="Library\Web.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Location\Baidu\LocationApi.Baidu.cs" />
+    <Compile Include="Location\LocationApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tools\VersionTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Aquaivy.Core\Aquaivy.Core.csproj">
+    <ProjectReference Include="..\Aquaivy.Core\Aquaivy.Core.csproj">
       <Project>{d18fc391-9203-4b3a-9896-a1316c30b12b}</Project>
       <Name>Aquaivy.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Aquaivy.WebAPI\Aquaivy.WebAPI.csproj">
-      <Project>{eb70d61f-04df-4dac-be1f-c4c28e34a82a}</Project>
-      <Name>Aquaivy.WebAPI</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>set VersionToolsPath="..\..\..\..\Tools\VersionTools.exe"
+set AssemblyInfoPath="$(ProjectDir)Properties\AssemblyInfo.cs"
+
+%25VersionToolsPath%25 %25AssemblyInfoPath%25 1</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>:: 当前目录是从 bin/Debug/开始的
+set CopyToDir="..\..\..\..\UnityForAquaivy\Assets\Libs\"
+xcopy $(TargetDir)$(TargetName).dll %25CopyToDir%25 /s /y /q
+xcopy $(TargetDir)$(TargetName).pdb %25CopyToDir%25 /s /y /q
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>
