@@ -196,15 +196,30 @@ namespace Aquaivy.Core.Utilities
                 char c = unicode[i];
                 if (c == '\\')
                 {
-                    backslash_ready = true;
-                    tmp_arr[0] = c;
-                    continue;
+                    if (backslash_ready)
+                    {
+                        sb.Append(c);
+                    }
+                    else
+                    {
+                        backslash_ready = true;
+                        tmp_arr[0] = c;
+                    }
+
                 }
-                else if (backslash_ready && (c == 'u' || c == 'U'))
+                else if (backslash_ready && !backslash_ok)
                 {
-                    backslash_ok = true;
-                    tmp_arr[1] = c;
-                    continue;
+                    if (c == 'u' || c == 'U')
+                    {
+                        backslash_ok = true;
+                        tmp_arr[1] = c;
+                    }
+                    else
+                    {
+                        backslash_ready = false;
+                        sb.Append('\\');
+                        sb.Append(c);
+                    }
                 }
                 else if (backslash_ok)
                 {
@@ -215,20 +230,32 @@ namespace Aquaivy.Core.Utilities
                     if (uni_len == 4)
                     {
                         byte[] bytes = new byte[2];
-                        bytes[1] = byte.Parse(int.Parse(new string(uni_arr).Substring(0, 2), System.Globalization.NumberStyles.HexNumber).ToString());
-                        bytes[0] = byte.Parse(int.Parse(new string(uni_arr).Substring(2, 2), System.Globalization.NumberStyles.HexNumber).ToString());
 
-                        sb.Append(Encoding.Unicode.GetString(bytes));
+                        try
+                        {
+                            bytes[1] = byte.Parse(int.Parse(new string(uni_arr).Substring(0, 2), System.Globalization.NumberStyles.HexNumber).ToString());
+                            bytes[0] = byte.Parse(int.Parse(new string(uni_arr).Substring(2, 2), System.Globalization.NumberStyles.HexNumber).ToString());
 
-                        backslash_ready = false;
-                        backslash_ok = false;
-                        uni_len = 0;
-                        uni_arr = new char[4];
-                        tmp_arr = new char[6];
+                            sb.Append(Encoding.Unicode.GetString(bytes));
+                        }
+                        catch (Exception)
+                        {
+                            sb.Append(new string(tmp_arr.ToList().Where(o => o != '\0').ToArray()));
+                        }
+                        finally
+                        {
+                            backslash_ready = false;
+                            backslash_ok = false;
+                            uni_len = 0;
+                            uni_arr = new char[4];
+                            tmp_arr = new char[6];
+                        }
                     }
                 }
                 else
                 {
+                    backslash_ready = false;
+                    backslash_ok = false;
                     sb.Append(c);
                 }
             }
@@ -236,7 +263,7 @@ namespace Aquaivy.Core.Utilities
             //收尾，如果已经判断是编码状态了，但最终长度不够4，没有编码完成，则需要补充回来
             if (backslash_ready)
             {
-                sb.Append(new string(tmp_arr));
+                sb.Append(new string(tmp_arr.ToList().Where(o => o != '\0').ToArray()));
             }
 
             #endregion

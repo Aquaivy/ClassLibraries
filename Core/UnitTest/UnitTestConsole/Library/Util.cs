@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using Aquaivy.Core.Logs;
 using Aquaivy.Core.Utilities;
 
@@ -18,6 +19,14 @@ namespace UnitTest.Library
             //Test_RandomName();
             //Test_Converter();
             //Test_Stopwatch();
+            Test_EncodingUtils();
+        }
+
+        private void Test_EncodingUtils()
+        {
+            string s = File.ReadAllText(@"D:\weather.json");
+            string s2 = EncodingUtils.UnicodeToString(s);
+            File.WriteAllText(@"D:\weather2.json", s2);
         }
 
         private void Test_Stopwatch()

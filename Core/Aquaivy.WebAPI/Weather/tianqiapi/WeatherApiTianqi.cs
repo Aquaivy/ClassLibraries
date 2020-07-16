@@ -3,6 +3,7 @@ using Aquaivy.Core.Webs;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -89,11 +90,16 @@ namespace Aquaivy.WebAPI.Weather
             if (response.Success)
             {
                 var s = response.ResponseString;
+
+#if DEBUG
+                File.WriteAllText(@"D:\weather.json", s);
+#endif
+
                 s = EncodingUtils.UnicodeToString(s);
 
                 data = JsonConvert.DeserializeObject<TianqiResponseData>(s);
                 //Console.WriteLine(s);
-                Console.WriteLine(JsonConvert.SerializeObject(data));
+                //Console.WriteLine(JsonConvert.SerializeObject(data));
             }
 
             return data;
