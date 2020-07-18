@@ -20,6 +20,10 @@ bld/
 [Ll]og/
 
 # [■■■■■■■■■■■■■■■■■■■]
+# special file need ignore
+/Tools/VersionTools.exe
+
+# [■■■■■■■■■■■■■■■■■■■]
 # Don't ignore this
 !/Aquaivy.Library/Log/
 

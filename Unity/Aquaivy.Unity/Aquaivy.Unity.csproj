@@ -98,7 +98,7 @@
     <Compile Include="Input\PlatformInputHandlers\SunflowerInputHandler.cs" />
     <Compile Include="Logs\UnityAppender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tasks\ThrottleTask.cs" />
+    <Compile Include="Tasks\IntermittentTask.cs" />
     <Compile Include="Tasks\DelayTask.cs" />
     <Compile Include="Tasks\DownloadTask.cs" />
     <Compile Include="Tasks\TaskLite.cs" />

@@ -10,7 +10,7 @@ namespace Aquaivy.Unity
     /// 按照固定时间间隔执行的任务，
     /// 可设置自动结束任务的方式
     /// </summary>
-    public class ThrottleTask
+    public class IntermittentTask
     {
         private static readonly object m_tasklock = new object();
 
@@ -67,7 +67,7 @@ namespace Aquaivy.Unity
         /// <param name="interval"></param>
         /// <param name="tag"></param>
         /// <returns></returns>
-        public static ThrottleTask Invoke(Action task, int interval, object tag = null)
+        public static IntermittentTask Invoke(Action task, int interval, object tag = null)
         {
             return Invoke(task, interval, ThrottleStopType.Forever, 0, tag);
         }
@@ -81,11 +81,11 @@ namespace Aquaivy.Unity
         /// <param name="stopValue"></param>
         /// <param name="tag"></param>
         /// <returns></returns>
-        public static ThrottleTask Invoke(Action task, int interval, ThrottleStopType stopType, int stopValue, object tag = null)
+        public static IntermittentTask Invoke(Action task, int interval, ThrottleStopType stopType, int stopValue, object tag = null)
         {
             lock (m_tasklock)
             {
-                var throttleTask = new ThrottleTask
+                var throttleTask = new IntermittentTask
                 {
                     Task = task,
                     Interval = interval,
@@ -128,7 +128,7 @@ namespace Aquaivy.Unity
         /// 释放某个任务
         /// </summary>
         /// <param name="throttleTask"></param>
-        public static void Release(ThrottleTask throttleTask)
+        public static void Release(IntermittentTask throttleTask)
         {
             lock (m_tasklock)
             {
