@@ -28,6 +28,8 @@ namespace Aquaivy.WebAPI.Weather
         public string week;             //"星期四",
 
         public string wea;              //"雨",
+        public string wea_img;          //"yu",
+
         public string tem;              //气温，"22",
         public string tem1;             //最高气温，"24",
         public string tem2;             //最低气温，"20",
@@ -82,7 +84,7 @@ namespace Aquaivy.WebAPI.Weather
         {
             //文档url:http://doc.tianqiapi.com/603579
 
-            string url = "http://www.tianqiapi.com/api?version=v9&appid=23035354&appsecret=8YvlPNrz";
+            string url = "http://www.tianqiapi.com/api?version=v9&appid=42281781&appsecret=Io0akab2";
 
             TianqiResponseData data = null;
 
@@ -99,7 +101,7 @@ namespace Aquaivy.WebAPI.Weather
 
                 data = JsonConvert.DeserializeObject<TianqiResponseData>(s);
                 //Console.WriteLine(s);
-                //Console.WriteLine(JsonConvert.SerializeObject(data));
+                Console.WriteLine(JsonConvert.SerializeObject(data));
             }
 
             return data;
