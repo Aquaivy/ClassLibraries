@@ -109,6 +109,8 @@
     <Compile Include="TweenLite\Elastic.cs" />
     <Compile Include="TweenLite\Empty.cs" />
     <Compile Include="TweenLite\Exponential.cs" />
+    <Compile Include="TweenLite\Extension\TweenLite.Color.cs" />
+    <Compile Include="TweenLite\Extension\TweenLite.Vector3.cs" />
     <Compile Include="TweenLite\Linear.cs" />
     <Compile Include="TweenLite\Quadratic.cs" />
     <Compile Include="TweenLite\Quartic.cs" />

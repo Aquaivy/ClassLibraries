@@ -21,7 +21,7 @@ namespace Aquaivy.Unity
     /// <summary>
     /// ª∫∂Øº∆À„¿‡
     /// </summary>
-    public class TweenLite
+    public partial class TweenLite
     {
         #region Static Members
 
@@ -56,6 +56,7 @@ namespace Aquaivy.Unity
                         if (tween.waitRelease)
                         {
                             m_tweeners.RemoveAt(i);
+                            tween.Released?.Invoke();
                             i--;
                         }
                     }
@@ -224,6 +225,11 @@ namespace Aquaivy.Unity
 
         public delegate void EndHandler();
         public event EndHandler Ended;
+
+
+        public delegate void ReleaseHandler();
+        public event ReleaseHandler BeforeRelease;
+        public event ReleaseHandler Released;
         #endregion
 
         #region Methods
@@ -303,6 +309,8 @@ namespace Aquaivy.Unity
         private bool waitRelease = false;
         public void Release()
         {
+            BeforeRelease?.Invoke();
+
             Stop();
             waitRelease = true;
         }
