@@ -27,6 +27,9 @@ namespace Aquaivy.Unity
     /// </summary>
     public class DelayTask
     {
+        private static readonly object m_tasklock = new object();
+        private static List<DelayTask> m_tasks = new List<DelayTask>(8);
+
         /// <summary>
         /// 延迟类型
         /// </summary>
@@ -87,6 +90,8 @@ namespace Aquaivy.Unity
                 return true;
             });
 
+            m_tasks.Add(delayTask);
+
             return delayTask;
         }
 
@@ -114,9 +119,12 @@ namespace Aquaivy.Unity
                     return false;
 
                 task();
+                m_tasks.Remove(delayTask);
 
                 return true;
             });
+
+            m_tasks.Add(delayTask);
 
             return delayTask;
         }
@@ -130,6 +138,17 @@ namespace Aquaivy.Unity
             delayTask.taskLite.Release();
         }
 
+        /// <summary>
+        /// 释放所有任务
+        /// </summary>
+        public static void ReleaseAll()
+        {
+            lock (m_tasklock)
+            {
+                m_tasks.ForEach(o => o.Release());
+                m_tasks.Clear();
+            }
+        }
 
         /// <summary>
         /// 释放这个任务
