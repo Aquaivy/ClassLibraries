@@ -138,7 +138,7 @@ namespace Aquaivy.Unity.Editor
 
         bool collectedInPlayingMode;
 
-        [MenuItem("Window/Resource Checker")]
+        [MenuItem("Tools/Window/Resource Checker")]
         public static void Init()
         {
             ResourceChecker window = (ResourceChecker)EditorWindow.GetWindow(typeof(ResourceChecker));

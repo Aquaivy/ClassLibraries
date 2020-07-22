@@ -41,7 +41,7 @@ namespace Aquaivy.Unity.UI
         //    collider.center = new Vector3(ccx, ccy, 0);
         //}
 
-        public bool Enable
+        public override bool Enable
         {
             get;
             set;

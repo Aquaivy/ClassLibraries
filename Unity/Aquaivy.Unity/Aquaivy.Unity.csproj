@@ -42,26 +42,26 @@
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\Unity 2019.3.2\UnityEngine.dll</HintPath>
+      <HintPath>..\..\Libs\Unity 2019.4.3\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AudioModule">
-      <HintPath>..\..\Libs\Unity 2019.3.2\UnityEngine.AudioModule.dll</HintPath>
+      <HintPath>..\..\Libs\Unity 2019.4.3\UnityEngine.AudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\Libs\Unity 2019.3.2\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\Libs\Unity 2019.4.3\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\..\Libs\Unity 2019.3.2\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>..\..\Libs\Unity 2019.4.3\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\..\Libs\Unity 2019.3.2\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>..\..\Libs\Unity 2019.4.3\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>..\..\Libs\Unity 2019.3.2\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>..\..\Libs\Unity 2019.4.3\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\Unity 2019.3.2\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\..\Libs\Unity 2019.4.3\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
