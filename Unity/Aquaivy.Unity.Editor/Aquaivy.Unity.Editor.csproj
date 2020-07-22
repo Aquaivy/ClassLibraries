@@ -65,6 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Namespace\NamespaceChecker.cs" />
     <Compile Include="Console\ConsoleLog.cs" />
     <Compile Include="EditorTools.cs" />
     <Compile Include="FindMissingScripts\FindMissingScripts.cs" />

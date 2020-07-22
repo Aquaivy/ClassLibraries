@@ -13,13 +13,15 @@ namespace Aquaivy.Unity.Editor
     {
         //--------------------------------------------------------------------------
         //--------------------------------------------------------------------------
-
         [MenuItem("Tools/Clear Editor Log %Q", false, 1)]
         public static void ClearEditorConsoleLog() => ConsoleLog.Clear();
 
         [MenuItem("Tools/Open PlayerSetting %J", false, 1)]
         public static void OpenPlayerSetting() => PlayerSettingShortcutKey.Open();
 
+
+        //--------------------------------------------------------------------------
+        //--------------------------------------------------------------------------
         [MenuItem("Tools/Refresh Project", false, 51)]
         public static void RefreshProject() => RefreshProjectFile.Refresh();
 
@@ -29,12 +31,23 @@ namespace Aquaivy.Unity.Editor
         [MenuItem("Tools/Reduce Warning Level", false, 53)]
         public static void WarningLevel() => ReduceWarningLevel.Reduce();
 
+
+
+        //--------------------------------------------------------------------------
+        //--------------------------------------------------------------------------
         [MenuItem("Tools/Search Script Window", false, 101)]
         public static void Searchscript() => SearchScriptWindow.OpenWindow();
 
         [MenuItem("Tools/Resource Checker", false, 102)]
         public static void OpenResourceCheckerWindow() => ResourceChecker.Init();
 
+        [MenuItem("Tools/Namespace Checker", false, 103)]
+        public static void Namespace() => NamespaceChecker.CheckerNoneNamespaceFile();
+
+
+
+        //--------------------------------------------------------------------------
+        //--------------------------------------------------------------------------
         [MenuItem("Tools/Test", false, 1001)]
         public static void TestNewScript() => SceneHelper.LocateCurrentSceneInProject();
 
@@ -42,7 +55,6 @@ namespace Aquaivy.Unity.Editor
 
         //--------------------------------------------------------------------------
         //--------------------------------------------------------------------------
-
         [MenuItem("Tools/Format/Change Audios To Mono", false, 1001)]
         [MenuItem("Assets/Format/Change Audios To Mono", false, 1001)]
         public static void ChangeAudiosToMono() => AudioImporter.ChangeAudiosToMono();
