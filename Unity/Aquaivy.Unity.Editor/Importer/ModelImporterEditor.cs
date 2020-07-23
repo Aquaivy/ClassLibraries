@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Aquaivy.Unity.Editor.Importer
 {
-    class ModelImporter
+    class ModelImporterEditor
     {
     }
 }

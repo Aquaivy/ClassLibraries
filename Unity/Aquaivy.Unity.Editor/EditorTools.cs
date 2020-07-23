@@ -57,15 +57,15 @@ namespace Aquaivy.Unity.Editor
         //--------------------------------------------------------------------------
         [MenuItem("Tools/Format/Change Audios To Mono", false, 1001)]
         [MenuItem("Assets/Format/Change Audios To Mono", false, 1001)]
-        public static void ChangeAudiosToMono() => AudioImporter.ChangeAudiosToMono();
+        public static void ChangeAudiosToMono() => AudioImporterEditor.ChangeAudiosToMono();
 
-        [MenuItem("Tools/Format/Change Texture To Sprite", false, 1002)]
-        [MenuItem("Assets/Format/Change Texture To Sprite", false, 1002)]
-        public static void ChangeTextureToSprite() => TextureImporter.ChangeTextureToSprite();
+        [MenuItem("Tools/Format/Change To Sprite", false, 1002)]
+        [MenuItem("Assets/Format/Change To Sprite", false, 1002)]
+        public static void ChangeTextureToSprite() => TextureImporterEditor.ChangeTextureToSprite();
 
-        [MenuItem("Tools/Format/Change Sprite To Texture", false, 1003)]
-        [MenuItem("Assets/Format/Change Sprite To Texture", false, 1003)]
-        public static void ChangeSpriteToTexture() => TextureImporter.ChangeSpriteToTexture();
+        [MenuItem("Tools/Format/Change To Texture", false, 1003)]
+        [MenuItem("Assets/Format/Change To Texture", false, 1003)]
+        public static void ChangeSpriteToTexture() => TextureImporterEditor.ChangeSpriteToTexture();
 
     }
 }

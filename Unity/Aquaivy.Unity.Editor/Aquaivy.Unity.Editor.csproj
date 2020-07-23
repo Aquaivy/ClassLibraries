@@ -69,13 +69,13 @@
     <Compile Include="Console\ConsoleLog.cs" />
     <Compile Include="EditorTools.cs" />
     <Compile Include="FindMissingScripts\FindMissingScripts.cs" />
-    <Compile Include="Importer\ModelImporter.cs" />
+    <Compile Include="Importer\ModelImporterEditor.cs" />
     <Compile Include="ProjectFile\EditorUtils.cs" />
     <Compile Include="SearchScripts\MissingReferencesFinder.cs" />
     <Compile Include="SearchScripts\SearchScript.cs" />
     <Compile Include="SearchScripts\SearchScriptWindow.cs" />
-    <Compile Include="Importer\AudioImporter.cs" />
-    <Compile Include="Importer\TextureImporter.cs" />
+    <Compile Include="Importer\AudioImporterEditor.cs" />
+    <Compile Include="Importer\TextureImporterEditor.cs" />
     <Compile Include="ProjectFile\ReduceWarningLevel.cs" />
     <Compile Include="ProjectFile\RefreshProjectFile.cs" />
     <Compile Include="ProjectFile\RepairDependence.cs" />

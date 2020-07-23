@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Aquaivy.Unity.Editor
 {
-    public class AudioImporter
+    public class AudioImporterEditor
     {
         public static void ChangeAudiosToMono() => ChangeAudios(true);
 
