@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Libs\Json\Newtonsoft\v12.0.3\Bin\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -65,12 +68,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Scene\EditorSceneLoader.cs" />
     <Compile Include="Namespace\NamespaceChecker.cs" />
     <Compile Include="Console\ConsoleLog.cs" />
     <Compile Include="EditorTools.cs" />
     <Compile Include="FindMissingScripts\FindMissingScripts.cs" />
     <Compile Include="Importer\ModelImporterEditor.cs" />
     <Compile Include="ProjectFile\EditorUtils.cs" />
+    <Compile Include="Scene\GameObjectLocater.cs" />
     <Compile Include="SearchScripts\MissingReferencesFinder.cs" />
     <Compile Include="SearchScripts\SearchScript.cs" />
     <Compile Include="SearchScripts\SearchScriptWindow.cs" />
