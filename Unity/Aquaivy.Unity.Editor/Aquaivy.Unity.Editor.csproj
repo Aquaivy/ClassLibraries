@@ -74,11 +74,10 @@
     <Compile Include="Namespace\NamespaceChecker.cs" />
     <Compile Include="Console\ConsoleLog.cs" />
     <Compile Include="EditorTools.cs" />
-    <Compile Include="FindMissingScripts\FindMissingScripts.cs" />
     <Compile Include="Importer\ModelImporterEditor.cs" />
     <Compile Include="ProjectFile\EditorUtils.cs" />
     <Compile Include="Scene\GameObjectLocater.cs" />
-    <Compile Include="SearchScripts\MissingReferencesFinder.cs" />
+    <Compile Include="FindMissingScripts\MissingReferencesFinder.cs" />
     <Compile Include="SearchScripts\SearchScript.cs" />
     <Compile Include="SearchScripts\SearchScriptWindow.cs" />
     <Compile Include="Importer\AudioImporterEditor.cs" />

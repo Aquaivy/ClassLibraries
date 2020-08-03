@@ -38,8 +38,7 @@ namespace Aquaivy.Unity.Editor
             {
                 if (go.GetComponent(script) != null)
                 {
-                    Debug.Log($"Found script:  Scene={scene.name}.unity  Script={script}.cs  Path={go.transform.GetFullPath("/", "")}"
-                        , go);
+                    Debug.Log($"Found script:    Scene={scene.name}.unity    Script={script}.cs    Path={go.transform.GetFullPath("/", "")}\n", go);
                 }
             }
         }
