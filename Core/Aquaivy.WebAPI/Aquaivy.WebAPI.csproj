@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Weather\jd\WeatherApi.entity.cs" />
     <Compile Include="Weather\jd\WeatherApi.jd.cs" />
     <Compile Include="Weather\sojson\WeatherApi.sojson.cs" />
     <Compile Include="Weather\tianqiapi\WeatherApiTianqi.cs" />

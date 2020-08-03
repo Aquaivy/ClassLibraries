@@ -1,4 +1,5 @@
 ﻿using Aquaivy.Core.Webs;
+using Aquaivy.WebAPI.IP;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -6,45 +7,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aquaivy.WebAPI.Weather
+namespace Aquaivy.WebAPI.Weather.JDCloud
 {
-    public class jdResponseData
-    {
-
-    }
-
     /// <summary>
     /// 获取ip
     /// </summary>
-    public partial class WeatherApi
+    public class JDCloudWeatherApi
     {
 
         /// <summary>
-        /// 获取指定城市id的天气（为完成开发）
+        /// 获取当前手机所在城市的天气
         /// </summary>
         /// <returns></returns>
-        public static jdResponseData GetWeatherByjdApi()
+        public static JDCloudResponseData GetWeatherByjdApi()
         {
-            //网址url：https://wx.jdcloud.com/market/datas/26/10610
-            string url = "https://way.jd.com/he/freeweather";
+            #region 第一步：获取ip
+            var ip = IPApi.GetIPBySohuApi();
+            #endregion
 
-            jdResponseData data = null;
+
+            #region 第二步：获取天气
+
+            //网址url：https://wx.jdcloud.com/market/datas/26/10610
+            string url = string.Format("https://way.jd.com/he/freeweather?city={0}&appkey=6bd19c1668f49c131027fc7ed9fb53ec", ip.cip);
+
+            JDCloudResponseData data = null;
 
             var response = HttpRequestUtils.Get(url);
             if (response.Success)
             {
                 var s = response.ResponseString;
 
-
-                data = JsonConvert.DeserializeObject<jdResponseData>(s);
-                Console.WriteLine(s);
+                data = JsonConvert.DeserializeObject<JDCloudResponseData>(s);
+                //Console.WriteLine(s);
             }
             else
             {
-                data = new jdResponseData { };
+                data = new JDCloudResponseData { };
             }
 
             return data;
+
+
+            #endregion
         }
     }
 

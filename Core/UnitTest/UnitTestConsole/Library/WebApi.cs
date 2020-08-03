@@ -3,6 +3,7 @@ using Aquaivy.Core.Webs;
 using Aquaivy.WebAPI.IP;
 using Aquaivy.WebAPI.Location;
 using Aquaivy.WebAPI.Weather;
+using Aquaivy.WebAPI.Weather.JDCloud;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,8 @@ namespace UnitTest.Library
         {
             //LocationApi.GetLocationByBaiduApi();
             //IPApi.GetIPBySohuApi();
-            WeatherApi.GetWeatherByTianqiApi();
+            //WeatherApi.GetWeatherByTianqiApi();
+            JDCloudWeatherApi.GetWeatherByjdApi();
 
             //Log.Info(ret);
         }

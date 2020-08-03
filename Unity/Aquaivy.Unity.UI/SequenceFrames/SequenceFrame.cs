@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 namespace Aquaivy.Unity.UI
 {
+    /*
     public class SequenceFrame : Graphic, IImageable, ISequenceFrame
     {
         private List<string> frames = new List<string>();
@@ -244,4 +245,6 @@ namespace Aquaivy.Unity.UI
 
 
     }
+
+    */
 }
