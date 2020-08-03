@@ -13,7 +13,6 @@ public class MissingReferencesFinder
     /// <summary>
     /// Finds all missing references to objects in the currently loaded scene.
     /// </summary>
-    [MenuItem("Tools/Missing References/Search in current scene", false, 50)]
     public static void FindMissingReferencesInCurrentScene()
     {
         var scenePath = EditorSceneManager.GetActiveScene().path;
@@ -25,8 +24,7 @@ public class MissingReferencesFinder
     /// Finds all missing references to objects in all enabled scenes in the project.
     /// This works by loading the scenes one by one and checking for missing object references.
     /// </summary>
-    [MenuItem("Tools/Missing References/Search in BuildSetting scenes（enabled only）", false, 51)]
-    public static void MissingSpritesInAllScenes()
+    public static void MissingSpritesInBuildSetting()
     {
         //本想最后回到当前场景，但是发现current.path为空，先舍弃
         //var current = EditorSceneManager.GetActiveScene();
@@ -60,8 +58,7 @@ public class MissingReferencesFinder
     /// <summary>
     /// Finds all missing references to objects in assets (objects from the project window).
     /// </summary>
-    [MenuItem("Tools/Missing References/Search in assets", false, 52)]
-    public static void MissingSpritesInAssets()
+    public static void MissingSpritesInProjectAssets()
     {
         var allAssets = AssetDatabase.GetAllAssetPaths().Where(path => path.StartsWith("Assets/")).ToArray();
         var objs = allAssets.Select(a => AssetDatabase.LoadAssetAtPath(a, typeof(GameObject)) as GameObject).Where(a => a != null).ToArray();
@@ -71,6 +68,8 @@ public class MissingReferencesFinder
 
     private static void FindMissingReferences(string context, GameObject[] objects)
     {
+        Debug.Log("Begin Find Missing Reference.");
+
         foreach (var go in objects)
         {
             var components = go.GetComponents<Component>();

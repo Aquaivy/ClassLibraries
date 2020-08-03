@@ -11,7 +11,7 @@ namespace Aquaivy.Unity.Editor
 {
     class SearchScriptWindow : EditorWindow
     {
-        private string scriptName;
+        private string scriptName = "MyScript";
         private bool searchBtnClicked = false;
 
         public static void OpenWindow()
@@ -24,10 +24,10 @@ namespace Aquaivy.Unity.Editor
         public void OnGUI()
         {
             GUILayout.Space(10);
-            EditorGUILayout.LabelField("还没增加场景保存确认，请先手动保存场景！！！");
-            EditorGUILayout.LabelField("还没增加场景保存确认，请先手动保存场景！！！");
-            EditorGUILayout.LabelField("还没增加场景保存确认，请先手动保存场景！！！");
-            GUILayout.Space(10);
+            EditorGUILayout.LabelField("* 脚本名称不用填写.cs");
+            EditorGUILayout.LabelField("* 脚本名称不区分大小写");
+            EditorGUILayout.LabelField("* 搜索结果显示在Console窗口");
+            GUILayout.Space(30);
 
 
             GUILayout.BeginHorizontal();
@@ -36,6 +36,9 @@ namespace Aquaivy.Unity.Editor
 
 
             scriptName = GUILayout.TextField(scriptName);
+
+            GUILayout.EndHorizontal();
+            GUILayout.BeginHorizontal();
 
             if (GUILayout.Button("Clear"))
             {
@@ -56,9 +59,11 @@ namespace Aquaivy.Unity.Editor
                 var currentScene = EditorSceneManager.GetActiveScene();
                 if (scenes.Count > 0 && currentScene.isDirty)
                 {
-                    //这里补充一个场景保存确认
+                    if (EditorUtility.DisplayDialog("Are you sure?", "The scene is modified, do you want to save this scene?", "Yes", "No"))
+                    {
+                        EditorSceneManager.SaveScene(currentScene);
+                    }
                 }
-
 
                 foreach (var scene in scenes)
                 {
