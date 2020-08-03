@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditorHierarchy.cs" />
     <Compile Include="Hierarchy\HierarchyGameObjectRenameTool.cs" />
     <Compile Include="Scene\EditorSceneLoader.cs" />
     <Compile Include="Namespace\NamespaceChecker.cs" />
