@@ -69,7 +69,11 @@ namespace Aquaivy.Unity.Editor
         public static void ChangeAudiosToMono() => AudioImporterEditor.ChangeAudiosToMono();
 
 
-
+        [MenuItem("GameObject/Remove GameObject Name (1)", false, 11)]
+        public static void 移除复制物体名字后的括号()
+        {
+            HierarchyGameObjectRenameTool.Rename();
+        }
 
 
         #region Scene Loader
