@@ -81,6 +81,7 @@
     <Compile Include="Utilities\StopwatchUtils.cs" />
     <Compile Include="Utilities\StringUnicodeHelper.cs" />
     <Compile Include="Web\HttpUtils.cs" />
+    <Content Include="Utilities\ini\Readme.txt" />
     <Content Include="Utilities\Lang\Lang.cs.txt" />
     <Compile Include="Utilities\StorageUnit.cs" />
     <Compile Include="Utilities\IO\FileUtility.cs" />
