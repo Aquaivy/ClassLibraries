@@ -15,13 +15,19 @@ namespace Aquaivy.Unity.Editor
     {
         public static void Rename()
         {
-            var go = Selection.activeGameObject;
-            Rename(go);
+            foreach (var go in Selection.gameObjects)
+            {
+                Rename(go);
+            }
+
             EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
         }
 
         public static void Rename(GameObject gameObject)
         {
+            if (gameObject == null)
+                return;
+
             string pattern = @" \(\d+\)";
             Regex rgx = new Regex(pattern);
             string result = rgx.Replace(gameObject.name, string.Empty);

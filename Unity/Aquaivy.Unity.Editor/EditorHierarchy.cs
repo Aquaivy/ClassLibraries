@@ -14,7 +14,8 @@ namespace Aquaivy.Unity.Editor
     /// </summary>
     public class EditorHierarchy
     {
-        [MenuItem("GameObject/Remove GameObject Name (1)", false, 11)]
+        [MenuItem("GameObject/Remove GameObject Name (1)   %F2", false, 11)]
+        [MenuItem("Tools/Remove GameObject Name (1)", false, 131)]
         public static void 移除复制物体名字后的括号()
         {
             HierarchyGameObjectRenameTool.Rename();
