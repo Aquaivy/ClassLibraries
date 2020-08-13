@@ -116,5 +116,41 @@ namespace Aquaivy.Unity
             return (transform1.IsChildOf(transform2) || transform2.IsChildOf(transform1))
                 && (transform1 != transform2);
         }
+
+        public static void SetX(this Transform transform, float x)
+        {
+            var p = transform.localPosition;
+            transform.localPosition = new Vector3(x, p.y, p.z);
+        }
+
+        public static void SetY(this Transform transform, float y)
+        {
+            var p = transform.localPosition;
+            transform.localPosition = new Vector3(p.x, y, p.z);
+        }
+
+        public static void SetZ(this Transform transform, float z)
+        {
+            var p = transform.localPosition;
+            transform.localPosition = new Vector3(p.x, p.y, z);
+        }
+
+        public static void SetRotationX(this Transform transform, float x)
+        {
+            var r = transform.localRotation.eulerAngles;
+            transform.localRotation = Quaternion.Euler(x, r.y, r.z);
+        }
+
+        public static void SetRotationY(this Transform transform, float y)
+        {
+            var r = transform.localRotation.eulerAngles;
+            transform.localRotation = Quaternion.Euler(r.x, y, r.z);
+        }
+
+        public static void SetRotationZ(this Transform transform, float z)
+        {
+            var r = transform.localRotation.eulerAngles;
+            transform.localRotation = Quaternion.Euler(r.x, r.y, z);
+        }
     }
 }
