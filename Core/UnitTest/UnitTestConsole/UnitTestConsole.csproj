@@ -46,6 +46,7 @@
     <Compile Include="EntityClass.cs" />
     <Compile Include="Library\Common.cs" />
     <Compile Include="Library\Component.cs" />
+    <Compile Include="Library\Mission\Mission.cs" />
     <Compile Include="Library\Serialize.cs" />
     <Compile Include="Library\Util.cs" />
     <Compile Include="Library\Thread.cs" />

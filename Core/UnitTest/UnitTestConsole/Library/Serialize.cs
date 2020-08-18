@@ -1,12 +1,24 @@
 ﻿using Aquaivy.Core.Common;
 using Aquaivy.Core.Serialize;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using Yosim.Academy.Programs;
 
 namespace UnitTest.Library
 {
     class Serialize : Singleton<Serialize>
     {
         private Serialize() { }
+
+        public void CSVSerialize()
+        {
+            string path = @"D:\Yosim\Projects\YosimAcademy\Assets\Core\Resources\GameLevelConfig\guide_1.csv";
+            var content = File.ReadAllText(path, Encoding.UTF8);
+            var missions = CSVSerializeUtil.CSVDeserialize<MissionItem>(content);
+            var mission = new Mission { Missions = missions.ToList() };
+        }
 
         public void ReadValues()
         {
