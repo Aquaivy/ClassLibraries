@@ -28,7 +28,11 @@ namespace Aquaivy.Unity
             s_audios.Add(audio);
 
             if (s_audiosParent == null)
+            {
                 s_audiosParent = new GameObject("Audios");
+                GameObject.DontDestroyOnLoad(s_audiosParent);
+            }
+
             audio.GameObject.transform.SetParent(s_audiosParent.transform);
         }
 

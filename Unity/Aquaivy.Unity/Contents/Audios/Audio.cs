@@ -81,7 +81,7 @@ namespace Aquaivy.Unity
         /// <param name="stereo"></param>
         private Audio(AudioClip audioClip, bool loop, float volume, bool stereo)
         {
-            GameObject = new GameObject("Audio_" + audioClip.name);
+            GameObject = new GameObject(audioClip.name);
             AudioSource = GameObject.AddComponent<AudioSource>();
             AudioSource.clip = audioClip;
             AudioSource.loop = loop;
@@ -89,16 +89,19 @@ namespace Aquaivy.Unity
             AudioSource.spatialBlend = stereo ? 1 : 0;
         }
 
+        private DelayTask delayDestroyGameObjectTask;
+
         /// <summary>
         /// Play
         /// </summary>
         public void Play()
         {
-            AudioSource.Play();
+            if (AudioSource != null)
+                AudioSource.Play();
 
             if (!Loop)
             {
-                DelayTask.Invoke(() =>
+                delayDestroyGameObjectTask = DelayTask.Invoke(() =>
                 {
                     Stop();
                 }, (int)(AudioClip.length * 1000));
@@ -110,7 +113,10 @@ namespace Aquaivy.Unity
         /// </summary>
         public void Pause()
         {
-            AudioSource.Pause();
+            if (AudioSource != null)
+                AudioSource.Pause();
+            delayDestroyGameObjectTask?.Release();
+            delayDestroyGameObjectTask = null;
         }
 
         /// <summary>
@@ -118,14 +124,18 @@ namespace Aquaivy.Unity
         /// </summary>
         public void Stop()
         {
-            AudioSource.Stop();
+            if (AudioSource != null)
+                AudioSource.Stop();
+            delayDestroyGameObjectTask?.Release();
+            delayDestroyGameObjectTask = null;
             Dispose();
         }
 
         private void Dispose()
         {
             AudioManager.Remove(this);
-            GameObject.Destroy(GameObject);
+            if (GameObject != null)
+                GameObject.Destroy(GameObject);
         }
 
 
