@@ -18,6 +18,15 @@ namespace Aquaivy.Core.Utilities
         /// 
         /// </summary>
         /// <returns></returns>
+        public static float RandomFloat()
+        {
+            return (float)s_Random.NextDouble();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static double RandomDouble()
         {
             return s_Random.NextDouble();

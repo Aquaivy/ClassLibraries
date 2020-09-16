@@ -107,70 +107,70 @@ namespace Aquaivy.Unity.Editor
 
         #region GameObjectLocater
 
-        [MenuItem("Tools/Locate/Load Hierarchy 1 %1", false, 1011)]
-        public static void Locate_Hierarchy_1() => GameObjectLocater.Locate(0);
+        //[MenuItem("Tools/Locate/Load Hierarchy 1 %1", false, 1011)]
+        //public static void Locate_Hierarchy_1() => GameObjectLocater.Locate(0);
 
-        [MenuItem("Tools/Locate/Load Hierarchy 2 %2", false, 1011)]
-        public static void Locate_Hierarchy_2() => GameObjectLocater.Locate(1);
+        //[MenuItem("Tools/Locate/Load Hierarchy 2 %2", false, 1011)]
+        //public static void Locate_Hierarchy_2() => GameObjectLocater.Locate(1);
 
-        [MenuItem("Tools/Locate/Load Hierarchy 3 %3", false, 1011)]
-        public static void Locate_Hierarchy_3() => GameObjectLocater.Locate(2);
+        //[MenuItem("Tools/Locate/Load Hierarchy 3 %3", false, 1011)]
+        //public static void Locate_Hierarchy_3() => GameObjectLocater.Locate(2);
 
-        [MenuItem("Tools/Locate/Load Hierarchy 4 %4", false, 1011)]
-        public static void Locate_Hierarchy_4() => GameObjectLocater.Locate(3);
+        //[MenuItem("Tools/Locate/Load Hierarchy 4 %4", false, 1011)]
+        //public static void Locate_Hierarchy_4() => GameObjectLocater.Locate(3);
 
-        [MenuItem("Tools/Locate/Load Hierarchy 5 %5", false, 1011)]
-        public static void Locate_Hierarchy_5() => GameObjectLocater.Locate(4);
+        //[MenuItem("Tools/Locate/Load Hierarchy 5 %5", false, 1011)]
+        //public static void Locate_Hierarchy_5() => GameObjectLocater.Locate(4);
 
-        [MenuItem("Tools/Locate/Load Hierarchy 6 %6", false, 1011)]
-        public static void Locate_Hierarchy_6() => GameObjectLocater.Locate(5);
+        //[MenuItem("Tools/Locate/Load Hierarchy 6 %6", false, 1011)]
+        //public static void Locate_Hierarchy_6() => GameObjectLocater.Locate(5);
 
-        [MenuItem("Tools/Locate/Load Hierarchy 7 %7", false, 1011)]
-        public static void Locate_Hierarchy_7() => GameObjectLocater.Locate(6);
+        //[MenuItem("Tools/Locate/Load Hierarchy 7 %7", false, 1011)]
+        //public static void Locate_Hierarchy_7() => GameObjectLocater.Locate(6);
 
-        [MenuItem("Tools/Locate/Load Hierarchy 8 %8", false, 1011)]
-        public static void Locate_Hierarchy_8() => GameObjectLocater.Locate(7);
+        //[MenuItem("Tools/Locate/Load Hierarchy 8 %8", false, 1011)]
+        //public static void Locate_Hierarchy_8() => GameObjectLocater.Locate(7);
 
-        [MenuItem("Tools/Locate/Load Hierarchy 9 %9", false, 1011)]
-        public static void Locate_Hierarchy_9() => GameObjectLocater.Locate(8);
+        //[MenuItem("Tools/Locate/Load Hierarchy 9 %9", false, 1011)]
+        //public static void Locate_Hierarchy_9() => GameObjectLocater.Locate(8);
 
-        [MenuItem("Tools/Locate/Load Hierarchy 10 %10", false, 1011)]
-        public static void Locate_Hierarchy_10() => GameObjectLocater.Locate(8);
-
-
+        //[MenuItem("Tools/Locate/Load Hierarchy 10 %10", false, 1011)]
+        //public static void Locate_Hierarchy_10() => GameObjectLocater.Locate(8);
 
 
 
 
-        [MenuItem("Tools/Locate/Set Locate 1", false, 1012)]
-        public static void Set_Locate_1() => GameObjectLocater.SetLocateConfig(0);
 
-        [MenuItem("Tools/Locate/Set Locate 2", false, 1012)]
-        public static void Set_Locate_2() => GameObjectLocater.SetLocateConfig(1);
 
-        [MenuItem("Tools/Locate/Set Locate 3", false, 1012)]
-        public static void Set_Locate_3() => GameObjectLocater.SetLocateConfig(2);
+        //[MenuItem("Tools/Locate/Set Locate 1", false, 1012)]
+        //public static void Set_Locate_1() => GameObjectLocater.SetLocateConfig(0);
 
-        [MenuItem("Tools/Locate/Set Locate 4", false, 1012)]
-        public static void Set_Locate_4() => GameObjectLocater.SetLocateConfig(3);
+        //[MenuItem("Tools/Locate/Set Locate 2", false, 1012)]
+        //public static void Set_Locate_2() => GameObjectLocater.SetLocateConfig(1);
 
-        [MenuItem("Tools/Locate/Set Locate 5", false, 1012)]
-        public static void Set_Locate_5() => GameObjectLocater.SetLocateConfig(4);
+        //[MenuItem("Tools/Locate/Set Locate 3", false, 1012)]
+        //public static void Set_Locate_3() => GameObjectLocater.SetLocateConfig(2);
 
-        [MenuItem("Tools/Locate/Set Locate 6", false, 1012)]
-        public static void Set_Locate_6() => GameObjectLocater.SetLocateConfig(5);
+        //[MenuItem("Tools/Locate/Set Locate 4", false, 1012)]
+        //public static void Set_Locate_4() => GameObjectLocater.SetLocateConfig(3);
 
-        [MenuItem("Tools/Locate/Set Locate 7", false, 1012)]
-        public static void Set_Locate_7() => GameObjectLocater.SetLocateConfig(6);
+        //[MenuItem("Tools/Locate/Set Locate 5", false, 1012)]
+        //public static void Set_Locate_5() => GameObjectLocater.SetLocateConfig(4);
 
-        [MenuItem("Tools/Locate/Set Locate 8", false, 1012)]
-        public static void Set_Locate_8() => GameObjectLocater.SetLocateConfig(7);
+        //[MenuItem("Tools/Locate/Set Locate 6", false, 1012)]
+        //public static void Set_Locate_6() => GameObjectLocater.SetLocateConfig(5);
 
-        [MenuItem("Tools/Locate/Set Locate 9", false, 1012)]
-        public static void Set_Locate_9() => GameObjectLocater.SetLocateConfig(8);
+        //[MenuItem("Tools/Locate/Set Locate 7", false, 1012)]
+        //public static void Set_Locate_7() => GameObjectLocater.SetLocateConfig(6);
 
-        [MenuItem("Tools/Locate/Set Locate 10", false, 1012)]
-        public static void Set_Locate_10() => GameObjectLocater.SetLocateConfig(9);
+        //[MenuItem("Tools/Locate/Set Locate 8", false, 1012)]
+        //public static void Set_Locate_8() => GameObjectLocater.SetLocateConfig(7);
+
+        //[MenuItem("Tools/Locate/Set Locate 9", false, 1012)]
+        //public static void Set_Locate_9() => GameObjectLocater.SetLocateConfig(8);
+
+        //[MenuItem("Tools/Locate/Set Locate 10", false, 1012)]
+        //public static void Set_Locate_10() => GameObjectLocater.SetLocateConfig(9);
 
         #endregion
     }
